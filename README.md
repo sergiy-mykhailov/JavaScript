@@ -90,7 +90,21 @@ alert( '2' > 1 );     // true, сравнивается как 2 > 1
 alert( '01' == 1 );   // true, сравнивается как 1 == 1
 alert( false == 0 );  // true, false становится числом 0
 alert( true == 1 );   // true, так как true становится числом 1.
+2 == '2'              // True
+2 === '2'             // False
+undefined == null     // True
+undefined === null    // False
+false == ""    // true
+false == []    // true
+false == {}    // false
+"" == 0        // true
+"" == []       // true
+"" == {}       // false
+0 == []        // true
+0 == {}        // false
+0 == null      // false
 ```
+[Чит-лист](http://dorey.github.io/JavaScript-Equality-Table/)
 
 #### Сравнение с null и undefined
 1. Значения null и undefined равны == друг другу и не равны чему бы то ни было ещё
