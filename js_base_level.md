@@ -211,6 +211,22 @@ if (...) {
 
 
 ## 3.2. switch
+```
+switch(x) {
+  case 'value1':  // if (x === 'value1')
+    ...
+    [break]
+
+  case 'value2':  // if (x === 'value2')
+    ...
+    [break]
+
+  default:
+    ...
+    [break]
+}
+```
+Если break нет, то выполнение пойдёт ниже по следующим case, при этом остальные проверки игнорируются.
 
 ## 3.3. loops
 
