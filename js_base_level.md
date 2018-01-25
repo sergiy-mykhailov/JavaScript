@@ -331,6 +331,47 @@ var display = function (){
 }
 ```
 
+# 5. Numbers 
+## 5.1. Converting
+## 5.2. Properties
+## 5.3. Methods
+
+# 6. Strings
+## 6.1 Properties
+## 6.2 Methods
+
+# 7. Dates
+## 7.1 Properties
+## 7.2 Methods
+## 7.3 Formats
+## 7.4 Timezones
+
+# 8. Arrays
+## 8.1 Properties
+## 8.2 Methods
+## 8.3 Sorting
+
+# 9. Functions
+## 9.1 Closures
+## 9.2 declaration
+## 9.3 arguments array
+## 9.4 invocation
+
+# 10. Type conversion
+
+# 11. Prototypes, Inharitance
+## 11.1. Prototypes
+## 11.2. Inharitance
+
+# 12. Math Object
+
+# 13. Scopes
+
+# 14. Objects
+
+# 15. Timeouts, Intervals
+## 15.1. Timeouts
+## 15.2. Intervals
 
 
 
