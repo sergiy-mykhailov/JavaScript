@@ -2,7 +2,38 @@
 
 ## Направления деятельности компании
 
-## Ключевые сотрудники компании
+1. Mobile development
+  * React Native
+  * ExtJS Sencha Touch
+  * Cordova
+
+2. Web development
+  * Symfony, Laravel
+  * JavaScript (Node.js, React.js, React Native, Angular.JS)
+  * HTML5, CSS3 (SASS, LESS), Bootstrap, SVG
+  * RESTful API, websockets
+  * Amazon Web Services
+
+3. Startups
+  * flexible budgeting
+  * product priorities shift
+  * frequent requirements change
+  
+4. Ui/Ux Design
+  * User Experience
+    * User Stories & Scenarios
+    * Persona Definition
+    * UI Design
+    * User Experience Style Guide
+    * Test Cases
+    * Usability Audit
+  * User Interface
+    * Information Architecture
+    * Interaction Design
+    * Wireframe Design
+    * User Interface Specifications
+    * Clickable Prototypes
+    * Usability Testing
 
 ## Ценности компании - основные
 
@@ -59,4 +90,27 @@
 2. **Больничный** - О больничном необходимо предупреждать менеджера по персоналу и тимлида незамедлительно. Если  предупредили о больничном после 10:00 текущего дня, то учитываться больничный за этот день не будет. Если болезнь длится дольше 2 рабочих дней подряд, то в день выхода на работу необходимо будет предоставить менеджеру по персоналу больничный лист.
 3. **Отпуск** - Отпроситься у тимлида не позднее чем за 2 недели до предполагаемой даты начала отпуска, а также предупредить менеджера по персоналу и написать заявление на имя директора.
 
+
 ## Проекты компании (используемые языки и технологии)
+
+1. Carpathian Seagull
+
+   Java Symfony JPA AngularJS Oracle Delphi XML HTML
+   
+2. Service Doc
+
+   React MongoDB NodeJS XDocReport Apache PDFBox HTML5 CSS3
+   
+3. Cartovera
+
+   React MongoDB NodeJS SASS Mercurial Gulp HTML5 CSS3
+   
+4. Wikigrads
+
+   Symfony Doctrine HTML5 CSS3 Javascript
+   
+5. WebRTC Сonference
+
+   PHP Doctrine WebRTC Slim JavaScript Backbone jQuery MySQL MS SQL SOAP REST API Websockets Xmpp Openfire HTML CSS
+
+## Ключевые сотрудники компании
