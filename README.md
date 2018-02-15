@@ -10,8 +10,10 @@
 
 ## 2. React.JS
 
-## 3. Git
+## 3. [Git](https://github.com/sergiy-mykhailov/JavaScript/blob/master/git.md)
 
 ## 4. Linux
 
 ## 5. Soft skills
+
+## 6. Soft skills - [About company (OSSystem)](https://github.com/sergiy-mykhailov/JavaScript/blob/master/soft_skills_company.md)
