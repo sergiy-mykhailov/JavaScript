@@ -83,6 +83,21 @@ git push origin --tags
 git push origin --follow-tags
 ```
 
+### Получить данный из удаленного сервера:
+```
+git pull origin
+```
+
+### Слияние (branch2 -> branch1):
+Перейти на ту ветку, в которую вы хотите слить свои изменения
+```
+git checkout branch1
+```
+Выполнить команду git merge <источник>
+```
+git merge branch2
+```
+
 ### Удаляем ветку part2:
 ```
 git branch -d part2
