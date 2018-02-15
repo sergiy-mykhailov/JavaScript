@@ -2,24 +2,24 @@
 
 ## Направления деятельности компании
 
-1. Mobile development
+1. **Mobile development**
   * React Native
   * ExtJS Sencha Touch
   * Cordova
 
-2. Web development
+2. **Web development**
   * Symfony, Laravel
   * JavaScript (Node.js, React.js, React Native, Angular.JS)
   * HTML5, CSS3 (SASS, LESS), Bootstrap, SVG
   * RESTful API, websockets
   * Amazon Web Services
 
-3. Startups
+3. **Startups**
   * flexible budgeting
   * product priorities shift
   * frequent requirements change
   
-4. Ui/Ux Design
+4. **Ui/Ux Design**
   * User Experience
     * User Stories & Scenarios
     * Persona Definition
@@ -93,24 +93,28 @@
 
 ## Проекты компании (используемые языки и технологии)
 
-1. Carpathian Seagull
+1. **Carpathian Seagull**
 
    Java Symfony JPA AngularJS Oracle Delphi XML HTML
    
-2. Service Doc
+2. **Service Doc**
 
    React MongoDB NodeJS XDocReport Apache PDFBox HTML5 CSS3
    
-3. Cartovera
+3. **Cartovera**
 
    React MongoDB NodeJS SASS Mercurial Gulp HTML5 CSS3
    
-4. Wikigrads
+4. **Wikigrads**
 
    Symfony Doctrine HTML5 CSS3 Javascript
    
-5. WebRTC Сonference
+5. **WebRTC Сonference**
 
    PHP Doctrine WebRTC Slim JavaScript Backbone jQuery MySQL MS SQL SOAP REST API Websockets Xmpp Openfire HTML CSS
+   
+6. **Chernomorsk.com.ua**
+
+   PHP Symfony MySQL HTML CSS React Redux
 
 ## Ключевые сотрудники компании
