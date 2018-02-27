@@ -23,7 +23,20 @@ cd /home/me/sencha-cmd
 chmod +x SenchaCmd-6.5.3.6-linux-amd64.sh
 sudo ./SenchaCmd-6.5.3.6-linux-amd64.sh
 ```
-4. Configure Sencha Cmd with this location:
+4. Verify Installation Sencha CMD
+
+Type the sencha command:
+```
+sencha
+```
+You should see output that starts something like this:
+```
+Sencha Cmd v6.0.0.202
+```
+If [errors (command not found)](https://docs.sencha.com/cmd/guides/intro_to_cmd.html#intro_to_cmd_-_command_not_found)
+add Sencha CMD to your PATH manually!
+
+5. Configure Sencha Cmd with this location:
 ```
 sencha config --prop sencha.sdk.path=/home/me/sencha-sdks --save
 ```
