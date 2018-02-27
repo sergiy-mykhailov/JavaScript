@@ -9,21 +9,21 @@ ___
 2. Download [Ext JS 6.5 SDK](http://www.sencha.com/products/extjs/evaluate/)
 
 ## 2. Install SDK and CMD
-1. Extract Ext JS SDK in a fixed location in your "home" directory: 
+#### 1. Extract Ext JS SDK in a fixed location in your "home" directory: 
 ```
 /home/me/sencha-sdks/ext-6.5.2
 ```
-2. Extract Sencha CMD in a fixed location in your "home" directory: 
+#### 2. Extract Sencha CMD in a fixed location in your "home" directory: 
 ```
 /home/me/sencha-cmd
 ```
-3. Install Sencha CMD : 
+#### 3. Install Sencha CMD : 
 ```
 cd /home/me/sencha-cmd
 chmod +x SenchaCmd-6.5.3.6-linux-amd64.sh
 sudo ./SenchaCmd-6.5.3.6-linux-amd64.sh
 ```
-4. Verify Installation Sencha CMD
+#### 4. Verify Installation Sencha CMD
 
 Type the sencha command:
 ```
@@ -36,18 +36,19 @@ Sencha Cmd v6.0.0.202
 If [errors (command not found)](https://docs.sencha.com/cmd/guides/intro_to_cmd.html#intro_to_cmd_-_command_not_found)
 add Sencha CMD to your PATH manually!
 
-5. Configure Sencha Cmd with this location:
+#### 5. Configure Sencha Cmd with this location:
 ```
 sencha config --prop sencha.sdk.path=/home/me/sencha-sdks --save
 ```
 
 ## 3. Initializing the Application
 
-1. Open project folder
+#### 1. Open project folder
 ```
 cd /home/me/projects/myApp
 ```
-2. Run "sencha app init" to create the application on disk:
+#### 2. Create / generate application
+Run "sencha app init" to create the application on disk:
 ```
 sencha app init --ext@6.5.2 --classic MyApp
 ```
