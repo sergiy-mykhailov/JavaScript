@@ -51,6 +51,10 @@ git status
 ```
 git add file.js
 ```
+Отменить все изменения в файле "file.js":
+```
+git checkout -- file.js
+```
 Добавить все файлы проекта в индекс:
 ```
 git add --all
