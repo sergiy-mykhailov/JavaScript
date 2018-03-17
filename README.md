@@ -17,3 +17,5 @@
 ## 5. Soft skills
 
 ## 6. Soft skills - [About company (OSSystem)](https://github.com/sergiy-mykhailov/JavaScript/blob/master/soft_skills_company.md)
+
+## 7. [Ext.js](ext/README.md)

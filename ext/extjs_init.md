@@ -1,5 +1,3 @@
-Ext.JS
-___
 
 # Project initialization
 
