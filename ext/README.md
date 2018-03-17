@@ -1,5 +1,5 @@
 # Ext.js
 
-## 1. [Project initialization](ext/extjs_init.md)
+## 1. [Project initialization](extjs_init.md)
 
-## 2. [Class](ext/extjs_class.md)
+## 2. [Class](extjs_class.md)
