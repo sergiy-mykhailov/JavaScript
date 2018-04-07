@@ -1,21 +1,25 @@
 # Skills
 
-## 1. JavaScript
+## Hard skills
 
-### 1.1. [Base Level](https://github.com/sergiy-mykhailov/JavaScript/blob/master/js_base_level.md)
+### 1. JavaScript
 
-### 1.2. [Advanced Level](https://github.com/sergiy-mykhailov/JavaScript/blob/master/js_asvanced_level.md)
+#### 1.1. JavaScript - [Base Level](js/js_base_level.md)
+#### 1.2. JavaScript - [Advanced Level](js/js_asvanced_level.md)
+#### 1.3. JavaScript - [Pro Level](js/js_pro_level.md)
 
-### 1.3. [Pro Level](https://github.com/sergiy-mykhailov/JavaScript/blob/master/js_pro_level.md)
+### 2. React.JS
 
-## 2. React.JS
+### 3. Git
 
-## 3. [Git](https://github.com/sergiy-mykhailov/JavaScript/blob/master/git.md)
+#### 3.1. [Git - main commands](git/git_main.md)
+#### 3.2. [Git - all commands](git/git_all.md)
 
-## 4. Linux
+### 4. Linux
 
-## 5. Soft skills
+### 5. [Ext.js](ext/README.md)
 
-## 6. Soft skills - [About company (OSSystem)](https://github.com/sergiy-mykhailov/JavaScript/blob/master/soft_skills_company.md)
+## Soft skills
 
-## 7. [Ext.js](ext/README.md)
+### 1. Soft skills
+### 2. Soft skills - [About company (OSSystem)](soft_skills/soft_skills_company.md)

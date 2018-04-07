@@ -1,4 +1,4 @@
-# I. Основные команды git
+# Основные команды git
 
 
 ## 0. Создание / клонирование / добавление репозитория
@@ -47,6 +47,15 @@ git checkout branchName
 Просмотр состояния файлов репозитория:
 ```
 git status
+```
+Просмотр изменений в НЕ проиндексированных файлах:
+```
+git diff
+```
+Просмотр изменений в проиндексированных файлах:
+```
+git diff --cached
+git diff --staged
 ```
 Добавить файл "file.js" в индекс репозитория:
 ```
@@ -107,34 +116,4 @@ git merge dev -m "Merge dev into branchName"
 ## 13. Удаление ветки "branchName":
 ```
 git branch -d branchName
-```
-
-
-___
-
-
-# Дополнительные команды git
-
-## 1. Теги
-Создать тэг (Lightweight Tags):
-```
-git tag v1.0
-```
-Создать тэг (Annotated Tags):
-```
-git tag -a -m "Version 0.1.1" v0.1.1
-```
-Создать тэг (Annotated Tags) на определенный комит:
-```
-git tag -a -m "Version 0.0.5" v0.0.5 40a073e7d10bce3d95e223454f61f9f8fc390572
-```
-Показать информацию о теге v0.0.5:
-```
-$ git show v0.0.5
-```
-Выгрузить теги на удаленный сервер:
-(--tags - все теги; --follow-tags - только Annotated)
-```
-git push origin --tags
-git push origin --follow-tags
 ```
