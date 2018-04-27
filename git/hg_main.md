@@ -101,6 +101,10 @@ hg update bookmarkName
 ```
 hg merge master
 ```
+Выполнить коммит слияния 
+```
+hg commit -m "merge master into bookmarkName"
+```
 
 ## 10. Проверить работоспособность (после слияния с меткой master)
 
@@ -112,6 +116,10 @@ hg update master
 Выполнить команду git merge <источник>
 ```
 hg merge bookmarkName
+```
+Выполнить коммит слияния 
+```
+hg commit -m "merge bookmarkName into master"
 ```
 
 ## 12. Если изменений небыло, нужно переместить метку master
