@@ -109,8 +109,14 @@ git merge dev -m "Merge dev into branchName"
 ```
 
 ## 12. Слияние Pull-request в основную ветку, используя squash
+Перейти в основную ветку "dev":
 ```
-
+git checkout dev
+```
+Выполнить squash и commit:
+```
+git merge branchName --squash
+git commit -m "Merge branchName into dev"
 ```
 
 ## 13. Удаление ветки "branchName":
