@@ -5,7 +5,7 @@
 ### 1. JavaScript
 
 #### 1.1. JavaScript - [Base Level](js/js_base_level.md)
-#### 1.2. JavaScript - [Advanced Level](js/js_asvanced_level.md)
+#### 1.2. JavaScript - [Advanced Level](js/js_advanced_level.md)
 #### 1.3. JavaScript - [Pro Level](js/js_pro_level.md)
 
 ### 2. React.JS
