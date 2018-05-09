@@ -903,7 +903,7 @@ ChildClass.prototype.publicMethod = function() {
 ```
 
 ## 11.2. ООП в ES6
-```ecmascript 6
+```javascript
 class ParentClass {
   // конструктор
   constructor(param1) {
