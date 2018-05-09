@@ -814,8 +814,136 @@ console.log(numbers); // [1, 2, 3, 4, 5]
 # 10. Type conversion
 
 # 11. Prototypes, Inharitance
-## 11.1. Prototypes
-## 11.2. Inharitance
+
+## 11.1. ООП в функциональном стиле
+```javascript
+function ParentClass(param1, param2) {
+  // локальные переменные и функции доступны только внутри
+  var somePrivateProperty = 'value of private property';
+  function privateMethod() {}
+  
+  // публичные доступны снаружи
+  this.publicProperty = 'value of public property';
+  this.publicMethod = function() {};
+  
+  // публичные геттеры, сеттеры
+  this.getProperty = function() {
+    return somePrivateProperty;
+  };
+  this.setProperty = function(newValue) {
+    somePrivateProperty = newValue;
+  };
+  
+  // публичный единый геттер-сеттер
+  this.privateProperty = function(newValue) {
+    if (!arguments.length) return somePrivateProperty;
+    somePrivateProperty = newValue;
+  };
+ 
+  // условно защищённые приватные свойства и методы (для потомков)
+  this._protectedProperty = 'protected value';
+  this._protectedMethod = function() {};
+}
+ 
+function ChildClass(param3, param4) {
+  // универсальный вызов с передачей любых аргументов
+  ParentClass.apply(this, arguments);
+  
+  // собственные свойства
+  this.childPublicProperty = 'child public value';
+  
+  // переопределение родительского свойства
+  this._protectedProperty = 'new protected value';
+  
+  // переопределение(расширение) родительского метода
+  var parentProtected = this._protectedMethod;
+  this._protectedMethod = function(args) {
+    parentProtected.apply(this, args);
+    // ...
+  };
+}
+  
+var instanceClass = new ChildClass('value1', 'value2');
+instanceClass.publicProperty = 'new value';
+instanceClass.publicMethod();
+instanceClass.childPublicProperty = 'other value';
+```
+
+## 11.2. ООП в прототипном стиле
+```javascript
+// 1. конструктор Parent
+function ParentClass(param1) {
+  this.param1 = param1;
+  this.param2 = 0;
+}
+  
+// 2. методы в прототипе Parent
+ParentClass.prototype.publicMethod = function() {};
+ParentClass.prototype.otherPublicMethod = function() {};
+  
+// 3. конструктор Child
+function ChildClass(param1) {
+  this.param1 = param1;
+  this.someProperty = 'value';
+}
+  
+// 4. Наследование
+ChildClass.prototype = Object.create(ParentClass.prototype);
+ChildClass.prototype.constructor = ChildClass;
+  
+// 5. методы в прототипе Child
+ChildClass.prototype.childPublicMethod = function() {};
+  
+// 6. переопределение(расширение) родительского метода
+ChildClass.prototype.publicMethod = function() {
+  // вызвать метод родителя, передав ему текущие аргументы
+  ParentClass.prototype.publicMethod.apply(this, arguments);
+  // ...
+}
+```
+
+## 11.2. ООП в ES6
+```ecmascript 6
+class ParentClass {
+  // конструктор
+  constructor(param1) {
+    this.someProperty = param1;
+  }
+  
+  // методы
+  someMethod() {};
+  
+  // геттер
+  get property() {
+    return this.someProperty;
+  }
+  
+  // сеттер
+  set property(newValue) {
+    this.someProperty = newValue;
+  }
+  
+  // Статические свойства
+  static getCurrentDate() {
+    return new Date();
+  }
+}
+  
+class ChildClass extends ParentClass {
+  // конструктор
+  constructor(...args) {
+    super(...args);
+    this.param2 = 'value';
+  }
+  
+  // переопределение
+  someMethod() {
+    super.someMethod();
+    // ...
+  }
+}
+```
+
 
 # 12. Math Object
 
