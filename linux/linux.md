@@ -75,6 +75,14 @@ du -sh filename
 ```Shell
 locate filename
 ```
+Проверка существования директории "someDirectory"
+```sh
+if [ -d /home/user/someDirectory ]; then
+  echo -e "Directory exist!"
+else
+  echo -e "Directory does not exist!"
+fi
+```
 
 #### Права доступа
 
