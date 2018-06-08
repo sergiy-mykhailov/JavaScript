@@ -137,9 +137,15 @@ hg update bookmarkName
 hg bookmark master
 ```
 
-## 12. Push в удаленный репозиторий основной метки master
+## 12. Push в удаленный репозиторий 
+Выгрузка основной метки master в основной удаленный репозиторий
 ```
 hg push -B master
+```
+Выгрузка лок.репозитория в дополнительный удаленный репозиторий
+```git
+hg push https://someUser@github.com/someRepo/projectName
+
 ```
 
 ## 13. Удаление метки "bookmarkName":
