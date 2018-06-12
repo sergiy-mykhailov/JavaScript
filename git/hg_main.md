@@ -148,7 +148,13 @@ hg push https://someUser@github.com/someRepo/projectName
 
 ```
 
-## 13. Удаление метки "bookmarkName":
+## 13. Удаление метки "bookmarkName"
+Удаление только в локальном репозитории:
 ```
 hg bookmarks -d bookmarkName
+```
+Удаление в локальном и удаленном репозитории:
+```
+hg bookmarks -d bookmarkName
+hg push -B bookmarkName
 ```
