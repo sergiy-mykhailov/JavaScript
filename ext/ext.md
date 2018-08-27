@@ -2,4 +2,4 @@
 
 ## 1. [Project initialization](extjs_init.md)
 
-## 2. [Class](extjs_class.md)
+## 2. [Base Level](extjs_base.md)
