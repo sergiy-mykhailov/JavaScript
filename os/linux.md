@@ -169,9 +169,6 @@ t sticky - устанавливая t-бит на директорию, мы м�
 ```
 
 
-
-
-
 ## 2. standard streams; stdin, stdout, stderr,
 ## 3. permissions; users and groups
 ## 4. bash/sh scripting;
@@ -179,11 +176,3 @@ t sticky - устанавливая t-бит на директорию, мы м�
 ## 6. package managers
 ## 7. setup dev env (nginx, mysql, php, nodejs, mongodb)
 ## 8. virtualization(containers; docker; OpenVZ, KVM)
-
-KVM, Virtualbox
-
-OpenVZ, Docker, LXC
-
-
-
-

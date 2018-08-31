@@ -3,33 +3,42 @@
 ## Hard skills
 
 ### 1. JavaScript
-
-#### 1.1. JavaScript - [Base Level](js/js_base.md)
-#### 1.2. JavaScript - [Advanced Level](js/js_advanced.md)
-#### 1.3. JavaScript - [Pro Level](js/js_pro.md)
+#### 1.1. [Base Level](js/js_base.md)
+#### 1.2. [Advanced Level](js/js_advanced.md)
+#### 1.3. [Pro Level](js/js_pro.md)
 
 ### 2. React.JS
-
-#### 2.1. React.JS - [Base Level](react/react_base.md)
+#### 2.1. [Base Level](react/react_base.md)
+#### 2.2. [Advanced Level](react/react_advanced.md)
+#### 2.3. [Pro Level](react/react_pro.md)
 
 ### 3. Git
-
 #### 3.1. [Git - main commands](git/git_main.md)
 #### 3.2. [Git - all commands](git/git_all.md)
 #### 3.3. [Mercurial - main commands](git/hg_main.md)
 
-### 4. OS
-#### 4.1. [Linux](os/linux.md)
+### 4. Node.JS
+#### 4.1. [Node.js basics](node/node_1.md)
+#### 4.2. [Modules / Packages](node/node_2.md)
+#### 4.3. [Events & Streams](node/node_3.md)
+#### 4.4. [ExpressJS & MongoDB](node/node_4.md)
+#### 4.5. [Forks, Spawns and the Process Module](node/node_5.md)
+#### 4.6. [Web Development Practices](node/node_6.md)
 
-### 5. [Ext.js](ext/ext.md)
-#### 5.1. [Project initialization](ext/extjs_init.md)
-#### 5.2. [Base Level](ext/extjs_base.md)
+### 5. OS
+#### 5.1. [Linux](os/linux.md)
 
-### 6. HTML, CSS
-#### 6.1. [CSS](html_css/css.md)
+### 6. [Ext.js](ext/ext.md)
+#### 6.1. [Project initialization](ext/extjs_init.md)
+#### 6.2. [Base Level](ext/extjs_base.md)
+#### 6.3. [Advanced Level](ext/extjs_advanced.md)
+#### 6.4. [Pro Level](ext/extjs_pro.md)
 
-### 7. Sequelize
-#### 7.1 [Project initialization](sequelize/sequelize_init.md)
+### 7. HTML, CSS
+#### 7.1. [CSS](html_css/css.md)
+
+### 8. Sequelize
+#### 8.1 [Project initialization](sequelize/sequelize_init.md)
 
 ## Soft skills
 

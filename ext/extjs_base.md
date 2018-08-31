@@ -1,7 +1,24 @@
 
-# Система классов в Ext JS
+# Ext.js - Base Level
 
-## 1. Определение классов 
+## 1. Components
+## 2. Layouts and Containers
+## 3. Presenting Data
+## 4. Handling Events
+## 5. Data Forms
+## 6. Data Binding
+## 7. Application architecture
+## 8. Reading Docs
+
+
+***
+
+
+## 9. Other
+
+### Система классов в Ext JS
+
+#### Определение классов 
 
 ##### Method Ext.define ([Ext.define](http://docs.sencha.com/extjs/6.5.3/modern/Ext.html#method-define)):
 ```
@@ -29,7 +46,3 @@ Ext.define(className, members, onClassCreated);
 * **statics** - определяет статические члены класса
 * **uses** -  импортирует классы, которые будут использоваться вместе с новым классом
 * **xtype** (for Ext.Component only) -  определяет параметр xtype для нового класса
-
-
-## 2. 
-

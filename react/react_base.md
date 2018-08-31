@@ -65,6 +65,7 @@ render() {
 }
 ```
 
+
 ## 4. Structure of the React Convention
 ## 5. Type checking with React.PropTypes
 ## 6. Uncontrolled Components (pros and cons)
@@ -83,6 +84,3 @@ render() {
 ## 19. ReactCSSTransitionGroup
 ## 20. React Native
 ## 21. GraphQL
-
-
-

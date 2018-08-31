@@ -1,6 +1,5 @@
 # JavaScript - Advanced Level
 
-
 ## 1. DOM
 ## 2. JS Forms, Forms API
 ## 3. Events
