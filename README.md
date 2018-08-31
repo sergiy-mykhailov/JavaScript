@@ -28,7 +28,7 @@
 ### 5. OS
 #### 5.1. [Linux](os/linux.md)
 
-### 6. [Ext.js](ext/ext.md)
+### 6. Ext.js
 #### 6.1. [Project initialization](ext/extjs_init.md)
 #### 6.2. [Base Level](ext/extjs_base.md)
 #### 6.3. [Advanced Level](ext/extjs_advanced.md)
