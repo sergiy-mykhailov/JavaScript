@@ -286,7 +286,21 @@ git rebase master
 git reset --hard HEAD~6
 ```
 
-## 21. Теги
+## 21. Удалить последний запушенный коммит
+Удалить коммит локально:
+```git
+git reset HEAD^
+```
+force-push нового HEAD в репозиторий:
+```git
+git push origin +HEAD
+```
+Локальный коммит оставить, удалить только коммит в репозитории:
+```git
+git push origin +HEAD^:<name of your branch>
+```
+
+## 22. Теги
 Создать тэг (Lightweight Tags):
 ```
 git tag v1.0
@@ -310,7 +324,7 @@ git push origin --tags
 git push origin --follow-tags
 ```
 
-## 22. Apply the changes introduced by some existing commits
+## 23. Apply the changes introduced by some existing commits
 ```git
 git cherry-pick <branche>
 ```
