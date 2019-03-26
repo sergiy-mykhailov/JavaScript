@@ -73,14 +73,3 @@ render() {
 ## 8. React-router
 ## 9. Webpack, npm
 ## 10. State of application
-## 11. Redux
-## 12. Flux pattern
-## 13. Use reducers, actions, states, etc
-## 14. Composition and Inheritance (pros and cons)
-## 15. PureRenderMixin, PureComponent
-## 16. react-addons-test-utils
-## 17. ReactDOMServer
-## 18. isomorphic Application
-## 19. ReactCSSTransitionGroup
-## 20. React Native
-## 21. GraphQL
