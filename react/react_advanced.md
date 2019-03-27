@@ -55,11 +55,11 @@ useEffect(function hookFunction() {
 
 ### 17.3. useContext
 
-`const value = useContext(MyContext);` - lets you subscribe to React context without introducing nesting.
+`const value = useContext(ContextObject);` - lets you subscribe to React context without introducing nesting.
 
 ### 17.4. useReducer
 
-`const [todos, dispatch] = useReducer(todosReducer);` - lets you manage local state of complex components with a reducer.
+`const [state, dispatch] = useReducer(reducer, initialState, init);` - lets you manage local state of complex components with a reducer.
 
 ###### Params:
 * `func` - function that will be run after every render, including the first render.
