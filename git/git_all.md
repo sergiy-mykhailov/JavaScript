@@ -300,7 +300,21 @@ git push origin +HEAD
 git push origin +HEAD^:<name of your branch>
 ```
 
-## 22. Теги
+## 22. Удалить запушенные коммиты
+Получаем хэш-код коммита, к которому хотим вернуться:
+```
+a3775a54
+```
+Ресет до нужного коммита:
+```git
+git reset --hard a3775a54
+```
+force-push в репозиторий (заменяет все коммиты в удаленном репозитории на локальные):
+```git
+git push origin branchName --force
+```
+
+## 23. Теги
 Создать тэг (Lightweight Tags):
 ```
 git tag v1.0
@@ -324,7 +338,7 @@ git push origin --tags
 git push origin --follow-tags
 ```
 
-## 23. Apply the changes introduced by some existing commits
+## 24. Apply the changes introduced by some existing commits
 ```git
 git cherry-pick <branche>
 ```
