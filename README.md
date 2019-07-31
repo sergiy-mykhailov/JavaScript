@@ -41,7 +41,8 @@
 #### 8.1 [Project initialization](sequelize/sequelize_init.md)
 
 ### 9. Docker
-#### 9.1 [Main commands](docker/docker.md)
+#### 9.1 [Main commands](docker/commands.md)
+#### 9.2 [Dockerfile](docker/dockerfile.md)
 
 ## Soft skills
 

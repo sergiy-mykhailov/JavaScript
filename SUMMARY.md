@@ -33,7 +33,8 @@
 * [Sequelize](sequelize/sequelize.md)
     * [Project initialization](sequelize/sequelize_init.md)
 * [Docker](docker/docker.md)
-    * [Main commands](docker/docker.md)
+    * [Main commands](docker/commands.md)
+    * [Dockerfile](docker/dockerfile.md)
 
 ## Soft skills
 
