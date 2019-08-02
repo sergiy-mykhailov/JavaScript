@@ -52,7 +52,7 @@ docker container rm $(docker container ls -a -q) # Remove all containers
 
 ## 4. Build
 
-### Build Docker Image from Dockerfile
+#### Build Docker Image from Dockerfile
 ```bash
 docker build -t IMAGE_NAME PATH_TO_DOCKERFILE         # current path: '.'
 docker build --tag=IMAGE_NAME:TAG_NAME PATH_TO_DOCKERFILE  # current path: '.'
@@ -60,7 +60,7 @@ docker build --tag=IMAGE_NAME:TAG_NAME PATH_TO_DOCKERFILE  # current path: '.'
 
 ## 5. Run
 
-### Execute Docker image
+#### Execute Docker image
 ```bash
 docker run IMAGE_NAME
 docker run -it IMAGE_NAME            # run with interactive terminal
@@ -82,4 +82,24 @@ docker login                                  # Log in this CLI session using yo
 docker tag IMAGE_NAME username/repository:tag  # Tag imageName for upload to registry
 docker push username/repository:tag           # Upload tagged image to registry
 docker run username/repository:tag            # Run image from a registry
+```
+
+## 7. Volumes
+
+#### List volumes
+```bash
+docker volume ls
+```
+#### Inspect a volume
+```bash
+docker volume inspect my-vol
+```
+#### Create a volume
+```bash
+docker volume create my-vol
+```
+#### Remove a volume
+```bash
+docker volume rm my-vol  # remove my-vol
+docker volume prune      # remove all
 ```

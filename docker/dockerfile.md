@@ -78,6 +78,29 @@ ENTRYPOINT ["executable", "param1", "param2"]
 ENTRYPOINT command param1 param2
 ```
 
+## VOLUME
+VOLUME  - mount point of external volumes (from native host or other containers).
+```dockerfile
+VOLUME ["/data"]
+```
+
+## USER
+Use the user when running the image and for any commands
+```dockerfile
+USER user
+USER UID
+USER user:group
+USER UID:GID
+```
+
+## WORKDIR
+Sets the working directory for any `RUN`, `CMD`, `ENTRYPOINT`, `COPY` and `ADD` instructions
+```dockerfile
+WORKDIR /path/to/workdir
+ENV DIRPATH /path
+WORKDIR $DIRPATH/workdir
+```
+
 ## Variables
 
 Get value of variable:
