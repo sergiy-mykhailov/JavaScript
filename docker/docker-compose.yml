@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  web:
+    build:
+      context: .
+    volumes:
+      - ./reactweb:/var/www
+      - /var/www/node_modules
+    ports:
+      - "3000:3000"
+      - "4000:4000"
