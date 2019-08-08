@@ -22,14 +22,14 @@
 ## 2. State of component
 
 Init state in constructor:
-```javascript
+```jsx
 constructor(props) {
   super(props);
   this.state = { counter: 0 };
 }
 ```
 Change state:
-```javascript
+```jsx
 this.setState({ counter: 5 });
 ```
 Change state asynchronous:
