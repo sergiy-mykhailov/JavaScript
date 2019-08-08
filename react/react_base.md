@@ -28,10 +28,12 @@ constructor(props) {
   this.state = { counter: 0 };
 }
 ```
+
 Change state:
 ```jsx
 this.setState({ counter: 5 });
 ```
+
 Change state asynchronous:
 ```jsx
 this.setState((prevState, props) => {
@@ -48,7 +50,7 @@ this.setState((prevState, props) => {
 * атрибут `style` в качестве значения принимает объект json
 * используется camel-case для определения стилевых свойств
 
-```jsx harmony
+```jsx
 render() {
   const userClassName = "user-info";
   const styleObj = {
