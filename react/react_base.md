@@ -22,18 +22,18 @@
 ## 2. State of component
 
 Init state in constructor:
-```jsx harmony
+```typescript jsx
 constructor(props) {
   super(props);
   this.state = { counter: 0 };
 }
 ```
 Change state:
-```jsx harmony
+```javascript
 this.setState({ counter: 5 });
 ```
 Change state asynchronous:
-```jsx harmony
+```jsx
 this.setState((prevState, props) => {
   return {
     counter: prevState.counter + props.increment

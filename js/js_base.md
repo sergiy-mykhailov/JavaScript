@@ -83,7 +83,7 @@ n *= 2;     // теперь n=14 (работает как n = n * 2)
 Значения разных типов приводятся к числу при сравнении, за исключением строгого равенства === (!==).
 
 ### Операторы сравнения
-> < == !=  >= <= === !== >== <== !
+> `<` `==` `!=`  `>=` `<=` `===` `!==` `>==` `<==` `!`
 
 ### Сравнение разных типов
 ```javascript
@@ -95,15 +95,15 @@ alert( true == 1 );   // true, так как true становится числ�
 2 === '2'             // False
 undefined == null     // True
 undefined === null    // False
-false == ""    // true
-false == []    // true
-false == {}    // false
-"" == 0        // true
-"" == []       // true
-"" == {}       // false
-0 == []        // true
-0 == {}        // false
-0 == null      // false
+false == ""           // true
+false == []           // true
+false == {}           // false
+"" == 0               // true
+"" == []              // true
+"" == {}              // false
+0 == []               // true
+0 == {}               // false
+0 == null             // false
 ```
 [Чит-лист](http://dorey.github.io/JavaScript-Equality-Table/)
 
@@ -114,7 +114,7 @@ false == {}    // false
 ```javascript
 alert( null > 0 );        // false
 alert( null == 0 );       // false
-alert(null >= 0);         // true
+alert( null >= 0);         // true
 alert( undefined > 0 );   // false
 alert( undefined < 0 );   // false
 alert( undefined == 0 );  // false
