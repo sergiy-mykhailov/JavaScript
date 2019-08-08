@@ -1,5 +1,7 @@
 # WEB development
 
+[GitBook link](https://sergiy-mykhailov.gitbook.io/webdev/)
+
 ## Hard skills
 
 ### 1. JavaScript
