@@ -22,7 +22,7 @@
 ## 2. State of component
 
 Init state in constructor:
-```typescript jsx
+```javascript
 constructor(props) {
   super(props);
   this.state = { counter: 0 };
