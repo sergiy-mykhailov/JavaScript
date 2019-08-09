@@ -1,6 +1,8 @@
 # **JavaScript - Base Level**
 ***
 
+JavaScript - single-threaded non-blocking async concurrent language.
+
 # 1. Data types
 
 ## 7 встроенных типов:
