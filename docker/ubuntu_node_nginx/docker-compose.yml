@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.6'
 
 services:
   web:
@@ -9,4 +9,5 @@ services:
       - /var/www/node_modules
     ports:
       - "3000:3000"
+      - "3001:3001"
       - "4000:4000"
