@@ -79,9 +79,19 @@ Wrap your component with another component
 Props are read-only properties that must be kept pure i.e. immutable.
 They are always passed down from the parent to the child components throughout the application, and are never pass back.
 
+## 15. What is a state in React and how is it used?
+States are the source of data,
+states are the objects which determine components rendering and behavior. 
 
-
-
+## 16. Differentiate between states and props.
+Conditions	          |   State               |   Props
+:-----------------|:----------------------|:-----------
+1. Receive initial value from parent component	|Yes	|Yes
+2. Parent component can change value	|No	|Yes
+3. Set default values inside component	|Yes	|Yes
+4. Changes inside component	|Yes	|No
+5. Set initial value for child components	|Yes	|Yes
+6. Changes inside child components	|No	|Yes
 
 
 

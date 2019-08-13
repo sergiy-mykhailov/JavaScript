@@ -1,25 +1,47 @@
 # React.JS
 
 
-## 1. The Component Life Cycle and the Virtual DOM
+## 1. The Component Life Cycle
 
-##### Добавление компонента:
-1. **constructor(props)**: конструктор, в котором происходит начальная инициализация компонента
-2. **componentWillMount()**: вызывается непосредственно перед рендерингом компонента.
-3. **render()**: рендеринг компонента
-4. **componentDidMount()**: вызывается после рендеринга компонента. Здесь можно выполнять запросы к удаленным ресурсам
+##### Монтирование:
+* **constructor(props)**: конструктор, в котором происходит начальная инициализация компонента
+* ~~**componentWillMount()**~~ (**_deprecated_**): вызывается непосредственно перед рендерингом компонента.
+* static **getDerivedStateFromProps(props, state)**: вызывается непосредственно перед вызовом метода `render`.
+Он должен вернуть объект для обновления состояния или null, чтобы ничего не обновлять.
+* **render()**: рендеринг компонента
+* **componentDidMount()**: вызывается после рендеринга компонента. Здесь можно выполнять запросы к удаленным ресурсам
 
-##### Обновление компонента:
-1. **componentWillReceiveProps(nextProps)**: вызывается при обновлении объекта props. Как правило, в этой функции устанавливаются те свойства компонента, в том числе из this.state, которые зависят от значений из props.
-2. **shouldComponentUpdate(nextProps, nextState)**: вызывается каждый раз при обновлении объекта props или state.Эта функция должна возвращать true (надо делать обновление) или false (игнорировать обновление).
-3. **componentWillUpdate(nextProps, nextState)**: вызывается перед обновлением компонента (если shouldComponentUpdate возвращает true).
-4. **render()**: рендеринг компонента (если shouldComponentUpdate возвращает true).
-5. **componentDidUpdate(prevProps, prevState)**: вызывается сразу после обновления компонента (если shouldComponentUpdate возвращает true). 
+##### Обновление:
+* ~~**componentWillReceiveProps(nextProps)**~~ (**_deprecated_**): вызывается при обновлении объекта props. Как правило, в этой функции устанавливаются те свойства компонента, в том числе из this.state, которые зависят от значений из props.
+* static **getDerivedStateFromProps(props, state)**: вызывается непосредственно перед вызовом метода `render`.
+  Он должен вернуть объект для обновления состояния или null, чтобы ничего не обновлять.
+* **shouldComponentUpdate(nextProps, nextState)**: вызывается каждый раз при обновлении объекта props или state.Эта функция должна возвращать true (надо делать обновление) или false (игнорировать обновление).
+* ~~**componentWillUpdate(nextProps, nextState)**~~ (**_deprecated_**): вызывается перед обновлением компонента (если `shouldComponentUpdate` возвращает true).
+* **render()**: рендеринг компонента (если `shouldComponentUpdate` возвращает true).
+* **getSnapshotBeforeUpdate(prevProps, prevState)**: вызывается прямо перед этапом «фиксирования» (например, перед добавлением в DOM). 
+Любое значение, возвращаемое этим методом, будет передано как параметр `componentDidUpdate()`.
+* **componentDidUpdate(prevProps, prevState, snapshot)**: вызывается сразу после обновления компонента (если `shouldComponentUpdate` возвращает true). 
 
-##### Удаление компонента:
-1. **componentWillUnmount()**: вызывается перед удалением компонента из DOM
+##### Размонтирование:
+* **componentWillUnmount()**: вызывается перед удалением компонента из DOM
 
-## 2. State of component
+##### Обработка ошибок:
+* static **getDerivedStateFromError(error)**: вызывается после возникновения ошибки у компонента-потомка.
+* **componentDidCatch(error, info)**: вызывается после возникновения ошибки у компонента-потомка.
+  * error — перехваченная ошибка
+  * info — объект с ключом `componentStack`, содержащий информацию о компоненте, в котором произошла ошибка.
+
+
+## 2. Virtual DOM
+Virtual DOM is a virtual representation of the real DOM.
+
+**Virtual DOM works in the following steps:**
+* State change
+* Compute diff (prev DOM and next DOM)
+* Re-render (update the real DOM with only those nodes that have actually changed)
+
+
+## 3. State of component
 
 Init state in constructor:
 ```jsx
@@ -43,7 +65,7 @@ this.setState((prevState, props) => {
 });
 ```
 
-## 3. JSX
+## 4. JSX
 
 **JSX** - комбинация кода JavaScript и разметки XML:
 * для установки класса применяется атрибут `className`, а не `class`
