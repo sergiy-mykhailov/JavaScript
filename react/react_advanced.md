@@ -1,5 +1,11 @@
 # React.JS - Advanced Level
 
+
+## Code-Splitting
+## Redux-Thunk and Redux-Saga
+## React.memo
+## HOC
+
 ## 11. Redux
 ## 12. Flux pattern
 ## 13. Use reducers, actions, states, etc

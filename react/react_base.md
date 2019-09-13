@@ -89,6 +89,8 @@ render() {
 }
 ```
 
+## Refs
+## Pure components
 
 ## 4. Structure of the React Convention
 ## 5. Type checking with React.PropTypes
@@ -97,3 +99,6 @@ render() {
 ## 8. React-router
 ## 9. Webpack, npm
 ## 10. State of application
+Redux, MobX, RxJS, Apollo.Client + GraphQL
+
+## React.Fragment
