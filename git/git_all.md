@@ -268,6 +268,10 @@ git reset --hard HEAD~
 ```git
 git revert <commit>
 ```
+Revert the changes specified by the fourth last commit in HEAD and create a new commit with the reverted changes.
+```git
+git revert HEAD~3
+```
 ## 18. Как изменить последний коммит и его описания,  что при этом произойдет, что если этот коммит до изменения был запушен на удаленный репозиторий? commit --amend
 The second commit replaces the results of the first:
 ```git
