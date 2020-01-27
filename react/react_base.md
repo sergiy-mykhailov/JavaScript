@@ -1,7 +1,56 @@
 # React.JS
 
 
-## 1. The Component Life Cycle
+## 1. JSX
+
+**JSX** - комбинация кода JavaScript и разметки XML:
+* для установки класса применяется атрибут `className`, а не `class`
+* атрибут `style` в качестве значения принимает объект json
+* используется camel-case для определения стилевых свойств
+```jsx
+render() {
+  const styleObj = {
+    color:'red', 
+    fontFamily:'Verdana'
+  };
+
+  return (
+    <div className="user-info"  style={styleObj}>
+      <p>Полное имя: {this.props.fullName}</p>
+      <p>Возраст: {this.props.age}</p>
+    </div>
+  );
+}
+```
+
+## 2. Virtual DOM
+Virtual DOM is a virtual representation of the real DOM.
+
+**Virtual DOM works in the following steps:**
+* State change
+* Compute diff (prev DOM and next DOM)
+* Re-render (update the real DOM with only those nodes that have actually changed)
+
+
+## 3. Components
+##### Function component:
+```javascript
+const Welcome = (props) => {
+  return (<h1>Hello, {props.name}</h1>);
+}
+```
+##### Class component:
+```javascript
+class Welcome extends React.Component {
+  render() {
+    return (<h1>Hello, {this.props.name}</h1>);
+  }
+}
+```
+Components can refer to other components in their output.
+This lets us use the same component abstraction for any level of detail
+
+## 4. The Component Life Cycle
 
 ##### Монтирование:
 * **constructor(props)**: конструктор, в котором происходит начальная инициализация компонента
@@ -32,16 +81,7 @@
   * info — объект с ключом `componentStack`, содержащий информацию о компоненте, в котором произошла ошибка.
 
 
-## 2. Virtual DOM
-Virtual DOM is a virtual representation of the real DOM.
-
-**Virtual DOM works in the following steps:**
-* State change
-* Compute diff (prev DOM and next DOM)
-* Re-render (update the real DOM with only those nodes that have actually changed)
-
-
-## 3. State of component
+## 5. State of component
 
 Init state in constructor:
 ```jsx
@@ -65,29 +105,8 @@ this.setState((prevState, props) => {
 });
 ```
 
-## 4. JSX
 
-**JSX** - комбинация кода JavaScript и разметки XML:
-* для установки класса применяется атрибут `className`, а не `class`
-* атрибут `style` в качестве значения принимает объект json
-* используется camel-case для определения стилевых свойств
 
-```jsx
-render() {
-  const userClassName = "user-info";
-  const styleObj = {
-    color:'red', 
-    fontFamily:'Verdana'
-  };
-
-  return (
-    <div className={userClassName}  style={styleObj}>
-      <p>Полное имя: {this.props.fullName}</p>
-      <p>Возраст: {this.props.age}</p>
-    </div>
-  );
-}
-```
 
 ## Refs
 ## Pure components
