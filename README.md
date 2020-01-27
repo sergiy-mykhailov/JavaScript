@@ -47,9 +47,8 @@
 #### 9.1 [Main commands](docker/commands.md)
 #### 9.2 [Dockerfile](docker/dockerfile.md)
 
-## Soft skills
+## Other
 
-### 1. [Soft skills](soft_skills/soft_skills.md)
+### 1. [Soft skills](other/soft_skills.md)
 
-### 2. About companies
-#### 2.1. [OSSystem](companies/ossystem.md)
+### 2. [SOLID](other/solid.md)

@@ -37,8 +37,7 @@
     * [Main commands](docker/commands.md)
     * [Dockerfile](docker/dockerfile.md)
 
-## Soft skills
+## Other
 
-* [Soft skills](soft_skills/soft_skills.md)
-* [About companies](companies/companies.md)
-    * [OSSystem](companies/ossystem.md)
+* [Soft skills](other/soft_skills.md)
+* [SOLID](other/solid.md)
