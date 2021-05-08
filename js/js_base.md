@@ -443,6 +443,13 @@ Number.isFinite("0"); // false
   * `radix` - основание системы счисления.
 * **Number.prototype.valueOf()** - Возвращает примитивное значение указанного объекта.
 
+## 5.4 Other
+
+#### What is the result of addition 1 to max value of integer?
+```javascript
+Number.MAX_VALUE === Number.MAX_VALUE + 1 // true
+```
+
 # 6. Strings
 [Strings on MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String)
 
