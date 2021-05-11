@@ -51,4 +51,9 @@
 
 ### 1. [Soft skills](other/soft_skills.md)
 
-### 2. [SOLID](other/solid.md)
+### 2. [OOP](other/OOP.md)
+### 3. [Big-O](other/big_O.md)
+### 4. Design Principles
+#### 4.1 [Coupling](other/coupling.md)
+#### 4.2 [Cohesion](other/cohesion.md)
+#### 4.3 [SOLID](other/solid.md)

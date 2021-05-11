@@ -40,4 +40,10 @@
 ## Other
 
 * [Soft skills](other/soft_skills.md)
-* [SOLID](other/solid.md)
+* [OOP](other/OOP.md)
+* [Big-O](other/big_O.md)
+* Design Principles
+    * [Coupling](other/coupling.md)
+    * [Cohesion](other/cohesion.md)
+    * [SOLID](other/solid.md)
+
