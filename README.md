@@ -1,6 +1,6 @@
 # WEB development
 
-[GitBook link](https://sergiy-mykhailov.gitbook.io/webdev/)
+[GitBook link](https://sergiy-mykhailov-2.gitbook.io/development/)
 
 ## Hard skills
 
