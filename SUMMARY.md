@@ -46,4 +46,7 @@
     * [Coupling](other/coupling.md)
     * [Cohesion](other/cohesion.md)
     * [SOLID](other/solid.md)
-
+    * [KISS](other/KISS.md)
+    * [DRY](other/DRY.md)
+    * [YAGNI](other/YAGNI.md)
+* [MVC](other/MVC.md)

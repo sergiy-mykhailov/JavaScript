@@ -53,7 +53,13 @@
 
 ### 2. [OOP](other/OOP.md)
 ### 3. [Big-O](other/big_O.md)
+
 ### 4. Design Principles
 #### 4.1 [Coupling](other/coupling.md)
 #### 4.2 [Cohesion](other/cohesion.md)
 #### 4.3 [SOLID](other/solid.md)
+#### 4.4 [KISS](other/KISS.md)
+#### 4.5 [DRY](other/DRY.md)
+#### 4.6 [YAGNI](other/YAGNI.md)
+
+### 5 [MVC](other/MVC.md)
