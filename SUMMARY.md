@@ -50,3 +50,4 @@
     * [DRY](other/DRY.md)
     * [YAGNI](other/YAGNI.md)
 * [MVC](other/MVC.md)
+* [REST](other/REST.md)

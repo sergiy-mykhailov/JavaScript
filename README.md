@@ -63,3 +63,4 @@
 #### 4.6 [YAGNI](other/YAGNI.md)
 
 ### 5 [MVC](other/MVC.md)
+### 6 [REST](other/REST.md)
