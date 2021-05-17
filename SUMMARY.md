@@ -49,5 +49,6 @@
     * [KISS](other/KISS.md)
     * [DRY](other/DRY.md)
     * [YAGNI](other/YAGNI.md)
+    * [Inversion of Control](other/IoC.md)
 * [MVC](other/MVC.md)
 * [REST](other/REST.md)
