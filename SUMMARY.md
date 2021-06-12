@@ -51,5 +51,7 @@
     * [YAGNI](other/YAGNI.md)
     * [Inversion of Control](other/IoC.md)
     * [Dependency Injection](other/dependency_injection.md)
+    * [Resource Acquisition Is Initialization](other/RAII.md)
+
 * [MVC](other/MVC.md)
 * [REST](other/REST.md)
