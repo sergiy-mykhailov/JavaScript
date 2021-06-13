@@ -52,6 +52,7 @@
     * [Inversion of Control](other/IoC.md)
     * [Dependency Injection](other/dependency_injection.md)
     * [Resource Acquisition Is Initialization](other/RAII.md)
+* [Functional programming](other/functional_programming.md)
 
 * [MVC](other/MVC.md)
 * [REST](other/REST.md)
