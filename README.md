@@ -65,5 +65,6 @@
 #### 4.8 [Dependency Injection](other/dependency_injection.md)
 #### 4.9 [Resource Acquisition Is Initialization](other/RAII.md)
 ### 5 [Functional programming](other/functional_programming.md)
-### 6 [MVC](other/MVC.md)
-### 7 [REST](other/REST.md)
+### 6 [Programming paradigm](other/programming_paradigm.md)
+### 7 [MVC](other/MVC.md)
+### 8 [REST](other/REST.md)
