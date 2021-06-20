@@ -1,7 +1,9 @@
 # JavaScript - Advanced Level
 
 ## 1. DOM
+
 ## 2. JS Forms, Forms API
+
 ## 3. Events
 
 ##### Проверить, является ли событие отменяемым:
@@ -24,6 +26,7 @@ event.stopPropagation();
 ```javascript
 event.stopImmediatePropagation();
 ```
+
 ## 4. BOM (window, screen, location, history, navigator, cookie)
 ## 5. CSS Object Model
 ## 6. Web Storages
