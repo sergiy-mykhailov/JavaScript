@@ -2,6 +2,8 @@
 
 [GitBook link](https://sergiy-mykhailov-2.gitbook.io/development/)
 
+[Videos](https://github.com/YauhenKavalchuk/interview-questions)
+
 ## Hard skills
 
 ### 1. JavaScript
