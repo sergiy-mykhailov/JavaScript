@@ -1,4 +1,6 @@
-# Docker
+# Docker commands
+
+[docs](https://docs.docker.com/engine/reference/commandline/docker/)
 
 ## 1. Docker
 
@@ -63,6 +65,7 @@ docker build --tag=IMAGE_NAME:TAG_NAME PATH_TO_DOCKERFILE  # current path: '.'
 #### Execute Docker image
 ```bash
 docker run IMAGE_NAME
+docker run IMAGE_NAME --rm           # clean up the container when the container exits
 docker run -it IMAGE_NAME            # run with interactive terminal
 docker run -dit IMAGE_NAME           # run with interactive terminal in background
 docker run -p 4000:80 IMAGE_NAME     # Run image mapping port 4000 to 80

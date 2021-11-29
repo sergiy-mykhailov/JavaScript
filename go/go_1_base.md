@@ -59,8 +59,9 @@ func main() {
 - bool - `false`
 - string - `""`
 
-## 4. Variables
+## 4. Variables & Constants
 
+### 4.1 Variables
 ```go
 var hello string
 hello = "Hello world"
@@ -77,7 +78,7 @@ var (
 name := "Tom"
 ```
 
-## 5. Constants
+### 4.2 Constants
 
 ```go
 const pi float64 = 3.1415
@@ -101,7 +102,8 @@ const (
 )
 ```
 
-## 6. Арифметические операции
+## 5. Operations
+### 5.1 Арифметические операции
 ```go
 var c = a + b
 var c = a - b
@@ -111,5 +113,66 @@ var c float32 = 10 / 4  // 2.5
 var c int = 35 % 3      // 2 (35 - 33 = 2)
 a++
 b--
+```
+
+### 5.2 Условные выражения
+
+`==` `>` `>=` `<` `<=` `!=` `!` `&&` `||`
+
+### 5.3 Поразрядные операции
+```go
+var b int = 2 << 2;         // 10  на два разрядов влево = 1000 - 8
+var c int = 16 >> 3;        // 10000 на три разряда вправо = 100 - 2
+var a int = 5 | 2;          // 101 | 010 = 111  - 7
+var b int = 6 & 2;          // 110 & 010 = 10  - 2
+var c int = 5 ^ 2;          // 101 ^ 010 = 111 - 7
+var d int = 5 &^ 6;         // 101 &^ 110 = 001 - 1
+```
+
+## 6. Array & Slice
+
+### Array
+```go
+var numbers [5]int
+var numbers2 [5]int = [5]int{1,2,3,4,5}
+var numbers3 [5]int = [5]int{1,2}        // [1 2 0 0 0]
+numbers4 := [5]int{1,2,3,4,5}            // [1 2 3 4 5]
+numbers5 := [...]int{1,2,3}              // длина массива 3
+numbers6 := [5]int{1,2,3,4,5}
+numbers[0] = 87                          // [87 2 3 4 5]
+colors := [3]string{2: "blue", 0: "red", 1: "green"}
+colors[2] // blue
+```
+
+### Slice
+```go
+var users []string
+var users []string = []string{"Tom", "Alice", "Kate"}
+var users = []string{"Tom", "Alice", "Kate"}
+users2 := []string{"Tom", "Alice", "Kate"}
+var users []string = make([]string, 3) // ["" "" ""]
+```
+
+#### append(slice, value)
+```go
+numbers := []int{1,2,3}
+numbers = append(numbers, 4) // [1 2 3 4]
+```
+
+#### s[i:j]
+```go
+numbers := [8]int{1,2,3,4,5,6,7,8}
+numbers[2:6] // с 3-го по 6-й   // [3 4 5 6]
+numbers[:4]  // с 1-го по 4-й   // [1 2 3 4]
+numbers[3:]  // с 4-го до конца // [4 5 6 7 8]
+```
+
+#### deleting
+```go
+users := []string{"Bob", "Alice", "Kate", "Sam", "Tom", "Paul", "Mike", "Robert"}
+//удаляем 4-й элемент
+var n = 3
+users = append(users[:n], users[n+1:]...)   
+fmt.Println(users)      //["Bob", "Alice", "Kate", "Tom", "Paul", "Mike", "Robert"]
 ```
 
