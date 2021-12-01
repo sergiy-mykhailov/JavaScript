@@ -176,3 +176,144 @@ users = append(users[:n], users[n+1:]...)
 fmt.Println(users)      //["Bob", "Alice", "Kate", "Tom", "Paul", "Mike", "Robert"]
 ```
 
+
+
+## 7. Условные конструкции
+
+### if...else
+```go
+if a < b {
+  //...
+} else if a > b {
+  //...
+} else {
+  //...
+}
+```
+
+### switch
+```go
+a := 5
+switch(a) {
+    case 9: fmt.Println("a = 9")
+    case 8: fmt.Println("a = 8")
+    case 7: fmt.Println("a = 7")
+    case 6, 5, 4: 
+        fmt.Println("a = 6 или 5 или 4, но это не точно")
+    default: 
+        fmt.Println("значение переменной a не определено")
+}
+```
+
+## 8. Loops
+```go
+for i := 1; i < 10; i++ {
+  //...
+  continue // переходим к следующей итерации
+  break    // выходим из цикла
+}
+```
+```go
+var i = 1
+for ; i < 10; {
+    //...
+    i++
+}
+```
+```go
+var i = 1
+for i < 10 {
+    //...
+    i++
+}
+```
+```go
+var users = [3]string{"Tom", "Alice", "Kate"}
+for index, value := range users {
+    //...
+}
+```
+
+## 9. Functions
+_**Aргументы в функцию всегда передаются по значению**_
+
+```go
+func hello() {}
+func add1(x int, y int) {}
+func add2(x, y int, a, b, c float32) {}
+func add3(x, y int) int {
+  return x + y
+}
+```
+#### Неопределенное количество параметров
+```go
+func add(numbers ...int) {} // add(1, 2, 3) or add(5, 6, 7, 2, 3)
+
+var nums = []int{5, 6, 7, 2, 3}
+add(nums...)
+```
+
+#### Именованные возвращаемые результаты
+```go
+func add(x, y int) (z int) {
+    z = x + y
+    return // will return z
+}
+```
+
+#### Возвращение нескольких значений
+```go
+func add(x, y int, firstName, lastName string) (int , string) {
+    var z int = x + y
+    var fullName = firstName + " " + lastName
+    return z, fullName
+}
+var age, name = add(4, 5, "Tom", "Simpson")
+```
+
+#### присвоить переменной функцию
+```go
+func add(x int, y int) int{
+    return x + y
+}
+var f func(int, int) int = add
+f(3, 4)
+```
+
+#### Функции как параметры других функций
+```go
+func add(x int, y int) int {}
+func action(n1 int, n2 int, operation func(int, int) int) int {
+  //...
+  return operation(n1, n2)
+}
+action(10, 25, add)
+```
+#### Функция как результат другой функции
+```go
+func add(x int, y int) int {}
+func selectFn(n int) (func(int, int) int) {
+  //...
+  if n==1 {
+    return add
+  }
+}
+selectFn(1)(2, 4)
+```
+
+#### Анонимные функции
+```go
+var f func(int, int) int = func(x, y int) int{ return x + y }
+f := func(x, y int) int{ return x + y }
+```
+Анонимные функции имеют доступ к окружению, в котором они вызываются (замыкание)
+
+#### Рекурсивные функции
+```go
+func someFunction(x int) int {
+  //...
+  return someFunction(x + 2)
+}
+```
+
+
