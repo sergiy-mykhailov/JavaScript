@@ -316,4 +316,47 @@ func someFunction(x int) int {
 }
 ```
 
+## 10 defer, panic
 
+### defer
+**defer** позволяет выполнить определенную функцию в конце программы
+```go
+func main() {
+    defer someFunc()
+    //... other functionality
+}
+```
+Если несколько функций вызываются с оператором defer, то те функции, которые вызываются раньше, будут выполняться позже всех.
+
+### panic
+**panic** позволяет сгенерировать ошибку и выйти из программы
+```go
+panic("something went wrong :(")
+```
+
+## 11 map
+```go
+var people = map[string]int{ 
+    "Tom": 1,
+    "Bob": 2,
+    "Sam": 4,
+    "Alice": 8,
+}
+```
+#### Для проверки наличия элемента по определенному ключу:
+```go
+if val, ok := people["Tom"]; ok {}
+```
+#### Для перебора элементов:
+```go
+for key, value := range people {}
+```
+
+#### **make** создает пустую хеш-таблицу:
+```go
+people := make(map[string]int)
+```
+#### **delete(map, key)**
+```go
+delete(people, "Bob")
+```
