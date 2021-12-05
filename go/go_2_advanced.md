@@ -113,4 +113,103 @@ tomPointer.updateAge(33)    // 33
 tom.updateAge(35)           // 35
 ```
 
+## 3. package
+Есть два типа пакетов:
+- исполняемые (executable) - должен иметь имя main, должен содержать функцию main
+- библиотеки (reusable).
+
+```go
+import "fmt"
+import "./some/folder"
+import "github.com/some/repo"
+```
+#### Create module
+```bash
+go mod init modulename // creates file go.mod
+```
+
+## 4. interface
+```go
+type Child interface{
+    write(string)
+}
+type Parent interface{
+    Child
+}
+```
+Для соответствия подобному интерфейсу типы данных должны реализовать все его вложенные интерфейсы.
+
+## 5. goroutines
+```go
+func someFunction() {}
+go someFunction()
+// вызовы анонимных функций:
+go func(){}()
+```
+
+### Channels
+```go
+var intCh chan int = make(chan int)
+go func(){
+    intCh <- 5 // блокировка, пока данные не будут получены функцией main
+}()
+fmt.Println(<-intCh) // получение данных из канала
+```
+#### Небуфферизированные каналы
+```go
+func main() {
+    intCh := make(chan int)
+    go someFunction(5, intCh)  // вызов горутины
+    fmt.Println(<-intCh)       // получение данных из канала
+}
+func someFunction(n int, ch chan int){
+    ch <- n + 1     // отправка данных в канал
+}
+```
+
+#### Буферизированные каналы
+```go
+func main() {
+    intCh := make(chan int, 2) // емкость канала
+    go someFunction(intCh)     // вызов горутины
+	fmt.Println(<-intCh)       // 10
+    fmt.Println(<-intCh)       // 3
+}
+func someFunction(ch chan int){
+    intCh <- 10
+    intCh <- 3
+}
+```
+#### cap(chan), len(chan)
+```go
+intCh := make(chan int, 3)
+intCh <- 10
+fmt.Println(cap(intCh))     // 3
+fmt.Println(len(intCh))     // 1
+```
+
+#### Определение канала только для отправки данных:
+```go
+var inCh chan<- int
+```
+
+#### Определение канала только для получения данных:
+```go
+var outCh <-chan int
+```
+
+#### Возвращение канала
+```go
+func main() {
+    fmt.Println(<-createChan(5)) // 5
+}
+func createChan(n int) chan int{
+    ch := make(chan int) // создаем канал
+    go func(){
+        ch <- n          // отправляем данные в канал
+    }()                  // запускаем горутину
+    return ch            // возвращаем канал
+}
+```
+
 

@@ -11,6 +11,7 @@
 go run hello.go             # compile and run Go program
 go build hello.go           # compile packages and dependencies
 go get github.com/some/repo # fetch dependencies to current module and install them
+go mod init modulename      # creates module
 ```
 
 ## 2. Структура программы
