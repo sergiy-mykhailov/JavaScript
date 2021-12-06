@@ -212,4 +212,24 @@ func createChan(n int) chan int{
 }
 ```
 
+#### Закрытие канала
+```go
+intCh := make(chan int, 3)
+intCh <- 10
+val, opened := <-intCh // opened - true/false 
+close(intCh) // close the channel
+```
+
+#### Синхронизация
+```go
+func someFunct(ch chan struct{}){
+    defer close(ch) // закрываем канал после завершения горутины
+    //...
+}
+structCh := make(chan struct{})
+go someFunct(structCh)
+//...    
+<-structCh        // ожидаем закрытия канала structCh
+//...
+```
 
