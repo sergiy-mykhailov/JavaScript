@@ -397,3 +397,22 @@ fmt.Scanln(&age)
 fmt.Scanf("%s %d\n", &name, &age)
 fmt.Scan(&name, &age)
 ```
+
+### Буферизированный ввод-вывод
+```go
+// Write:
+writer := bufio.NewWriter(file) Writer    // Для создания потока вывода
+writer.Write(p []byte) (int, error)       // записывает срез байтов
+writer.WriteByte(c byte) error            // записывает один байт
+writer.WriteRune(r rune) (int, error)     // записывает один объект типа rune
+writer.WriteString(s string) (int, error) // записывает строку
+// Read:
+reader := bufio.NewReader(file)
+Read(p []byte) (int, error)            // считывает срез байтов и возвращает количество прочитанных байтов
+ReadByte() (byte, error)               // считывает один байт
+ReadBytes(delim byte) ([]byte, error)  // считывает срез байтов из потока, пока не встретится байт delim
+ReadLine() ([]byte, bool, error)       // считывает строку в виде среза байт
+ReadRune() (rune, int, error)          // считывает один объект типа rune
+ReadSlice(delim byte) ([]byte, error)  // считывает срез байтов из потока, пока не встретится байт delim
+ReadString(delim byte) (string, error) // считывает строку, пока не встретится байт delim
+```
