@@ -93,3 +93,99 @@ const centsToDollars = compose(
   trace('argument'),
 );
 ```
+
+### Каррирование
+**Каррирование** – это трансформация функций таким образом, 
+чтобы они принимали аргументы не как `f(a, b, c)`, а как `f(a)(b)(c)`.
+Каррирование не вызывает функцию. Оно просто трансформирует её. 
+```javascript
+function curry(f) { // curry(f) выполняет каррирование
+  return function(a) {
+    return function(b) {
+      return f(a, b);
+    };
+  };
+}
+
+// использование
+function sum(a, b) {
+  return a + b;
+}
+let curriedSum = curry(sum);
+alert( curriedSum(1)(2) ); // 3
+```
+
+### Partial application
+Частичное применение - это применение к функции некоторых аргументов и возврат новой функции, 
+в ожидании остальных аргументов. 
+Примененные аргументы хранятся в замыкании.
+
+```javascript
+const getApiURL = (apiHostname, resourceName, resourceId) => {
+  return `https://${apiHostname}/api/${resourceName}/${resourceId}`
+}
+
+const partial = (fn, ...argsToApply) => {
+  return (...restArgsToApply) => {
+    return fn(...argsToApply, ...restArgsToApply)
+  }
+}
+const getResourceURL = partial(getApiURL, 'localhost:3000')
+const getUserURL = partial(getResourceURL, 'users')
+
+// alternatively:
+const getResourceURL = getApiURL.bind(null, 'localhost:3000')
+const getUserURL = getResourceURL.bind(null, 'users')
+```
+
+### Functor
+Любой класс (или функция-конструктор) или тип данных, хранящий значение и реализующий метод map, называется функтором (Functor).
+```javascript
+const Functor = (v) => ({
+  value: v,
+  map: (f) => Functor(f(v))
+});
+
+var s =  Functor(2)
+.map(x=>x*x)
+.map(x=>x.toString());
+ 
+console.log(s.value);
+```
+
+### Monad
+Монады — это классы или функции-конструкторы, 
+хранящие значение и реализующие методы map, ap, of и chain
+```javascript
+const Monad = (v) => ({
+  value: v,
+  map: (f) => Monad(f(v)),
+  of: () => Monad(v),
+  chain: (f) => f(x),
+});
+```
+Monad types: Maybe, Either, List, Identity...
+
+### Endofunctor
+Endofunctor - functor that transforms a category into itself. 
+
+### Tail recursion vs non-tail recursion
+```javascript
+// non-tail recursion - recursion call, then calculation
+function factorial(number) {
+  if(number === 1) {
+    return number;
+  } else {
+    return number * factorial(number - 1);
+  }
+}
+
+// tail recursion - calculation, then recursion call
+function tailFactorial(number, result = 1) {
+  if(number === 1) {
+    return result;
+  } else {
+    return tailFactorial(number - 1, result * number);
+  }
+}
+```
