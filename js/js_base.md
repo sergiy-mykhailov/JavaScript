@@ -122,6 +122,7 @@ false == {}           // false
 0 == []               // true
 0 == {}               // false
 0 == null             // false
+3 > 2 > 1             // true > 1  ->  1 > 1  ->  false
 ```
 [Чит-лист](http://dorey.github.io/JavaScript-Equality-Table/)
 
@@ -903,6 +904,27 @@ alert( null == 0 );       // false (и не равен!), т.к. == рассма
 alert( undefined > 0 );   // false, т.к. undefined -> NaN
 alert( undefined == 0 );  // false, т.к. это undefined (без преобразования)
 alert( undefined < 0 );   // false, т.к. undefined -> NaN
+```
+
+### Type coercion
+```javascript
+true + false             // 1 + 0 -> 1
+12 / "6"                 // 12 / 6 ->
+"number" + 15 + 3        // "number15" + 3 -> 'number153'
+15 + 3 + "number"        // 18 + "number" -> '18number'
+[1] > null               // '1' > 0  ->  1 > 0  ->  true
+"foo" + + "bar"          // "foo" + (+"bar")  ->  "foo" + NaN  ->  'fooNaN'
+'true' == true           // NaN == 1 -> false
+false == 'false'         //  0 == NaN -> false
+null == ''               // false
+!!"false" == !!"true"    // true == true -> true
+['x'] == 'x'             // 'x' == 'x' -> true 
+[] + null + 1            // '' + null + 1  ->  'null' + 1  ->  'null1'
+[1,2,3] == [1,2,3]       // false
+{}+[]+{}+[1]             // +[]+{}+[1] -> 0+{}+[1] -> 0+'[object Object]'+[1] -> '0[object Object]1'
+!+[]+[]+![]              // (!+[])+[]+(![]) -> !0+[]+false -> true+''+false -> 'truefalse'
+new Date(0) - 0          // 0 - 0 (triggers numeric conversion) -> 0
+new Date(0) + 0          // ( triggers string concatenation) -> 'Thu Jan 01 1970 02:00:00(EET)0'
 ```
 
 
