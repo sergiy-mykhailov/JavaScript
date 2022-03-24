@@ -244,6 +244,25 @@ var mycar = { make: "Honda", model: "Accord", year: 1998 };
 присваивание | = += -= *= /= %= <<= >>= >>>= &= ^= |=
 запятая | ,
 
+## 2.11. spread & rest operators
+- **Spread** - собирает много элементов в один
+- **Rest** - используется для деструктуризации массивов и объектов
+
+```javascript
+// Для вызовов функций:
+function myFunction(...args) {}
+myFunction(...iterableObj);
+
+// Для литералов массива или строк:
+const someArray = [...iterableObj, '4', 'five', 6];
+const [firstElement, ...other] = someArray
+
+// Для литералов объекта (новое в ECMAScript 2018):
+let objClone = { ...obj };
+let { someField, ...other } = objClone;
+```
+
+
 
 # 3. Main statements 
 
@@ -886,6 +905,14 @@ console.log(numbers); // [1, 2, 3, 4, 5]
 ## 9.2 declaration
 ## 9.3 arguments array
 ## 9.4 invocation
+
+## 9.5 arrow functions
+#### Can arrow function be a constructor?
+```
+  constructor = () => {}
+  ^^^^^^^^^^^
+SyntaxError: Classes may not have a field named 'constructor'
+```
 
 # 10. Type conversion
 
