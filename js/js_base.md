@@ -1139,45 +1139,105 @@ class ChildClass extends ParentClass {
 
 # 14. Objects
 
-#### `Object.assign(target, ...sources)`
-Создаёт новый объект путём копирования значений всех собственных перечислимых свойств из одного 
-или более исходных объектов в целевой объект.
+Object:
+- Property keys must be strings or symbols (usually strings).
+- Values can be of any type.
+- JavaScript automatically converts keys to a string a value
 
-#### Объект-Дескриптор
+```javascript
+var test = {
+  true: 'True Boolean',
+  false: 'False Boolean',
+  null: 'Null data type',
+  undefined: 'Undefined data type',
+  1: 'Number One'
+};
+
+console.log(test[true]);      // 'True Boolean'
+console.log(test.true);       // 'True Boolean'
+console.log(test[false]);     // 'False Boolean'
+console.log(test.false);      // 'False Boolean'
+console.log(test[null]);      // 'Null data type'
+console.log(test.null);       // 'Null data type'
+console.log(test[undefined]); // 'Undefined data type'
+console.log(test.undefined);  // 'Undefined data type'
+console.log(test[1]);         // "Number One"
+console.log(test['1']);       // it also displays "Number One"
+console.log(test.1);          // it will fail
+var { 1 } = test;             // it will fail as 1 it is not a correct identifier
+var { 1 : number } = test;    // it will succeed
+console.log(number);          // it displays "Number One"
+```
+
+#### Объект-Дескриптор (descriptor)
 Объект, чьи собственные перечисляемые свойства представляют собой дескрипторы для создаваемых или изменяемых свойств.
 ###### Параметры:
-* `configurable` - Равен true только в том случае, если тип этого дескриптора свойства может 
-быть изменён и если свойство может быть удалено из содержащего его объекта. (Default: false).
-* `enumerable` - Равен true только в том случае, если это свойство можно увидеть через перечисление 
-свойств содержащего его объекта.(Default: false).
+* `configurable` - true если свойство может быть изменено или может быть удалено (Default: false).
+* `enumerable` - true если это свойство можно увидеть через перечисление свойств (Default: false).
 * `value` - Значение, ассоциированное со свойством. Может быть любым допустимым значением JavaScript 
 (числом, объектом, функцией и т.д.). (Default: undefined).
-* `writable` - Равен true только в том случае, если значение, ассоциированное со свойством, 
-может быть изменено с помощью оператора присваивания. (Default: false).
-* `get` - Функция, используемая как геттер свойства, либо undefined, если свойство не имеет геттера.
-Возвращаемое значение функции будет использоваться как значение свойства. (Default: undefined).
-* `set` - Функция, используемая как сеттер свойства, либо undefined, если свойство не имеет сеттера.
-Функция принимает единственным аргументом новое значение, присваиваемое свойству. (Default: undefined).
- 
-#### `Object.create(proto[, propertiesObject])`
+* `writable` - true если значение может быть изменено с помощью оператора присваивания. (Default: false).
+* `get` - Функция, используемая как геттер свойства, либо undefined, если свойство не имеет геттера. (Default: undefined).
+* `set` - Функция, используемая как сеттер свойства, либо undefined, если свойство не имеет сеттера. (Default: undefined).
+
+#### `Object.assign(target, ...sources)`
+Создаёт новый объект путём копирования значений всех собственных перечислимых свойств из одного
+или более исходных объектов в целевой объект.
+
+#### `Object.create(proto[, descriptor])`
 Создаёт новый объект с указанными объектом прототипа и свойствами.
-###### Параметры:
-* `proto` - Объект, который станет прототипом вновь созданного объекта.
-* `propertiesObject` - Объект-Дескриптор
 
-#### `Object.defineProperties(obj, props)`
-определяет новые или изменяет существующие свойства, непосредственно на объекте, возвращая этот объект.
-###### Параметры:
-* `obj` - Объект, на котором определяются новые или изменяются существующие свойства.
-* `props` - Объект-Дескриптор
+#### `Object.defineProperties(obj, descriptor)`
+Определяет новые или изменяет существующие свойства, непосредственно на объекте, возвращая этот объект.
 
-##### `Object.defineProperty(obj, prop, descriptor)` 
-определяет новое или изменяет существующее свойство непосредственно на объекте, возвращая этот объект.
-###### Параметры:
+#### `Object.defineProperty(obj, propName, descriptor)` 
+Определяет новое или изменяет существующее свойство непосредственно на объекте, возвращая этот объект.
 
-* `obj` - Объект, на котором определяется свойство.
-* `prop` - Имя определяемого или изменяемого свойства.
-* `descriptor` - Объект-Дескриптор. 
+#### `Object.freeze(obj)`
+Замораживает объект: другой код не сможет удалить или изменить никакое свойство.
+
+#### `Object.getOwnPropertyDescriptor(obj, propName)`
+Возвращает дескриптор свойства для именованного свойства объекта.
+
+#### `Object.getOwnPropertyNames(obj)`
+Возвращает массив, содержащий имена всех переданных объекту собственных перечисляемых и не перечисляемых свойств.
+
+#### `Object.getOwnPropertySymbols(obj)`
+Возвращает массив всех символьных свойств, найденных непосредственно в переданном объекте.
+
+#### `Object.getPrototypeOf(obj)`
+Возвращает прототип указанного объекта.
+
+#### `Object.is(value1, value2)`
+Определяет, являются ли два значения одинаковыми
+
+#### `Object.isExtensible(obj)`
+Определяет, разрешено ли расширение объекта.
+
+#### `Object.isFrozen(obj)`
+Определяет, был ли объект заморожен.
+
+#### `Object.isSealed(obj)`
+Определяет, является ли объект запечатанным (sealed).
+Объект является запечатанным, если он является не расширяемым и если все его свойства являются не настраиваемыми и, 
+следовательно, не удаляемыми (но не обязательно не записываемыми).
+
+#### `Object.observe(obj, function calback(changes) {})`
+Асинхронно наблюдает за изменениями в объекте.
+
+#### `Object.preventExtensions(obj)`
+Предотвращает любое расширение объекта.
+
+#### `Object.seal(obj)`
+Предотвращает удаление свойств объекта другим кодом.
+
+#### `Object.setPrototypeOf(obj, prototype)`
+Устанавливает прототип (т.е. внутреннее свойство [[Prototype]])
+
+#### `Object.keys(obj)`
+возвращает массив из собственных перечисляемых свойств переданного объекта.
+`for...in` (разница между циклом и методом в том, что цикл перечисляет свойства и из цепочки прототипов).
+
 
 # 15. Timeouts, Intervals
 ## 15.1. Timeouts
