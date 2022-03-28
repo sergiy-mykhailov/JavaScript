@@ -139,6 +139,10 @@ alert( false == 0 );  // true, false становится числом 0
 alert( true == 1 );   // true, так как true становится числом 1.
 2 == '2'              // True
 2 === '2'             // False
+1 == 1n               // true
+1 === 1n              // false
+2n > 1n               // true
+2n > 1                // true
 undefined == null     // True
 undefined === null    // False
 false == ""           // true
@@ -176,7 +180,12 @@ Number.MAX_VALUE + 1 === Number.MAX_VALUE // true
 ## 2.4. Логические операторы
 Если значение не логического типа – то оно к нему приводится в целях вычислений.
 #### || (ИЛИ)
-*  если хотя бы один из аргументов true, то возвращает true, иначе – false
+* если хотя бы один из аргументов false (`0`, `'''`, `NaN`, `null`, `undefined`), то возвращает false, иначе – true
+* вычисляет операнды слева направо до первого «истинного»
+* возвращает то значение, на котором остановились вычисления
+* если все значения «ложные», то возвращает последнее
+#### ?? (nullish coalescing)
+*  если хотя бы один из аргументов `null` или `undefined`, то возвращает false, иначе – true
 *  вычисляет операнды слева направо до первого «истинного»
 *  возвращает то значение, на котором остановились вычисления
 *  если все значения «ложные», то возвращает последнее
@@ -186,8 +195,13 @@ Number.MAX_VALUE + 1 === Number.MAX_VALUE // true
 *  возвращает первое «ложное»
 *  если все значения истинные – то возвращает последнее значение
 #### ! (НЕ)
-*  Сначала приводит аргумент к логическому типу true/false.
-*  Затем возвращает противоположное значение.
+* Сначала приводит аргумент к логическому типу true/false.
+* Затем возвращает противоположное значение.
+
+```javascript
+null || undefined ?? "foo";   // SyntaxError
+(null || undefined) ?? "foo"; // returns "foo"
+```
 
 ## 2.5. Bitwise
 Значение        | Оператор
@@ -565,7 +579,21 @@ Number.MAX_VALUE === Number.MAX_VALUE + 1 // true
 * `String.prototype.length` - Отражает длину строки.
 * `N` - Используется для доступа к символу в позиции N
 
-## 6.2 Methods
+## 6.2  Шаблонная строка
+```javascript
+var person = 'Mike';
+var age = 28;
+function myTag(strings, personExp, ageExp) {
+  // strings[0]:  "That "
+  // strings[1]:  " is a "
+  // personExp:   "Mike"
+  // ageExp:      28
+  return `${strings[0]}${personExp}${strings[1]}${ageStr}`;
+}
+var output = myTag`That ${ person } is a ${ age }`;
+```
+
+## 6.3 Methods
 
 #### `String.fromCharCode(num1[, ...[, numN]])` 
 Возвращает строку, созданную из указанной последовательности значений Юникода.
@@ -589,11 +617,11 @@ String.raw`templateString`;
 * `templateString` - Шаблонная строка, возможно с подстановками (`${...}`).
 ##### Example
 ```javascript
-String.raw`Привет\n${2+3}!`
-// output: 'Привет\n5!'
-`Привет\n${2+3}!`
-// output: 'Привет
-// 5!'
+String.raw`Привет\n${2+3}!` // output: 'Привет\n5!'
+`Привет\n${2+3}!`           // output: 'Привет
+                            // 5!'
+const tag = (strings) => strings.raw[0];
+tag`line 1 \\n line 2`;     // выводит "line 1 \\n line 2",
 ```
 
 #### `String.prototype.charAt(index)`
@@ -648,7 +676,7 @@ String.raw`Привет\n${2+3}!`
 
 #### `String.prototype.repeat(count)`
    Возвращает строку. состоящую из элементов объекта, повторённых указанное количество раз.
-   
+
 #### `String.prototype.replace(regexp|substr, newSubStr|function[, flags])`
    Используется для сопоставления строке регулярного выражения и для замены совпавшей подстроки на новую подстроку.
 ###### Параметры
