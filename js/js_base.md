@@ -304,6 +304,18 @@ let objClone = { ...obj };
 let { someField, ...other } = objClone;
 ```
 
+## 2.12. Optional chaining operator
+```javascript
+const adventurer = { name: 'Alice', cat: { name: 'Dinah' } };
+const arr = ['dog', 'cat']
+
+console.log(adventurer.cat?.name);                  // 'Dinah'
+console.log(adventurer.dog.name);                   // TypeError: adventurer.dog is undefined
+console.log(adventurer.dog?.name);                  // undefined
+console.log(adventurer.dog?.['name']);              // undefined
+console.log(adventurer.someNonExistentMethod?.());  // undefined
+console.log(arr?.[6]);                              // undefined
+```
 
 
 # 3. Main statements 
@@ -1161,11 +1173,7 @@ class ChildClass extends ParentClass {
 ```
 
 
-# 12. Math Object
-
-# 13. Scopes
-
-# 14. Objects
+# 12. Objects
 
 Object:
 - Property keys must be strings or symbols (usually strings).
@@ -1202,8 +1210,8 @@ console.log(number);          // it displays "Number One"
 ###### Параметры:
 * `configurable` - true если свойство может быть изменено или может быть удалено (Default: false).
 * `enumerable` - true если это свойство можно увидеть через перечисление свойств (Default: false).
-* `value` - Значение, ассоциированное со свойством. Может быть любым допустимым значением JavaScript 
-(числом, объектом, функцией и т.д.). (Default: undefined).
+* `value` - Значение, ассоциированное со свойством. Может быть любым допустимым значением JavaScript
+  (числом, объектом, функцией и т.д.). (Default: undefined).
 * `writable` - true если значение может быть изменено с помощью оператора присваивания. (Default: false).
 * `get` - Функция, используемая как геттер свойства, либо undefined, если свойство не имеет геттера. (Default: undefined).
 * `set` - Функция, используемая как сеттер свойства, либо undefined, если свойство не имеет сеттера. (Default: undefined).
@@ -1218,7 +1226,7 @@ console.log(number);          // it displays "Number One"
 #### `Object.defineProperties(obj, descriptor)`
 Определяет новые или изменяет существующие свойства, непосредственно на объекте, возвращая этот объект.
 
-#### `Object.defineProperty(obj, propName, descriptor)` 
+#### `Object.defineProperty(obj, propName, descriptor)`
 Определяет новое или изменяет существующее свойство непосредственно на объекте, возвращая этот объект.
 
 #### `Object.freeze(obj)`
@@ -1247,7 +1255,7 @@ console.log(number);          // it displays "Number One"
 
 #### `Object.isSealed(obj)`
 Определяет, является ли объект запечатанным (sealed).
-Объект является запечатанным, если он является не расширяемым и если все его свойства являются не настраиваемыми и, 
+Объект является запечатанным, если он является не расширяемым и если все его свойства являются не настраиваемыми и,
 следовательно, не удаляемыми (но не обязательно не записываемыми).
 
 #### `Object.observe(obj, function calback(changes) {})`
@@ -1266,12 +1274,96 @@ console.log(number);          // it displays "Number One"
 возвращает массив из собственных перечисляемых свойств переданного объекта.
 `for...in` (разница между циклом и методом в том, что цикл перечисляет свойства и из цепочки прототипов).
 
+#### `Object.prototype.valueOf()`
+возвращает примитивное значение указанного объекта
+```javascript
+var obj = new Object();
+console.log(obj.valueOf());      // [object Object]
 
-# 15. Timeouts, Intervals
-## 15.1. Timeouts
-## 15.2. Intervals
+obj.__proto__.valueOf = () => 'Hello object!'
+console.log(obj.valueOf());      // 'Hello object!'
+```
 
-# 16 Structures
+#### `obj[Symbol.toPrimitive]`
+описывает свойство объекта как функцию, которая вызывается при преобразовании объекта в соответствующее примитивное значение.
+```javascript
+var obj1 = {};
+console.log(+obj1);     // NaN
+console.log(`${obj1}`); // "[object Object]"
+console.log(obj1 + ''); // "[object Object]"
+
+var obj2 = {
+  [Symbol.toPrimitive](hint) {
+    if (hint == 'number') return 10;
+    if (hint == 'string') return 'hello';
+    return true;
+  }
+};
+console.log(+obj2);     // 10        -- желаемый тип (hint) - "number"
+console.log(`${obj2}`); // "hello"   -- желаемый тип (hint) - "string"
+console.log(obj2 + ''); // "true"    -- желаемый тип (hint) - "default"
+```
+
+# 13. Math Object
+
+# 14. Reflect Object
+**Reflect** - это встроенный объект, который предоставляет методы для перехватываемых JavaScript операций.
+это API, который предоставляет возможность проводить реверс-инжиниринг объектов.
+
+#### `Reflect.apply(target, this, args)`
+вызывает переданную ему функцию с указанными аргументами.
+
+#### `Reflect.construct(obj, args[, newTarget])`
+Оператор `new` как функция.
+
+#### `Reflect.defineProperty(obj, propName, descriptor)`
+Похож на `Object.defineProperty()`. Возвращает Boolean.
+
+#### `Reflect.deleteProperty(obj, propName)`
+Оператор `delete` как функция. Аналогично `delete target[name]`.
+
+#### `Reflect.enumerate(obj)`
+Похож на цикл for...in. Возвращает итератор с собственными перечисляемыми и наследуемыми свойствами целевого объекта.
+
+#### `Reflect.get(obj, propName[, this])`
+Функция, которая возвращает значение свойств.
+
+#### `Reflect.getOwnPropertyDescriptor(obj, propName)`
+Аналогично `Object.getOwnPropertyDescriptor()`. 
+Возвращает дескриптор указанного свойства если присутствует в объекте, иначе `undefined`.
+
+#### `Reflect.getPrototypeOf(obj)`
+Аналогично `Object.getPrototypeOf()`.
+
+#### `Reflect.has(obj, propName)`
+Оператор `in` как функция. 
+Возвращает значение `Boolean` в зависимости от факта наличия собственного или наследованного свойства.
+
+#### `Reflect.isExtensible(obj)`
+Аналогично `Object.isExtensible()`.
+
+#### `Reflect.ownKeys(obj)`
+Возвращает массив строк с именами собственных (не наследованных) свойств.
+
+#### `Reflect.preventExtensions(obj)`
+Аналогично `Object.preventExtensions()`. Возвращает `Boolean`.
+
+#### `Reflect.set(obj, propName, value, this)`
+Функция, присваивающая значения свойствам. Возвращает `Boolean` значение `true` при успешном выполнении.
+
+#### `Reflect.setPrototypeOf(obj, prototype)`
+Функция, присваивающая прототип целевому объекту.
+
+
+# 15. Scopes
+
+
+# 16. Timeouts, Intervals
+## 16.1. Timeouts
+## 16.2. Intervals
+
+
+# 17 Structures
 ## Stack
 **Stack** - упорядоченная последовательность данных (LIFO)
 
@@ -1320,7 +1412,7 @@ has many neighbors | has one parent, many children
 - Step 5: Repeat Step 3 and 4 until the queue becomes empty or the node is founded.
 
 ### DFS (Depth First Search) Algorithm
-- Step1: Start Traversing with the head node.
+- Step 1: Start Traversing with the head node.
 - Step 2: Visit the adjacent node and push it into the stack.
 - Step 3: Repeat Step 2 until reach the leaf node.
 - Step 4: Once reached to the leaf node pop it from the stack.
