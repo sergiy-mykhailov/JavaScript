@@ -27,34 +27,6 @@ typeof 19241924124n   // bigint
 typeof Symbol('Hi')   // symbol (New ES6)
 ```
 
-## Symbol
-**Symbol** — это уникальный и неизменяемый тип данных, который может быть использован как идентификатор для свойств объектов.
-
-`Object.getOwnPropertySymbols()` - возвращает массив символов и позволяет получить символьные свойства конкретного объекта.
-
-`Symbol.for(key)` - Ищет существующие символы по заданному ключу и возвращает его, если он найден. 
-В противном случае создаётся новый символ для данного ключа в глобальном реестре символов.
-
-`Symbol.keyFor(sym)` - Получает по разделяемому символу его ключ из глобального реестра символов.
-
-```javascript
-const sym = Symbol.for('valera')
-const sym2 = Symbol('petro')
-Symbol.keyFor(sym)          // valera - global!
-Symbol.keyFor(sym2)         // undefined
-
-var obj = {};
-obj[Symbol("a")] = "a";
-obj[Symbol.for("b")] = "b";
-obj["c"] = "c";
-obj.d = "d";
-for (var i in obj) {
-  console.log(i); // выведет "c" и "d"
-}
-
-Symbol("foo") === Symbol("foo"); // false
-JSON.stringify({[Symbol("foo")]: "foo"});  // '{}'
-```
 
 # 2. Operators 
 
@@ -419,56 +391,10 @@ try {
   *  stack - содержит строку с информацией о последовательности вызовов, которая привела к ошибке. 
 
 
-# 4. Hoisting
-
-__Hoisting__ представляет процесс доступа к переменным до их определения.
-
-Компиляция кода происходит в два прохода:
-1. компилятор получает все объявления переменных, все идентификаторы.
-2. выполнение кода
-
-Следующий код вызовет ошибку ReferenceError: aa is not defined:
-```javascript
-console.log(aa);
-```
-
-Следующий код выведет значение "undefined":
-```javascript
-console.log(foo);   // undefined
-var foo = "Tom";
-```
-
-Переменные a и b используются до опеределения. По умолчанию им присваиваются значения undefined. А если умножить undefined на undefined, то получим NaN:
-```javascript
-var c = a * b;
-var a = 7;
-var b = 3;
-console.log(c); // NaN
-```
-
-Все то же самое относится и к использованию функций:
-```javascript
-display();
- 
-function display(){
-    console.log("Hello Hoisting");
-}
-```
-
-Когда функция определяется в виде переменной, получим ошибку TypeError: display is not a function:
-```javascript
-display();
- 
-var display = function (){
-    console.log("Hello Hoisting");
-}
-```
-
-
-# 5. Numbers 
+# 4. Numbers 
 [Numbers on MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Number)
 
-## 5.1. Converting
+## Converting
 
 #### parseInt(string[, radix])
 **parseInt()** принимает строку в качестве аргумента и возвращает целое число в соответствии с указанным основанием системы счисления.
@@ -532,7 +458,7 @@ Number.isFinite("0"); // false
 ```
 **P.S.** Более надёжный метод для проверки: `Number.isFinite()`
 
-## 5.2. Properties
+## Properties
 
 * **Number.EPSILON** - Наименьший интервал между двумя представимыми числами.
 * **Number.MAX_SAFE_INTEGER** - Максимальное целое число, которое можно безопасно использовать в JavaScript (253 - 1).
@@ -544,7 +470,7 @@ Number.isFinite("0"); // false
 * **Number.POSITIVE_INFINITY** - Специальное значение для представления положительной бесконечности; возвращается при переполнении.
 * **Number.prototype** - прототип объекта Number. 
 
-## 5.3. Methods
+## Methods
 * **Number.isNaN(value)** - Определяет, является ли переданнное значение значением NaN.
 * **Number.isFinite(value)** - Определяет, является ли переданное значение конечным числом.
 * **Number.isInteger(value)** - Определяет, является ли тип переданного значения «числом», а само число — целым значением.
@@ -575,23 +501,23 @@ Number.isFinite("0"); // false
   * `radix` - основание системы счисления.
 * **Number.prototype.valueOf()** - Возвращает примитивное значение указанного объекта.
 
-## 5.4 Other
+## Other
 
 #### What is the result of addition 1 to max value of integer?
 ```javascript
 Number.MAX_VALUE === Number.MAX_VALUE + 1 // true
 ```
 
-# 6. Strings
+# 5. Strings
 [Strings on MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String)
 
-## 6.1 Properties
+## Properties
 * `String.prototype` - прототип объекта String.
 * `String.prototype.constructor` - Определяет функцию, создающую прототип этого объекта.
 * `String.prototype.length` - Отражает длину строки.
 * `N` - Используется для доступа к символу в позиции N
 
-## 6.2  Шаблонная строка
+## Шаблонная строка
 ```javascript
 var person = 'Mike';
 var age = 28;
@@ -605,7 +531,7 @@ function myTag(strings, personExp, ageExp) {
 var output = myTag`That ${ person } is a ${ age }`;
 ```
 
-## 6.3 Methods
+## Methods
 
 #### `String.fromCharCode(num1[, ...[, numN]])` 
 Возвращает строку, созданную из указанной последовательности значений Юникода.
@@ -748,12 +674,12 @@ tag`line 1 \\n line 2`;     // выводит "line 1 \\n line 2",
 #### `String.prototype[@@iterator]()`
    Возвращает новый объект итератора Iterator, который итерируется по кодовым точкам строки и возвращает каждую кодовую точку в виде строкового значения.
 
-# 7. Dates
+# 6. Dates
 [Dates on MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date)
-## 7.1 Properties
+## Properties
 * `Date.prototype` - прототип объекта Date.
 
-## 7.2 Methods
+## Methods
 
 ### Конструктор объекта Date:
 ```
@@ -809,7 +735,7 @@ new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
    Устанавливает объект Date во время, представляемое количеством миллисекунд, 
    прошедших с 1 января 1970 года 00:00:00 по UTC (отрицательное значение устанавливает даты до этого момента).
 
-## 7.3 Formats
+## Formats
 
 * `Date.prototype.toDateString()`
     Возвращает часть, содержащую только дату объекта Date в качестве человеко-читаемой строки.
@@ -837,7 +763,7 @@ new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
 * `Date.prototype.valueOf()`
     Возвращает примитивное значение объекта Date.    
 
-## 7.4 Timezones
+## Timezones
 
 * `Date.prototype.getTimezoneOffset()`
    Возвращает смещение часового пояса в минутах для текущей локали.
@@ -872,12 +798,12 @@ new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
 * `Date.prototype.setUTCSeconds()`
    Устанавливает секунды указанной даты по всемирному координированному времени.
 
-# 8. Arrays
+# 7. Arrays
 [Arrays on MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date)
-## 8.1 Properties
+## Properties
 * `Array.prototype.length` - Отражает количество элементов в массиве.
     
-## 8.2 Methods
+## Methods
 ### Методы класса
 * `Array.from()` - Создаёт новый экземпляр Array из массивоподобного или итерируемого объекта.
 * `Array.isArray()` - Возвращает true, если значение является массивом, иначе возвращает false.
@@ -946,7 +872,7 @@ new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
 * `Array.prototype[@@iterator]()`
     Возвращает новый объект итератора массива Array Iterator, содержащий значения для каждого индекса в массиве. 
 
-## 8.3 Sorting
+## Sorting
 ##### `Array.prototype.sort([compareFunction])`
 Сортирует элементы массива на месте и возвращает отсортированный массив.
 ###### Параметры   
@@ -968,18 +894,143 @@ numbers.sort(function(a, b) {
 console.log(numbers); // [1, 2, 3, 4, 5]
 ```
 
-# 9. Functions
-## 9.1 Closures
-## 9.2 declaration
-## 9.3 arguments array
-## 9.4 invocation
+# 8. Symbol
+**Symbol** — это уникальный и неизменяемый тип данных, который может быть использован как идентификатор для свойств объектов.
 
-## 9.5 arrow functions
+#### `Object.getOwnPropertySymbols()`
+возвращает массив символов и позволяет получить символьные свойства конкретного объекта.
+
+#### `Symbol.for(key)`
+Ищет существующие символы по заданному ключу и возвращает его, если он найден.
+В противном случае создаётся новый символ для данного ключа в глобальном реестре символов.
+
+#### `Symbol.keyFor(sym)`
+Получает по разделяемому символу его ключ из глобального реестра символов.
+
+```javascript
+const sym = Symbol.for('valera')
+const sym2 = Symbol('petro')
+Symbol.keyFor(sym)          // valera - global!
+Symbol.keyFor(sym2)         // undefined
+
+var obj = {};
+obj[Symbol("a")] = "a";
+obj[Symbol.for("b")] = "b";
+obj["c"] = "c";
+obj.d = "d";
+for (var i in obj) {
+  console.log(i); // выведет "c" и "d"
+}
+
+Symbol("foo") === Symbol("foo"); // false
+JSON.stringify({[Symbol("foo")]: "foo"});  // '{}'
+```
+
+# 9. Functions
+## Closures
+
+#### Using Closures for Private Variables
+```javascript
+function createAnimal(name, job) {
+  // "Private" variables here:
+  let _name = name;
+  // Public variables here:
+  return {
+    // Getter Methods
+    getName() {
+      return _name;
+    },
+    // Setter Methods
+    setName(newName) {
+      _name = newName;
+    },
+  };
+}
+
+```
+
+## declaration
+
+## arguments array
+
+## invocation
+
+## this
+`this` ссылается на контекст выполняемой функции.
+
+### Global контекст
+За пределами каких-либо функций `this` ссылается на глобальный объект вне зависимости от режима (строгий или нестрогий).
+```javascript
+this === window;  // true: window - глобальный объект в браузере
+this === global;  // true: global - глобальный объект в Node
+```
+
+### Function контекст
+по умолчанию будет использоваться объект global.
+```javascript
+function f1(){ return this; }
+f1() === window;  // window - глобальный объект в браузере
+f1() === global;  // global - глобальный объект в Node
+```
+В строгом режиме, если значение this не установлено в контексте выполнения, оно остаётся undefined
+```javascript
+function f2(){
+  "use strict";
+  return this;
+}
+f2() === undefined; // true
+```
+Вызов с привязкой this
+```javascript
+var obj = { a: 'Custom' };
+var a = 'Global';
+
+function whatsThis() { return this.a; }
+var func = whatsThis.bind(obj);
+whatsThis();               // 'Global'
+whatsThis.call(obj);       // 'Custom'
+whatsThis.apply(obj);      // 'Custom'
+func(obj);                 // 'Custom'
+
+var whatsThisArrow = () => { return this.a; }
+var funcArrow = whatsThisArrow.bind(obj);
+whatsThisArrow();          // 'Global'
+whatsThisArrow.call(obj);  // 'Global'
+whatsThisArrow.apply(obj); // 'Global'
+funcArrow(obj);            // 'Global'
+```
+
+### Object контекст
+```javascript
+const test = {
+  prop: 42,
+  func: function() { return this.prop; },
+};
+console.log(test.func()); // expected output: 42
+```
+
+### Class контекст
+Когда функция используется как конструктор (с ключевым словом `new`), `this` связано с создаваемым новым объектом.
+
+## arrow functions
 #### Can arrow function be a constructor?
 ```
   constructor = () => {}
   ^^^^^^^^^^^
 SyntaxError: Classes may not have a field named 'constructor'
+```
+
+## decorators
+```javascript
+function decorator(func) {
+  return function() {
+    console.log('hello decorator')
+    return Reflect.apply(func, this, arguments);
+  }
+}
+const someFunction = function (a, b) { return a + b }
+const decoratedFunction = decorator(someFunction);
+decoratedFunction(1, 2) // 'hello decorator'
 ```
 
 # 10. Type conversion
@@ -1174,7 +1225,6 @@ class ChildClass extends ParentClass {
 
 
 # 12. Objects
-
 Object:
 - Property keys must be strings or symbols (usually strings).
 - Values can be of any type.
@@ -1284,6 +1334,26 @@ obj.__proto__.valueOf = () => 'Hello object!'
 console.log(obj.valueOf());      // 'Hello object!'
 ```
 
+#### `Object.prototype.toString()`
+Строка, представляющая объект
+```javascript
+var obj = new Object();
+console.log(obj.toString());      // [object Object]
+
+obj.__proto__.toString = () => 'Hello object!'
+console.log(obj.toString());      // 'Hello object!'
+
+var toString = Object.prototype.toString;
+console.log(toString.call(new Date));    // [object Date]
+console.log(toString.call(new String));  // [object String]
+console.log(toString.call(Math));        // [object Math]
+console.log(toString.call(undefined));   // [object Undefined]
+console.log(toString.call(null));        // [object Null]
+console.log(toString.call({}));          // [object Object]
+class SomeClass {}
+console.log(toString.call(new SomeClass));  // [object Object]
+```
+
 #### `obj[Symbol.toPrimitive]`
 описывает свойство объекта как функцию, которая вызывается при преобразовании объекта в соответствующее примитивное значение.
 ```javascript
@@ -1356,6 +1426,50 @@ console.log(obj2 + ''); // "true"    -- желаемый тип (hint) - "defaul
 
 
 # 15. Scopes
+## Hoisting
+
+__Hoisting__ представляет процесс доступа к переменным до их определения.
+
+Компиляция кода происходит в два прохода:
+1. компилятор получает все объявления переменных, все идентификаторы.
+2. выполнение кода
+
+Следующий код вызовет ошибку ReferenceError: aa is not defined:
+```javascript
+console.log(aa);
+```
+
+Следующий код выведет значение "undefined":
+```javascript
+console.log(foo);   // undefined
+var foo = "Tom";
+```
+
+Переменные a и b используются до опеределения. По умолчанию им присваиваются значения undefined. А если умножить undefined на undefined, то получим NaN:
+```javascript
+var c = a * b;
+var a = 7;
+var b = 3;
+console.log(c); // NaN
+```
+
+Все то же самое относится и к использованию функций:
+```javascript
+display();
+ 
+function display(){
+    console.log("Hello Hoisting");
+}
+```
+
+Когда функция определяется в виде переменной, получим ошибку TypeError: display is not a function:
+```javascript
+display();
+ 
+var display = function (){
+    console.log("Hello Hoisting");
+}
+```
 
 
 # 16. Timeouts, Intervals
