@@ -802,7 +802,7 @@ new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
 [Arrays on MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date)
 ## Properties
 * `Array.prototype.length` - Отражает количество элементов в массиве.
-    
+
 ## Methods
 ### Методы класса
 * `Array.from()` - Создаёт новый экземпляр Array из массивоподобного или итерируемого объекта.
@@ -1224,7 +1224,9 @@ class ChildClass extends ParentClass {
 ```
 
 
-# 12. Objects
+# 12. Standard objects
+
+## Object
 Object:
 - Property keys must be strings or symbols (usually strings).
 - Values can be of any type.
@@ -1374,9 +1376,9 @@ console.log(`${obj2}`); // "hello"   -- желаемый тип (hint) - "string
 console.log(obj2 + ''); // "true"    -- желаемый тип (hint) - "default"
 ```
 
-# 13. Math Object
+## Math Object
 
-# 14. Reflect Object
+## Reflect Object
 **Reflect** - это встроенный объект, который предоставляет методы для перехватываемых JavaScript операций.
 это API, который предоставляет возможность проводить реверс-инжиниринг объектов.
 
@@ -1424,8 +1426,65 @@ console.log(obj2 + ''); // "true"    -- желаемый тип (hint) - "defaul
 #### `Reflect.setPrototypeOf(obj, prototype)`
 Функция, присваивающая прототип целевому объекту.
 
+## Proxy Object
+**Proxy** позволяет создать прокси для другого объекта, может перехватывать и переопределить основные операции для данного объекта.
 
-# 15. Scopes
+```javascript
+var handler = {
+    get: function(target, name){
+        return (name in target) ? target[name] : 37;
+    },
+    set: function(obj, prop, value) {
+        if (value > 200) {
+            throw new RangeError('Invalid value');
+        }
+        obj[prop] = value;
+    }
+};
+var p = new Proxy({}, handler);
+p.a = 1;
+p.b = undefined;
+console.log(p.a, p.b);      // 1, undefined
+console.log('c' in p, p.c); // false, 37
+p.w = 100                   // 100
+p.w = 300                   // Error: 'Invalid value'
+
+var target = {};
+var p = new Proxy(target, {});
+p.a = 37; // операция перенаправлена прокси
+console.log(target.a); // 37. Операция была успешно перенаправлена
+```
+More info: [mdn](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+
+## Generator
+Генератор - это объект, возвращаемый функцией-генератором
+```javascript
+function* generator() {
+  yield 1;
+  yield 2;
+}
+const gen = generator();    // "Generator { }"
+console.log(gen.next());    // { done: false, value: 1 }
+console.log(gen.next());    // { done: true, value: 2 }
+console.log(gen.return());  // { value: undefined, done: true }
+console.log(gen.return(1)); // { value: 1, done: true }
+gen.throw(new Error('Something went wrong')); // "Error caught!" - { value: 2, done: true }
+```
+
+#### `Generator.prototype.next(value)`
+Возвращает значение, полученное выражением yield. `{ done: boolean, value: any }`
+#### `Generator.prototype.return(value)`
+Возвращает заданное значение и заканчивает генератор. `{ done: boolean, value: any }`
+#### `Generator.prototype.throw(exception)`
+Выдаёт ошибку генератора.
+
+## Iterator
+**Iterator** умеет обращаться к элементам коллекции по одному за раз, 
+при этом отслеживая своё текущее положение внутри этой последовательности.
+Имеет метод next(), возвращает: `{ done: boolean, value: any }`
+
+
+# 13. Scopes
 ## Hoisting
 
 __Hoisting__ представляет процесс доступа к переменным до их определения.
@@ -1472,12 +1531,12 @@ var display = function (){
 ```
 
 
-# 16. Timeouts, Intervals
-## 16.1. Timeouts
-## 16.2. Intervals
+# 14. Timeouts, Intervals
+## Timeouts
+## Intervals
 
 
-# 17 Structures
+# 15 Structures
 ## Stack
 **Stack** - упорядоченная последовательность данных (LIFO)
 
