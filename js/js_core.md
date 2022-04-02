@@ -1094,7 +1094,45 @@ new Date(0) + 0          // ( triggers string concatenation) -> 'Thu Jan 01 1970
 
 # 11. OOP - Prototypes, Inheritance
 
-## 11.1. ООП в функциональном стиле
+## function as constructor
+```javascript
+function User(name) {
+  // this = {};     // (неявно)
+  this.name = name; // разработчик явно добавляет свойства к this
+  // return this;   // (неявно)
+}
+const user = new User('Valera')
+```
+
+## `prototype` vs `__proto__ `
+`prototype` - свойство класса, указывает на родительский объект.
+
+`__proto__` - свойство класса/экземпляра, геттер/сеттер для `[[Prototype]]`
+
+## Chain of prototypes
+```javascript
+var a = { a: 1 };// a ---> Object.prototype ---> null
+var o = ["yo", "hello", "?"]; // o ---> Array.prototype ---> Object.prototype ---> null
+function f(){ return 2; } // f ---> Function.prototype ---> Object.prototype ---> null
+
+var b = { b: 2 }
+b.__proto__ = a // b ---> a ---> Object.prototype ---> null
+b     // { b: 2 }
+b.a   // 1
+
+const c = { c: 3 }
+function Dog(){ this.b = 2 }
+Dog.prototype = c       // b ---> c ---> Object.prototype ---> null
+const dog = new Dog()
+b     // { b: 2 }
+dog.c // 3
+
+var a = { a: 1 };           // a ---> Object.prototype ---> null
+var b = Object.create(a);   // b ---> a ---> Object.prototype ---> null
+var c = Object.create(b);   // c ---> b ---> a ---> Object.prototype ---> null
+```
+
+## ООП в функциональном стиле
 ```javascript
 function ParentClass(param1, param2) {
   // локальные переменные и функции доступны только внутри
@@ -1148,7 +1186,7 @@ instanceClass.publicMethod();
 instanceClass.childPublicProperty = 'other value';
 ```
 
-## 11.2. ООП в прототипном стиле
+## ООП в прототипном стиле
 ```javascript
 // 1. конструктор Parent
 function ParentClass(param1) {
@@ -1181,7 +1219,7 @@ ChildClass.prototype.publicMethod = function() {
 }
 ```
 
-## 11.2. ООП в ES6
+## ООП в ES6
 ```javascript
 class ParentClass {
   // конструктор
