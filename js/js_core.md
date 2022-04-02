@@ -1485,6 +1485,12 @@ gen.throw(new Error('Something went wrong')); // "Error caught!" - { value: 2, d
 
 
 # 13. Scopes
+
+## Global object
+`Window` - for browser
+`Global` - for Node
+`WorkerGlobalScope` - for workers
+
 ## Hoisting
 
 __Hoisting__ представляет процесс доступа к переменным до их определения.
@@ -1554,6 +1560,52 @@ var display = function (){
 ## Map
 The Map object holds key-value pairs and remembers the original insertion order of the keys. 
 Any value (both objects and primitive values) may be used as either a key or a value. 
+
+```javascript
+const myMap = new Map([['key1', 'value1'], ['key2', 'value2']])
+myMap.set(3, 3000)
+myMap.set(true, 'value4')
+myMap.size              // 4
+myMap.get('key1')       // 'value1'
+myMap.has(3)            // true
+myMap.delete(3)
+myMap.clear()
+myMap.size              // 0
+```
+
+## Map vs WeakMap
+**WeakMap** — коллекция пар ключ-значение. В качестве ключей могут быть использованы только объекты, 
+а значения могут быть произвольных типов.
+### Особенности:
+- В качестве ключей могут быть использованы только объекты
+- WeakMaps имеют “weak” («слабые») обращения к ключам объекта, не препятствие сборщику мусора, когда мы больше не имеем объекта-ключа.
+- ключи WeakMap не перечисляемы (то есть нет метода, который возвращает список ключей)
+
+## Set
+**Set** позволяют вам сохранять уникальные значения любого типа, как примитивы, так и другие типы объектов.
+
+```javascript
+var mySet = new Set([1, 2]);
+mySet.add(1); // Set { 1 }
+mySet.add(5); // Set { 1, 5 }
+mySet.add(5); // Set { 1, 5 }
+mySet.add("text"); // Set { 1, 5, 'some text' }
+var o = { a: 1, b: 2 };
+mySet.add(o);
+mySet.size;     // 5
+mySet.has(5);   // true
+mySet.has(3);   // false
+mySet.has(o);   // true
+mySet.delete(5); // удаляет 5 из set
+mySet.has(5);    // false, 5 было удалено
+```
+
+## Set vs WeakSet
+**WeakSet** - коллекция, элементами которой могут быть только объекты. 
+### Особенности:
+- элементами - только объекты.
+- Ссылки на объекты в WeakSet являются слабыми. Каждый объект может быть добавлен в WeakSet только один раз.
+- WeakSet не итерируем, так как нет возможности получить список текущих хранимых в WeakSet объектов.
 
 ## Objects vs. Maps
 Map|Object
