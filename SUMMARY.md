@@ -3,9 +3,9 @@
 ## Hard skills
 
 * [JavaScript](js/js.md)
-    * [Base Level](js/js_base.md)
-    * [Advanced Level](js/js_advanced.md)
-    * [PRO Level](js/js_pro.md)
+    * [Base Level](js/js_core.md)
+    * [Advanced Level](js/js_browser.md)
+    * [PRO Level](js/js_additional.md)
 * [React.JS](react/react.md)
     * [Base Level](react/react_base.md)
     * [Advanced Level](react/react_advanced.md)

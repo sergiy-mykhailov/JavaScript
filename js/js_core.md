@@ -192,7 +192,7 @@ ZERO-FILL RIGHT SHIFT(правый сдвиг с заполнением нуля
 
 ## 2.7. Оператор delete
 `delete` - полностью удаляет свойство из объекта.
-`delete` эффективен только применительно к свойствам объектов. 
+`delete` Эффективен только применительно к свойствам объектов. 
 Он не оказывает никакого влияния на имена переменных и функций.
 
 ```javascript
@@ -1082,7 +1082,7 @@ true + false             // 1 + 0 -> 1
 false == 'false'         //  0 == NaN -> false
 null == ''               // false
 !!"false" == !!"true"    // true == true -> true
-['x'] == 'x'             // 'x' == 'x' -> true 
+['x'] == 'x';            // 'x' == 'x' -> true 
 [] + null + 1            // '' + null + 1  ->  'null' + 1  ->  'null1'
 [1,2,3] == [1,2,3]       // false
 {}+[]+{}+[1]             // +[]+{}+[1] -> 0+{}+[1] -> 0+'[object Object]'+[1] -> '0[object Object]1'
@@ -1092,7 +1092,7 @@ new Date(0) + 0          // ( triggers string concatenation) -> 'Thu Jan 01 1970
 ```
 
 
-# 11. Prototypes, Inheritance
+# 11. OOP - Prototypes, Inheritance
 
 ## 11.1. ООП в функциональном стиле
 ```javascript
@@ -1253,7 +1253,7 @@ console.log(test[1]);         // "Number One"
 console.log(test['1']);       // it also displays "Number One"
 console.log(test.1);          // it will fail
 var { 1 } = test;             // it will fail as 1 it is not a correct identifier
-var { 1 : number } = test;    // it will succeed
+var { 1: number } = test;     // it will succeed
 console.log(number);          // it displays "Number One"
 ```
 
@@ -1490,10 +1490,10 @@ gen.throw(new Error('Something went wrong')); // "Error caught!" - { value: 2, d
 __Hoisting__ представляет процесс доступа к переменным до их определения.
 
 Компиляция кода происходит в два прохода:
-1. компилятор получает все объявления переменных, все идентификаторы.
+1. компилятор получает все объявления переменных, все идентификаторы. (var, function...)
 2. выполнение кода
 
-Следующий код вызовет ошибку ReferenceError: aa is not defined:
+Следующий код вызовет ошибку ReferenceError: `aa` is not defined:
 ```javascript
 console.log(aa);
 ```
@@ -1504,7 +1504,7 @@ console.log(foo);   // undefined
 var foo = "Tom";
 ```
 
-Переменные a и b используются до опеределения. По умолчанию им присваиваются значения undefined. А если умножить undefined на undefined, то получим NaN:
+Переменные a и b используются до определения. По умолчанию им присваиваются значения undefined. А если умножить undefined на undefined, то получим NaN:
 ```javascript
 var c = a * b;
 var a = 7;
