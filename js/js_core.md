@@ -871,6 +871,30 @@ new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
     Возвращает новый объект итератора массива Array Iterator, содержащий значения для каждого индекса в массиве.
 * `Array.prototype[@@iterator]()`
     Возвращает новый объект итератора массива Array Iterator, содержащий значения для каждого индекса в массиве. 
+* `Array.prototype.flat(depth)`
+    Возвращает новый массив, в котором все элементы вложенных подмассивов были рекурсивно "подняты" на указанный уровень depth.
+```javascript
+[1, 2, [3, 4]].flat();           // [1, 2, 3, 4]
+[1, 2, [3, 4, [5, 6]]].flat();   // [1, 2, 3, 4, [5, 6]]
+[1, 2, [3, 4, [5, 6]]].flat(2);  // [1, 2, 3, 4, 5, 6]
+[1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]].flat(Infinity); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[1, 2, , 4, 5].flat();           // [1, 2, 4, 5]
+```
+* `Array.prototype.flatMap(callback(item[, index[, array]]) {}[, thisArg])`
+    Это идентично `map` функции, с последующим применением функции `flat` с параметром `depth` равным 1
+```javascript
+[1, 2, 3, 4].map(x => [x * 2]);         // [[2], [4], [6], [8]]
+[1, 2, 3, 4].map(x => [x * 2]).flat();  // [2, 4, 6, 8]
+[1, 2, 3, 4].flatMap(x => [x * 2]);     // [2, 4, 6, 8]
+[1, 2, 3, 4].flatMap(x => [[x * 2]]);   // [[2], [4], [6], [8]]  // выравнивается только один уровень
+
+["it's Sunny in", "", "California"].map(x => x.split(" "));      // [["it's","Sunny","in"],[""],["California"]]
+["it's Sunny in", "", "California"].flatMap(x => x.split(" "));  // ["it's","Sunny","in", "", "California"]
+
+[[1], [2], [3], [4]].flatMap(x => x * 2);                       // [2, 4, 6, 8]
+[[1], [2], [3], [4]].flat().map(x => x * 2);                    // [2, 4, 6, 8]
+[[1], [2], [3], [4]].reduce((acc, x) => acc.concat(x * 2), []); // [2, 4, 6, 8]
+```
 
 ## Sorting
 ##### `Array.prototype.sort([compareFunction])`
