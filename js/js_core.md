@@ -508,6 +508,7 @@ Number.isFinite("0"); // false
 Number.MAX_VALUE === Number.MAX_VALUE + 1 // true
 ```
 
+
 # 5. Strings
 [Strings on MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String)
 
@@ -674,6 +675,7 @@ tag`line 1 \\n line 2`;     // выводит "line 1 \\n line 2",
 #### `String.prototype[@@iterator]()`
    Возвращает новый объект итератора Iterator, который итерируется по кодовым точкам строки и возвращает каждую кодовую точку в виде строкового значения.
 
+
 # 6. Dates
 [Dates on MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date)
 ## Properties
@@ -798,6 +800,7 @@ new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
 * `Date.prototype.setUTCSeconds()`
    Устанавливает секунды указанной даты по всемирному координированному времени.
 
+
 # 7. Arrays
 [Arrays on MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date)
 ## Properties
@@ -819,7 +822,7 @@ new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
     Удаляет последний элемент из массива и возвращает его.
 * `Array.prototype.push(element1[, ..., elementN])`
     Добавляет один или более элементов в конец массива и возвращает новую длину массива.
-* `Array.prototype.reverse()`
+* `Array.prototype.reverse()` - mutable
     Переворачивает порядок элементов в массиве — первый элемент становится последним, а последний — первым.
 * `Array.prototype.shift()`
     Удаляет первый элемент из массива и возвращает его.
@@ -827,13 +830,13 @@ new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
     Добавляет и/или удаляет элементы из массива.
 * `Array.prototype.unshift([element1[, ...[, elementN]]])`
     Добавляет один или более элементов в начало массива и возвращает новую длину массива. 
-* `Array.prototype.concat(value1[, value2[, ...[, valueN]]])`
+* `Array.prototype.concat(value1[, value2[, ...[, valueN]]])` - (immutable)
     Возвращает новый массив, состоящий из данного массива, соединённого с другим массивом и/или значением (списком массивов/значений).
 * `Array.prototype.includes(searchElement[, fromIndex = 0])`
     Определяет, содержится ли в массиве указанный элемент, возвращая, соответственно, true или false.
-* `Array.prototype.join([separator])`
+* `Array.prototype.join([separator])` - (immutable)
     Объединяет все элементы массива в строку.
-* `Array.prototype.slice([begin[, end]])`
+* `Array.prototype.slice([begin[, end]])` - (immutable)
     Извлекает диапазон значений и возвращает его в виде нового массива.
 * `Array.prototype.toSource()`
     Возвращает литеральное представление указанного массива; вы можете использовать это значение для создания нового массива. Переопределяет метод Object.prototype.toSource().
@@ -853,7 +856,7 @@ new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
     Возвращает true, если каждый элемент в массиве удовлетворяет условию проверяющей функции.
 * `Array.prototype.some((item, index, array) => {} [, thisArg])`
     Возвращает true, если хотя бы один элемент в массиве удовлетворяет условию проверяющей функции.
-* `Array.prototype.filter((item, index, array) => {} [, thisArg])`
+* `Array.prototype.filter((item, index, array) => {} [, thisArg])` - (immutable)
     Создаёт новый массив со всеми элементами этого массива, для которых функция фильтрации возвращает true.
 * `Array.prototype.find((item, index, array) => {} [, thisArg])`
     Возвращает искомое значение в массиве, если элемент в массиве удовлетворяет условию проверяющей функции или undefined, если такое значение не найдено.
@@ -918,6 +921,7 @@ numbers.sort(function(a, b) {
 console.log(numbers); // [1, 2, 3, 4, 5]
 ```
 
+
 # 8. Symbol
 **Symbol** — это уникальный и неизменяемый тип данных, который может быть использован как идентификатор для свойств объектов.
 
@@ -949,6 +953,7 @@ for (var i in obj) {
 Symbol("foo") === Symbol("foo"); // false
 JSON.stringify({[Symbol("foo")]: "foo"});  // '{}'
 ```
+
 
 # 9. Functions
 ## Closures
@@ -1056,6 +1061,11 @@ const someFunction = function (a, b) { return a + b }
 const decoratedFunction = decorator(someFunction);
 decoratedFunction(1, 2) // 'hello decorator'
 ```
+
+## recursion
+The maximal recursion depth is limited by JavaScript engine.
+- 10 000 - ok (browser, node)
+- more then 10 000 - Uncaught InternalError: too much recursion (browser, node)
 
 # 10. Type conversion
 

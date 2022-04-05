@@ -63,6 +63,19 @@ const centsToDollars = compose(
 );
 ```
 
+### Функция pipeline
+```javascript
+const add = x => x + 10
+const subtract = x => x - 5
+
+let val1 = add(subtract(add(subtract(10))));
+console.log(val1);
+
+const pipeline = (...fns) => x => fns.reduce((res, fn) => fn(res), x);
+const func = pipeline(subtract, add, subtract, add);
+console.log(func(10));
+```
+
 ### Функция tap
 Функция tap запускает функцию с заданным объектом, а затем возвращает этот объект
 ```javascript
