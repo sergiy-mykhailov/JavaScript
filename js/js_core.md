@@ -1067,6 +1067,7 @@ The maximal recursion depth is limited by JavaScript engine.
 - 10 000 - ok (browser, node)
 - more then 10 000 - Uncaught InternalError: too much recursion (browser, node)
 
+
 # 10. Type conversion
 
 ### Численное преобразование
@@ -1555,6 +1556,73 @@ gen.throw(new Error('Something went wrong')); // "Error caught!" - { value: 2, d
 при этом отслеживая своё текущее положение внутри этой последовательности.
 Имеет метод next(), возвращает: `{ done: boolean, value: any }`
 
+## Promise
+Promise может находиться в трёх состояниях:
+- ожидание (pending): начальное состояние, не исполнен и не отклонён.
+- исполнено (fulfilled): операция завершена успешно.
+- отклонено (rejected): операция завершена с ошибкой.
+
+```javascript
+var promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('foo');
+    // reject("failure reason");
+  }, 300);
+});
+
+promise1.then(
+  (value) => { console.log(value); }, // output: "foo"
+  (reason) => { console.log(reason); }, // if error, output: "failure reason"
+).then((value) => {
+  console.log(value);  // output: "undefined"
+  return 'new foo'
+}).then((value) => {
+  console.log(value);  // output: " new foo"
+  return 'again foo'
+}).catch((reason) => {
+  console.log(reason);  // if error, output: "failure reason"
+}).finally(() => {
+  console.log('finally');
+});
+
+console.log(promise1);  // expected output: [object Promise]
+
+Promise.resolve(2).finally(() => {}) // value = 2
+Promise.reject(3).finally(() => {})  // reason = 3
+```
+
+### await in the top-level code
+```javascript
+let value
+const func1 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      value = 'hello';
+      resolve(value);
+    }, 2000);
+  });
+}
+
+await func1()                 // SyntaxError: await is only valid in async function
+console.log('value:', value)  // undefined
+
+```
+
+### Methods
+#### `Promise.all(iterable)`
+Ожидает исполнения всех промисов или отклонения любого из них.
+Возвращает промис, который исполнится после исполнения всех промисов в iterable.
+#### `Promise.allSettled(iterable)`
+Ожидает завершения всех полученных промисов (как исполнения так и отклонения).
+Возвращает промис, который исполняется когда все полученные промисы завершены (исполнены или отклонены)
+#### `Promise.race(iterable)`
+Ожидает исполнения или отклонения любого из полученных промисов.
+Возвращает промис, который будет исполнен или отклонён с результатом исполнения первого исполненного или отклонённого промиса.
+#### `Promise.reject(reason)`
+Возвращает промис, отклонённый из-за reason.
+#### `Promise.resolve(value)`
+Возвращает промис, исполненный с результатом value.
+
 
 # 13. Scopes
 
@@ -1610,8 +1678,33 @@ var display = function (){
 
 
 # 14. Timeouts, Intervals
-## Timeouts
-## Intervals
+## setTimeout
+`var timeoutID = setTimeout(func, [, delay, param1, param2, ...]);`
+```javascript
+const func1 = () => console.log('func1')
+setTimeout(func1, 1000)                   // "func1" after 1s
+const timerId = setTimeout(func1, 2000)   // no output
+clearTimeout(timerId)
+```
+
+## setInterval
+`var intervalID = setInterval(func, delay[, param1, param2, ...]);`
+```javascript
+const func2 = () => console.log('func2')
+const timerId2 = setInterval(func2, 1000)   // "func2" every 1s
+setTimeout(() => clearInterval(timerId2), 5000)   // clear interval after 5s
+```
+
+## setImmediate
+`var immediateID = setImmediate(func, [param1, param2, ...]);`
+Ставит функцию в очередь на выполнение без задержки.
+Реализован только в IE10+ и на платформе Node.JS.
+
+```javascript
+const func3 = () => console.log('func3')
+var immediateID = setImmediate(func3)
+clearImmediate(immediateID)
+```
 
 
 # 15 Structures
