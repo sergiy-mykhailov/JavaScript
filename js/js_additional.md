@@ -1,5 +1,5 @@
 
-# JavaScript - PRO Level
+# **JavaScript - additional info**
 
 ## 1. Memory Management, Garbage collection
 ## 2. Debug & benchmark (console, debug, performance)

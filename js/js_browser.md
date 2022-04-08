@@ -1,4 +1,4 @@
-# JavaScript - Advanced Level
+# **JavaScript - browser**
 
 ## 1. DOM
 
