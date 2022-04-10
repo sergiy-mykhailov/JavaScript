@@ -7,9 +7,9 @@
 ## Hard skills
 
 ### 1. JavaScript
-#### 1.1. [Base Level](js/js_core.md)
-#### 1.2. [Advanced Level](js/js_browser.md)
-#### 1.3. [Pro Level](js/js_additional.md)
+#### 1.1. [Core language](js/js_core.md)
+#### 1.2. [Browser related partl](js/js_browser.md)
+#### 1.3. [Additional part](js/js_additional.md)
 
 ### 2. React.JS
 #### 2.1. [Base Level](react/react_base.md)
