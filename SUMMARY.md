@@ -2,10 +2,10 @@
 
 ## Hard skills
 
-* [JavaScript](js/index.md)
-    * [Core language](js/index_core.md)
-    * [Browser related part](js/index_browser.md)
-    * [Additional part](js/index_additional.md)
+* [JavaScript](js/js.md)
+    * [Core language](js/js_core.md)
+    * [Browser related part](js/js_browser.md)
+    * [Additional part](js/js_additional.md)
 * [React.JS](react/react.md)
     * [Base Level](react/react_base.md)
     * [Advanced Level](react/react_advanced.md)
