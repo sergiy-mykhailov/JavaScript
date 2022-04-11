@@ -8,7 +8,7 @@
 
 ### 1. JavaScript
 #### 1.1. [Core language](js/js_core.md)
-#### 1.2. [Browser related partl](js/js_browser.md)
+#### 1.2. [Browser related part](js/js_browser.md)
 #### 1.3. [Additional part](js/js_additional.md)
 
 ### 2. React.JS
