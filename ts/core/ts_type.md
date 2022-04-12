@@ -1,18 +1,7 @@
-# **TypeScript - Cheat Sheet**
+# Types
 ***
 
-# 1. Usage
-
-## Install:
-```bash
-npm install typescript
-```
-## Run:
-```bash
-tsc
-```
-
-# 2. Primitive types
+# Primitive types
 
 Description                  | Type
 :----------------------------|:----
@@ -27,55 +16,7 @@ Number|`number`
 Boolean|`boolean`
 object (may be an Object or non-primitive)|`object`
 
-# 3. Named types (interface, class, enum)
-
-### Interface
-```typescript
-interface Child extends Parent, SomeClass {
-  property: Type;
-  optionalProp?: Type;
-  optionalMethod?(arg1: Type): ReturnType;
-}
-```
-
-### Class
-```typescript
-class Child extends Parent implements Child, OtherChild {
-  property: Type;
-  defaultProperty: Type = 'default value';
-  private _privateProperty: Type;
-  private readonly _privateReadonlyProperty: Type;
-  static staticProperty: Type;
-  constructor(arg1: Type) {
-    super(arg1);
-  }
-  private _privateMethod(): Type {}
-  methodProperty: (arg1: Type) => ReturnType;
-  overloadedMethod(arg1: Type): ReturnType;
-  overloadedMethod(arg1: OtherType): ReturnType;
-  overloadedMethod(arg1: CommonT): CommonReturnT {}
-  static staticMethod(): ReturnType {}
-  subclassedMethod(arg1: Type): ReturnType {
-    super.subclassedMethod(arg1);
-  }
-}
-```
-
-### Enum
-```typescript
-enum Options {
-  FIRST,
-  EXPLICIT = 1,
-  BOOLEAN = Options.FIRST | Options.EXPLICIT
-}
-enum Colors {
-  Red = "#FF0000",
-  Green = "#00FF00",
-  Blue = "#0000FF"
-}
-```
-
-# 4. Object type literals
+# Object type literals
 
 ### Object with implicit Any properties
 ```typescript
@@ -92,7 +33,7 @@ enum Colors {
 { [key: string]: Type; }
 ```
 
-# 5. Union and intersection types
+# Union and intersection types
 
 ### Union type
 ```typescript
@@ -104,7 +45,7 @@ let myUnionVariable: number | string;
 let myIntersectionType: Foo & Bar;
 ```
 
-# 6. Arrays and tuples
+# Arrays and tuples
 ### Array of strings
 ```typescript
 string[]
@@ -123,7 +64,7 @@ let myTuple: [ string, number, boolean? ];
 myTuple = [ 'test', 42 ];
 ```
 
-# 7. Functions
+# Functions
 
 ### Function 	
 ```typescript
@@ -161,7 +102,7 @@ function fn(arg1: Type = 'default'): ReturnType {}
 function fn(this: Foo)
 ```
 
-# 8. Generics
+# Generics
 ### Function using type parameters
 ```typescript
 <T>(items: T[], callback: (item: T) => T): T[]
@@ -190,7 +131,7 @@ interface Pair<T1, T2> {
 <T extends ConstrainedType = ConstrainedType>(): T
 ```
 
-# 9. Partial and mapped types
+# Partial and mapped types
 ### Partial type
 ```typescript
 Partial<{ x: number; y: number; z: number; }>
@@ -223,7 +164,7 @@ Record<'x' | 'y' | 'z', number>
 { x: number; y: number; z: number; }
 ```
 
-# 10. Conditional types
+# Conditional types
 ### Conditional types
 ```typescript
 declare function createLabel<T extends number | string>(idOrName: T): T extends number ? Id : Name;
@@ -265,8 +206,3 @@ type Instance = InstanceType<typeof Renderer>;
 Renderer
 ```
 
-# 11. Other
-### Type of a variable
-```typescript
-typeof varName
-```

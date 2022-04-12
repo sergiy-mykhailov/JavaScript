@@ -50,6 +50,18 @@
 * [Docker](docker/docker.md)
     * [Main commands](docker/commands.md)
     * [Dockerfile](docker/dockerfile.md)
+* [TypeScript](ts/ts.md)
+    * Core language
+        * [Types](ts/core/ts_type.md)
+        * [Class](ts/core/ts_class.md)
+        * [Interface](ts/core/ts_interface.md)
+        * [Enum](ts/core/ts_enum.md)
+        * [Usage](ts/core/ts_usage.md)
+    * Cheat sheet
+        * [Types](ts/cheat_sheets/ts_types.png)
+        * [Class](ts/cheat_sheets/ts_classes.png)
+        * [Interface](ts/cheat_sheets/ts_interfaces.png)
+        * [CFA](ts/cheat_sheets/ts_cfa.png)
 
 ## Other
 

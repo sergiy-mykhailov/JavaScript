@@ -49,6 +49,9 @@
 #### 9.1 [Main commands](docker/commands.md)
 #### 9.2 [Dockerfile](docker/dockerfile.md)
 
+### 10. TypeScript
+#### 10.1. [Core language](ts/ts.md)
+
 ## Other
 
 ### 1. [Soft skills](other/soft_skills.md)
