@@ -1,7 +1,4 @@
-# **Operators**
-***
-
-# 2. Operators 
+# Operators
 
 ## 2.1 Arithmetic
 
@@ -261,7 +258,7 @@ console.log(arr?.[6]);                              // undefined
 ```
 
 
-# 3. Main statements 
+# Main statements 
 
 ## 3.1. If
 

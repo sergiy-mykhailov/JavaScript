@@ -1,4 +1,4 @@
-# **Timeouts, Intervals**
+# Timeouts, Interval
 ***
 
 # setTimeout

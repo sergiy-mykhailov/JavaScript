@@ -1,7 +1,5 @@
-# **Data types**
+# Data types
 ***
-
-# 1. Data types
 
 ## primitive types:
   undefined, boolean, number, string, bigint и symbol(ES6)

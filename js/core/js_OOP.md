@@ -1,4 +1,4 @@
-# **OOP**
+# OOP
 ***
 
 # function as constructor

@@ -1,7 +1,6 @@
-# **Standard objects**
+# Object
 ***
 
-# Object
 ## Object info
 Object:
 - Property keys must be strings or symbols (usually strings).
@@ -312,10 +311,14 @@ const func1 = () => {
     }, 2000);
   });
 }
-
 await func1()                 // SyntaxError: await is only valid in async function
 console.log('value:', value)  // undefined
 
+async function getData() {
+  return await Promise.resolve('some data');
+}
+const data = getData();
+console.log(data);            // Promise { <state>: "pending" }
 ```
 
 ## Methods

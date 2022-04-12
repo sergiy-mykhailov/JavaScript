@@ -1,4 +1,4 @@
-# **Scopes**
+# Scopes
 ***
 
 # Global object

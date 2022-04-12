@@ -1,7 +1,6 @@
-# **Errors**
+# Errors
 ***
 
-# Errors
 ##`new Error([message[, fileName[, lineNumber]]])`
 ```javascript
 try {
