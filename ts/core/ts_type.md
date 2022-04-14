@@ -102,35 +102,6 @@ function fn(arg1: Type = 'default'): ReturnType {}
 function fn(this: Foo)
 ```
 
-# Generics
-### Function using type parameters
-```typescript
-<T>(items: T[], callback: (item: T) => T): T[]
-```
-
-### Interface with multiple types
-```typescript
-interface Pair<T1, T2> {
-  first: T1;
-  second: T2;
-}
-```
-
-### Constrained type parameter
-```typescript
-<T extends ConstrainedType>(): T
-```
-
-### Default type parameter
-```typescript
-<T = ConstrainedType>(): T
-```
-
-### Constrained and default type parameter
-```typescript
-<T extends ConstrainedType = ConstrainedType>(): T
-```
-
 # Partial and mapped types
 ### Partial type
 ```typescript
