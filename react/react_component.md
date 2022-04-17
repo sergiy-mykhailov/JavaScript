@@ -9,6 +9,7 @@ const Welcome = (props) => {
   return (<h1>Hello, {props.name}</h1>);
 }
 ```
+
 ## Class component:
 ```javascript
 class Welcome extends React.Component {
@@ -18,7 +19,10 @@ class Welcome extends React.Component {
 }
 ```
 
-# Component state
+
+# props vs state
+
+## Component state
 ```jsx
 class Welcome extends React.Component {
   // Init state in constructor:
@@ -43,9 +47,7 @@ class Welcome extends React.Component {
 }
 ```
 
-# Component props
-
-## Props with prop-types
+## props with prop-types
 ```jsx
 class Welcome extends React.Component {
   constructor(props) {
@@ -83,6 +85,7 @@ class Welcome extends React.Component {
 // rendering:
 <Welcome />
 ```
+
 
 # The Component Life Cycle
 
@@ -136,6 +139,163 @@ class App extends React.Component {
         />
       </div>
     );
+  }
+}
+```
+
+
+# Controlled/uncontrolled components
+
+## Controlled
+В **управляемом компоненте**, данные формы обрабатываются React-компонентом.
+Состояние обычно содержится в `state` и обновляется только через вызов `setState()` (в `callback` элемента формы).
+```jsx
+// Controlled:
+<input type="text" value={this.state.value} onChange={(event) => this.setState({value: event.target.value})} />
+```
+
+## Uncontrolled
+**Неуправляемые компоненты** хранят данные формы прямо в DOM. Чтение значений из DOM происходит через `ref`.
+```jsx
+// Uncontrolled:
+<input type="text" defaultValue="foo" ref={inputRef} />
+// Use `inputRef.current.value` to read the current value of <input>
+```
+
+
+#  Containers and components
+
+## Container components
+- purpose: **how things work** (data fetching, state updates)
+- often stateful
+- connected to a store
+- responsible for providing data and behavior to their children
+
+## Presentational components
+- purpose: **how things look** (markup, styles)
+- NOT connected to a store
+- often stateless functional components
+- renders data from props
+
+
+# React.PureComponent
+
+`React.PureComponent` похож на `React.Component`. 
+Отличие заключается в том, что `React.PureComponent` реализует `shouldComponentUpdate()` в виде поверхностного (не глубокого) сравнением пропсов и состояния.
+
+
+# HOC
+
+**Компонент высшего порядка** — это функция, которая принимает компонент и возвращает новый компонент.
+
+HOC добавляют компонентам функциональность, но они не должны менять их оригинальное предназначение. 
+Ожидается, что интерфейс компонента, который вы возвращаете из HOC, будет похож на интерфейс оборачиваемого компонента.
+
+```jsx
+function someHOC(WrappedComponent) {
+  return class extends React.Component {
+    componentDidUpdate(prevProps) {
+      // extra logic
+    }
+    render() {
+      // Отфильтруйте пропсы применимые только к этому HOC и которые не нужно передавать дальше
+      const { extraProp, ...originalProps } = this.props;
+      // Добавьте новые пропсы в оборачиваемый компонент:
+      const injectedProp = someStateOrInstanceMethod;
+
+      // Оборачиваем компонент в контейнер без мутаций исходного компонента
+      return <WrappedComponent injectedProp={injectedProp} {...originalProps} />;
+    }
+  }
+}
+```
+
+## Предостережения:
+- Не используйте HOC внутри рендер-метода - Повторное монтирование компонента обнуляет его состояние.
+- Копируйте статические методы 
+- Рефы не передаются - Реф элемента, созданного компонентом из HOC, будет указывать на экземпляр ближайшего в иерархии контейнера, а не на оборачиваемый компонент.
+
+
+# Порталы
+
+Порталы позволяют рендерить дочерние элементы в DOM-узел, который находится вне DOM-иерархии родительского компонента.
+```jsx
+class Component extends React.Component {
+  render() {
+    // React НЕ создаёт новый div. Он рендерит дочерние элементы в `domNode`.
+    // `domNode` — это любой валидный DOM-узел, находящийся в любом месте в DOM.
+    return ReactDOM.createPortal(this.props.children, domNode);
+  }
+}
+```
+Несмотря на его расположение в DOM-дереве, сам портал всё ещё находится в React-дереве:
+- контекст работают привычным образом
+- всплытие событий привычным образом
+
+
+# Контекст
+
+Контекст позволяет передавать данные через дерево компонентов без необходимости передавать пропсы на промежуточных уровнях.
+
+## Передача props всем дочерним компонентам:
+```jsx
+<Page user={user} avatarSize={avatarSize} />
+// Page render() method:
+<PageLayout user={user} avatarSize={avatarSize} />
+// PageLayout render() method:
+<NavigationBar user={user} avatarSize={avatarSize} />
+// NavigationBar render() method:
+<Avatar user={user} size={avatarSize} />
+```
+
+## Композиция компонентов:
+```jsx
+function Page(props) {
+  const userLink = (<Avatar user={props.user} size={props.avatarSize} />);
+  return <PageLayout userLink={userLink} />;
+}
+<Page avatarSize={avatarSize} />
+// Page render() method:
+<PageLayout userLink={userLink} />
+// PageLayout render() method:
+<NavigationBar userLink={userLink} />
+// NavigationBar render() method:
+{props.userLink}
+```
+
+## Context:
+```jsx
+const MyContext = React.createContext(defaultValue);
+class App extends React.Component {
+  render() {
+    return (
+      <MyContext.Provider value={avatarSize}>
+        <Page/>
+      </MyContext.Provider>
+    );
+  }
+}
+
+// Page render() method:
+<PageLayout />
+// PageLayout render() method:
+<NavigationBar />
+
+// v1 - contextType:
+NavigationBar.contextType = MyContext;
+class NavigationBar extends React.Component {
+  render() {
+    return <Avatar size={this.context} />;
+  }
+}
+// v2 - MyContext.Consumer:
+class NavigationBar extends React.Component {
+  render() {
+    return (
+      <MyContext.Consumer>
+        {value => <Avatar size={value} />}
+      </MyContext.Consumer>
+    )
   }
 }
 ```
