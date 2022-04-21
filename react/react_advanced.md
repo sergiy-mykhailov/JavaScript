@@ -169,5 +169,92 @@ const App = () => (
 );
 ```
 
+
 ## React.memo
+
+React.memo - поверхностно сравнивает props, если изменений нет React будет использовать результат последнего рендера, 
+избегая повторного рендеринга.
+```jsx
+function MyComponent(props) { /* рендер с использованием пропсов */ }
+function areEqual(prevProps, nextProps) {
+  /* возвращает true, если nextProps рендерит тот же результат что и prevProps,
+  иначе возвращает false */
+}
+export default React.memo(MyComponent, areEqual); // areEqual - optional
+```
+
+
 ## React.Fragment
+
+Фрагменты позволяют формировать список дочерних элементов, не создавая лишних узлов в DOM
+```jsx
+function Component(props) {
+  return (
+    <React.Fragment>
+      <dt>{item.term}</dt>
+      <dd>{item.description}</dd>
+    </React.Fragment>
+  );
+}
+```
+`<React.Fragment key={key}>` - для списков
+
+
+## Profiler
+
+### info
+`Profiler` измеряет то, как часто рендерится React-приложение и какова «стоимость» этого. `Profiler` может быть вложенным.
+Принимает два пропа:
+- id (string)
+- onRender (function), вызывает когда компонент внутри дерева «фиксирует» обновление.
+
+```jsx
+render(
+  <App>
+    <Profiler id="Navigation" onRender={callback}>
+      <Navigation {...props} />
+    </Profiler>
+    <Main {...props} />
+  </App>
+);
+```
+
+### Колбэк onRender
+```jsx
+function onRenderCallback(
+  id, // проп "id" из дерева компонента Profiler, для которого было зафиксировано изменение
+  phase, // либо "mount" (если дерево было смонтировано), либо "update" (если дерево было повторно отрендерено)
+  actualDuration, // время, затраченное на рендер зафиксированного обновления
+  baseDuration, // предполагаемое время рендера всего поддерева без кеширования
+  startTime, // когда React начал рендерить это обновление
+  commitTime, // когда React зафиксировал это обновление
+  interactions // Множество «взаимодействий» для данного обновления 
+) {
+  // Обработка или логирование результатов...
+}
+```
+
+
+## render-props
+**render-props** - возможность компонентов React разделять код между собой с помощью пропа, значение которого является функцией.
+```jsx
+<DataProvider
+  render={data => (
+    <h1>Привет, {data.target}</h1>
+  )}
+/>
+
+class DataProvider extends React.Component {
+  // ...some logic...
+  render() {
+    return this.props.render({ target: 'Marry' })
+  }
+}
+```
+
+
+## concurrent mode - **experimental!**
+
+- **concurrent rendering** - it lets React prepare multiple versions of the UI at the same time. (React 18)
+
+

@@ -32,3 +32,8 @@ Virtual DOM is a virtual representation of the real DOM.
 * State change
 * Compute diff (prev DOM and next DOM)
 * Re-render (update the real DOM with only those nodes that have actually changed)
+
+**Reconciliation** (Согласование) - процесс «виртуальный» DOM синхронизируется с «настоящим» DOM (при помощи ReactDOM)
+
+**React Fiber** - новый механизм согласования в React 16, основная цель которого сделать рендеринг виртуального DOM инкрементным.
+
