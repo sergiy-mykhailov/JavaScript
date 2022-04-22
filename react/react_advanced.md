@@ -234,6 +234,20 @@ function onRenderCallback(
 }
 ```
 
+### Profiling in production
+
+React предоставляет специальную продакшен-сборку с включенным профилированием, подробнее: https://fb.me/react-profiling
+
+Add the following import aliases to your production Webpack 4 config:
+```javascript
+module.exports = {
+  //...
+  resolve: {
+    alias: { 'react-dom$': 'react-dom/profiling' }
+  }
+};
+```
+
 
 ## render-props
 **render-props** - возможность компонентов React разделять код между собой с помощью пропа, значение которого является функцией.

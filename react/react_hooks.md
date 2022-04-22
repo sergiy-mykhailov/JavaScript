@@ -52,6 +52,12 @@ useEffect(function hookFunction() {
 * `comparisonArray` - array with current state/props for comparison with previous state/props (similar to `shouldComponentUpdate`).
 
 
+## useLayoutEffect
+
+Идентичен useEffect, но этот хук запускается синхронно после всех изменений DOM. 
+Используйте его для чтения макета из DOM и синхронного повторного рендеринга.
+
+
 ## useContext
 
 `const value = useContext(ContextObject);` - lets you subscribe to React context without introducing nesting.
@@ -62,7 +68,36 @@ useEffect(function hookFunction() {
 `const [state, dispatch] = useReducer(reducer, initialState, init);` - lets you manage local state of complex components with a reducer.
 
 ###### Params:
-* `func` - function that will be run after every render, including the first render.
+* `reducer` - (state, action) => newState
+* `initialState` - any
+* `init` - (initialArg) => initialState
+
+
+## useCallback
+
+```jsx
+const memoizedCallback = useCallback(() => {}, comparisonArray); // Возвращает мемоизированный колбэк.
+```
+вернёт мемоизированную версию колбэка, который изменяется только, если изменяются значения одной из зависимостей.
+
+
+## useMemo
+
+```jsx
+const memoizedValue  = useMemo(() => {}, comparisonArray); // Возвращает мемоизированное значение.
+```
+будет повторно вычислять мемоизированное значение только тогда, когда значение какой-либо из зависимостей изменилось.
+функция, переданная useMemo, запускается во время рендеринга.
+
+
+## useRef
+
+```jsx
+const refContainer = useRef(initialValue);
+return <input ref={refContainer} type="text" />
+```
+возвращает изменяемый ref-объект, свойство .current которого инициализируется переданным аргументом (initialValue)
+
 
 
 ## Custom Hooks
@@ -94,3 +129,4 @@ function Component2(props) {
   return value;
 }
 ```
+

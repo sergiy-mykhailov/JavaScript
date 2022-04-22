@@ -3,7 +3,6 @@
 ## [Base Level](./react_base.md)
 ## [Advanced Level](./react_advanced.md)
 ## [Hooks](./react_hooks.md)
-## [Rendering](./react_rendering.md)
-## Store
+## [Store](./react_store.md)
 ## Routing
 ## Forms
