@@ -99,7 +99,6 @@ return <input ref={refContainer} type="text" />
 возвращает изменяемый ref-объект, свойство .current которого инициализируется переданным аргументом (initialValue)
 
 
-
 ## Custom Hooks
 
 ```jsx
@@ -130,3 +129,8 @@ function Component2(props) {
 }
 ```
 
+
+## useSelector()
+## useDispatch()
+## useStore()
+## Recipe: useActions()
