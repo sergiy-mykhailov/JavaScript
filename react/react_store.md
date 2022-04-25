@@ -1,6 +1,25 @@
 # Store
 
 
+## Data flow
+
+### Three Principles
+- Single source of truth - The global state of your application is stored in an object tree within a single store.
+- State is read-only - The only way to change the state is to emit an action, an object describing what happened.
+- Changes are made with pure functions - To specify how the state tree is transformed by actions, you write pure reducers.
+
+### React app parts:
+- **state** - the source of truth that drives our app;
+- **view** - a declarative description of the UI based on the current state
+- **actions** - the events that occur in the app based on user input, and trigger updates in the state
+
+### "one-way data flow": state -> view -> action
+- **State** describes the condition of the app at a specific point in time
+- The UI (**view**) is rendered based on that state
+- When some **action** happens (such as a user clicking a button), the state is updated based on what occurred
+- The UI re-renders based on the new state
+
+
 ## createStore
 
 ### Info
@@ -97,6 +116,24 @@ console.log(store.getState()) // { initial: 'data', newData: 'newData' }
 ```
 
 
+## reducer
+
+A **reducer** (also called a **reducing function**) is a function that accepts an accumulation and a value and returns a new accumulation.
+
+Redux is using immutability because it doesn't have to traverse an object tree to check for the changes in every key value. 
+Instead, it will only check the object's reference is changed or not in order to update DOM on state change.
+
+```jsx
+const initialState = { someProp: 'someValue' }
+const reducer = (state, action) => {
+  if (action.type = 'SOME_ACTION_TYPE') {    // action.type - required field!
+    return { ...state, newProp: 'newValue' } // allways return new object!
+  }
+  return state
+}
+```
+
+
 ## combineReducers(reducers)
 
 Split different reducers into one reducer.
@@ -108,8 +145,8 @@ const tomatoReducer = (tomatoState, action) => newTomatoState
 rootReducer = combineReducers({ potato: potatoReducer, tomato: tomatoReducer })
 // This would produce the following state object:
 {
-  potato: {}  // ... potatoes, and other state managed by the potatoReducer ...
-  tomato: {}  // ... tomatoes, and other state managed by the tomatoReducer, maybe some nice sauce? ...
+  potato: {}
+  tomato: {}
 }
 ```
 
@@ -147,7 +184,7 @@ const store = createStore(reducer, ['Use Redux'], applyMiddleware(middlware1, mi
 
 ### Info
 ```jsx
-bindActionCreators(actionCreators, dispatch)
+const actions = bindActionCreators(actionCreators, dispatch)
 ```
 ###### Params:
 - actionCreators (Function | Object): An action creator, or an object whose values are action creators.
@@ -251,5 +288,91 @@ function myThunk() {
   }
 }
 ```
+
+
+## createSelector
+
+```
+createSelector(...inputSelectors | [inputSelectors], resultFunc, selectorOptions?)
+```
+
+```jsx
+import { createSelector } from 'reselect'
+const customizedSelector = createSelector(
+  state => state.a,
+  state => state.b,
+  (a, b) => a + b,
+  {
+    memoizeOptions: { // New in 4.1: Pass options through to the built-in `defaultMemoize` function
+      equalityCheck: (a, b) => a === b,
+      maxSize: 10,
+      resultEqualityCheck: shallowEqual
+    }
+  }
+)
+```
+
+
+## redux-saga
+
+### createSagaMiddleware(options)
+```jsx
+const sagaMiddleware = createSagaMiddleware({ context, sagaMonitor, onError, effectMiddlewares })
+```
+###### Params:
+- context (Object) - initial value of the saga's context.
+- sagaMonitor (SagaMonitor) - the middleware will deliver monitoring events to the monitor.
+- onError (Function) `(error: Error, { sagaStack: string }) => {}`
+- effectMiddlewares (Function[]) - allows you to intercept any effect, resolve it on your own and pass to the next middleware.
+
+### middleware.run
+```jsx
+middleware.run(saga, ...args)
+```
+- saga (Function): a Generator function
+- args (Array<any>): arguments to be provided to saga
+
+### Example
+```jsx
+import { call, put, takeLatest } from 'redux-saga/effects'
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import reducer from '...'
+import Api from '...'
+// saga: will be fired on USER_FETCH_REQUESTED actions
+function* fetchUser(action) {
+   try {
+      const user = yield call(Api.fetchUser, action.payload.userId);
+      yield put({type: "USER_FETCH_SUCCEEDED", user: user});
+   } catch (e) {
+      yield put({type: "USER_FETCH_FAILED", message: e.message});
+   }
+}
+// some other saga:
+function* fetchTodo(action) {/*...*/}
+// main saga:
+function* mySaga() {
+  yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
+  yield takeLatest("TODO_FETCH_REQUESTED", fetchTodo);
+}
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware()
+// mount it on the Store
+const store = createStore(
+  reducer,
+  applyMiddleware(sagaMiddleware)
+)
+// then run the saga
+sagaMiddleware.run(mySaga)
+// render the application
+```
+
+### saga effects
+- `call(fn, ...args)` - calls the function `fn` with `args` as arguments.
+- `put(action)` - dispatches an action to the store
+- `takeLatest(pattern, saga, ...args)` - when an action is dispatched to the store, cheks if this action matches pattern, then starts a new saga task in the background.
+
+
+## redux-thunk
 
 

@@ -131,6 +131,38 @@ function Component2(props) {
 
 
 ## useSelector()
+```tsx
+const result = useSelector(selector, equality)
+```
+###### Params:
+selector (Function) - `(state) => state.someData` (equivalent to the `mapStateToProps` argument to connect)
+equality (Function) - optional comparison function (can be `shallowEqual` from  react-redux, or `isEqual` from lodash or Immutable.js's comparison capabilities).
+result (any) - value from store
+
+```jsx
+import { useSelector } from 'react-redux'
+import { createSelector } from 'reselect'
+// usage:
+const todos = useSelector((state) => state.todos)
+// usage with reselect:
+const completedTodosSelector = createSelector(
+  (state) => state.todos,
+  (todos) => todos.filter((todo) => todo.completed).length
+)
+const numCompletedTodos = useSelector(completedTodosSelector)
+```
+
+
 ## useDispatch()
+Returns a reference to the dispatch function from the Redux store.
+```jsx
+const dispatch = useDispatch()
+```
+
+
 ## useStore()
-## Recipe: useActions()
+Returns a reference to the same Redux store that was passed in to the `<Provider>` component.
+```jsx
+const store = useStore()
+```
+
