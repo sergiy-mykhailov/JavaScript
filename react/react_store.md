@@ -375,4 +375,28 @@ sagaMiddleware.run(mySaga)
 
 ## redux-thunk
 
+"thunks" are a pattern of writing functions with logic inside that can interact with a Redux store's `dispatch` and `getState` methods.
+```jsx
+export const fetchTodoById = todoId => async (dispatch, getState) => {
+  const response = await client.get(/* some api */)
+  dispatch(todosLoaded(response.todos))
+}
+function Component({ todoId }) {
+  const dispatch = useDispatch()
+  const onFetchClicked = () => {
+    // Calls the thunk action creator, and passes the thunk function to dispatch
+    dispatch(fetchTodoById(todoId))
+  }
+}
+```
+
+
+## Redux-Thunk vs Redux-Saga
+Redux-Thunk | Redux-Saga
+:----------:|:----------:
+Less boilerplate code | More boilerplate code
+Easy to understand as compared to redux-saga | Difficult to understand as there are multiple concepts to learn like generator functions and redux-saga effects
+May be difficult to scale up | Easy to scale as compared to redux-thunk
+Action creators may hold too much async logic | Action creators stay pure
+May get difficult to test | Comparatively easy to test as all your async logic remains together
 
