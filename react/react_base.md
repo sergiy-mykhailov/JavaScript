@@ -1,7 +1,7 @@
 # React Component - Base Level
 
 
-## 1. JSX
+## JSX
 
 ### info
 **JSX** - комбинация кода JavaScript и разметки XML:
@@ -34,7 +34,7 @@ class Component extends React.Component {
 - `<obj.component />` compiles to `React.createElement(obj.component)`
 
 
-## 2. Virtual DOM
+## Virtual DOM
 Virtual DOM is a virtual representation of the real DOM.
 
 **Virtual DOM works in the following steps:**
