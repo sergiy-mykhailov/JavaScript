@@ -25,6 +25,7 @@
     * [Advanced Level](react/react_advanced.md)
     * [Hooks](react/react_hooks.md)
     * [Store](react/react_store.md)
+    * [Routing](react/react_routing.md)
 * [Version control system (Git, Mercurial)](git/git.md)
     * [Main commands (git)](git/git_main.md)
     * [All commands (git)](git/git_all.md)
