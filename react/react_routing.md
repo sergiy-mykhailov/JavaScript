@@ -105,8 +105,68 @@ params.toString();      // "campaign=instagram&popular=true",
 ```
 
 
+## <BrowserRouter>
+
+### Tips
+- recommended for browsers
+- stores the current location in the browser's address bar using clean URLs and navigates using the browser's built-in history stack.
+
+### Props
+- `window?: object` - `document.defaultView` (returns the `window` object)
+
+
+## <HashRouter>
+
+### Tips
+- recommended for browsers
+- use when the URL should not (or cannot) be sent to the server for some reason
+- stores the current location in the hash portion of the current URL, so it is never sent to the server
+
+### Props
+- `window?: object` - `document.defaultView` (returns the `window` object)
+
+
+## <NativeRouter>
+
+### Tips
+- recommended for React Native app
+
+### Props
+- `initialEntries?: InitialEntry[]` - defaults to `["/"]`
+- `initialIndex?: number;` - defaults to the last index of `initialEntries`
+
+
+## <MemoryRouter>
+
+### Tips
+- recommended for testing
+- stores its locations internally in an array
+- does not use standard history stack
+
+### Props
+- `initialEntries?: InitialEntry[]` - defaults to `["/"]`
+- `initialIndex?: number;` - defaults to the last index of `initialEntries`
+
+
+## <Router>
+
+### Tips
+- You don't need `<Router>` instead, you should use one of the higher-level routers (`<BrowserRouter>`, `<HashRouter>`, `<StaticRouter>`, `<NativeRouter>`, and `<MemoryRouter>`).
+
+
 ## Link
 
+### Props
+```tsx
+type LinkProps = {
+  replace?: boolean;
+  state?: any;
+  to: string;
+  reloadDocument?: boolean;
+}
+```
+
+### Example
 ```jsx
 return (<>
   <Link to="/">Home</Link>
@@ -122,3 +182,81 @@ navigate("/users/123", { state: partialUser });
 let location = useLocation();
 location.state;
 ```
+
+
+## <NavLink>
+
+A <NavLink> is a special kind of <Link> that knows whether or not it is "active"
+
+### Props
+```tsx
+type NavLinkProps = {
+  // Link props:
+  replace?: boolean;
+  state?: any;
+  to: string;
+  reloadDocument?: boolean;
+  // NavLink props:
+  caseSensitive?: boolean;
+  children?: ReactNode | (({ isActive: boolean }) => ReactNode);
+  className?: string | (({ isActive: boolean }) => string | undefined);
+  end?: boolean;
+  style?: object | (({ isActive: boolean }) => object | undefined);
+}
+```
+
+### Example
+```jsx
+<NavLink to="messages" style={({ isActive }) => isActive ? { textDecoration: "underline" } : undefined}>
+  Messages
+</NavLink>
+```
+
+
+## <Navigate>
+
+A `<Navigate>` element changes the current location when it is rendered.
+
+### Example
+```jsx
+function Component(props) {
+  return <Navigate to="/dashboard" replace={true} state={{ some: 'value' }}/>
+}
+```
+
+
+## <Outlet>
+
+An `<Outlet>` should be used in parent route elements to render their child route elements
+
+```jsx
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<ParentRouteComponent />}>
+        <Route path="messages" element={<Messages />} />
+        <Route path="tasks" element={<Tasks />} />
+      </Route>
+    </Routes>
+  );
+}
+function ParentRouteComponent() {
+  return (
+    <div>
+      <h1>some header</h1>
+      <div className="here-will-render-child-routes">
+        <Outlet /> // Messages or Tasks will render here
+      </div>
+    </div>
+  );
+}
+```
+
+
+
+
+
+
+
+
+
