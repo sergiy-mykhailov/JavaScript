@@ -1,7 +1,57 @@
 # Routing
 
+[v5 docs](https://v5.reactrouter.com/web/guides/quick-start)
+[v6 docs](https://reactrouter.com/docs/en/v6/api)
 
 ## react router
+
+### v4 and v5 before 5.1
+```jsx
+function App() {
+  return (
+    <Switch>
+      <Route exact path="/" component={Home} />  -> /
+      <Route path="/about" component={About} />
+      <Route path="/products" component={ProductsLayout} />                   -> /products, /products/123, /products/123/edit,
+      <Route strict path="/products/:id/" component={ProductsEdit} />         -> /products/123/review, /products/123/edit
+      <Route exact strict path="/products/:id" component={ProductsDetails} /> -> /products/123
+      <Route
+        path="/users/:id"
+        render={({ match }) => (
+          <User id={match.params.id} />
+        )}
+      />
+      <Redirect from="about" to="about-us" />
+      <Redirect exact from="contacts" to="our-contacts" />
+    </Switch>
+  );
+}
+function User({ id }) {
+  // ...
+}
+```
+
+
+### v5.1
+```jsx
+function App() {
+  return (
+    <Switch>
+      <Route exact path="/"><Home /></Route>
+      <Route path="/about"><About /></Route>
+      <Route path="/users/:id" children={<User />} />
+      <Route path="about" render={() => <Redirect to="about-us" />} />
+    </Switch>
+  );
+}
+function User() {
+  let { id } = useParams();
+  // ...
+}
+```
+
+
+### v6
 
 ```jsx
 import { render } from "react-dom";
@@ -81,19 +131,20 @@ history.listen(({ location, action }) => {}); // the action is POP, PUSH, or REP
 ## location
 
 ```jsx
+import { useLocation } from 'react-router-dom';
+
 // window:
 window.location.pathname; // /bbq/pig-pickins
 window.location.hash;     // #menu
 window.location.reload(); // force a refresh
 
 // react router location:
-const location = {
-  pathname: "/bbq/pig-pickins",
-  search: "?campaign=instagram",
-  hash: "#menu",
-  state: null,
-  key: "aefz24ie"
-}
+let location = useLocation()
+location.pathname // "/bbq/pig-pickins",
+location.search   // "?campaign=instagram",
+location.hash     // "#menu",
+location.state    // null,
+location.key      // "aefz24ie"
 
 // window.location equals:
 location.pathname + location.search + location.hash; // /bbq/pig-pickins?campaign=instagram#menu
@@ -154,7 +205,15 @@ params.toString();      // "campaign=instagram&popular=true",
 - You don't need `<Router>` instead, you should use one of the higher-level routers (`<BrowserRouter>`, `<HashRouter>`, `<StaticRouter>`, `<NativeRouter>`, and `<MemoryRouter>`).
 
 
-## Link
+## <StaticRouter>
+
+`<StaticRouter>` is used to render a React Router web app in node (Server side rendering)
+
+### Props
+- `location?: string` - defaults to `"/"`
+
+
+## <Link>
 
 ### Props
 ```tsx
@@ -253,10 +312,82 @@ function ParentRouteComponent() {
 ```
 
 
+## <Routes>
+
+### Props
+```tsx
+interface RoutesProps {
+  children?: ReactNode;
+  location?: Partial<Location> | string;
+}
+```
 
 
+## <Route>
+
+`<Route>` like an `if` statement, if its `path` matches the current URL, it renders its `element`.
+
+### Props
+```tsx
+interface RoutesProps {
+  caseSensitive?: boolean;
+  children?: ReactNode;
+  element?: ReactNode | null;
+  index?: boolean;
+  path?: string;
+}
+```
 
 
+## generatePath
+
+```jsx
+generatePath("/users/:id", { id: 42 });                           // "/users/42"
+generatePath("/files/:type/*", { type: "img", "*": "cat.jpg" });  // "/files/img/cat.jpg"
+```
 
 
+## Auth
 
+```jsx
+function App(props) {
+  return (
+    <Routes>
+      <Route path="/" element={<PublicPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/protected" element={<RequireAuth><ProtectedPage /></RequireAuth>} />
+    </Routes>
+  )
+}
+
+function LoginPage() {
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";   // get page to redirect
+  // ...some login process...
+  navigate(from, {replace: true}); // redirect to desired page
+}
+
+function RequireAuth({ children }) {
+  let auth = useAuth();
+  let location = useLocation(); // desired page
+  if (!auth.user) {
+    // not loggedin - redirect to the /login page
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+  return children;
+}
+```
+
+
+## withRouter (v5 only)
+```jsx
+class Component extends React.Component {
+  render() {
+    const { match, location, history } = this.props;
+
+    return <div>...</div>;
+  }
+}
+const ComponentWithRouter = withRouter(Component);
+```

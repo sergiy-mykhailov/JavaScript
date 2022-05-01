@@ -151,19 +151,36 @@ class MyComponent extends React.Component {
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary';
+import Home from './Home'
 
-const Home = lazy(() => import('./routes/Home'));
+const Dashboard = lazy(() => import('./routes/Dashboard'));
 const About = lazy(() => import('./routes/About'));
 
 const App = () => (
   <ErrorBoundary> // Если какой-то модуль не загружается (сбоя сети), это вызовет ошибку.
     <Router>
-    <Suspense fallback={<div>Loading...</div>}> // fallback - любой React-элемент
       <Routes>
-        <Route path="/" element={<Home />} />   // lazy- компонент должен рендериться внутри компонента Suspense
-        <Route path="/about" element={<About />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />  // route with static imported component
+          <Route                              // route with dynamic imported component
+            path="about"
+            element={
+              <Suspense fallback={<>>Loading...</>}> // fallback - любой React-элемент
+                <About />                            // lazy-компонент должен рендериться внутри компонента Suspense
+              </Suspense>
+            }
+          />
+          <Route
+            path="dashboard/*"
+            element={
+              <Suspense fallback={<>>Loading...</>}>
+                <Dashboard />
+              </Suspense>
+            }
+          />
+          <Route path="*" element={<NotFountPage />} />
+        </Route>
       </Routes>
-    </Suspense>
     </Router>
   </ErrorBoundary>
 );
