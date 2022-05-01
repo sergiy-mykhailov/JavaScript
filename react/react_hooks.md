@@ -1,6 +1,5 @@
 # React Hooks
 
-[docs](https://reactjs.org/docs/hooks-reference.html)
 
 ## Rules of Hooks
 
@@ -11,7 +10,10 @@
 * Use `eslint-plugin-react-hooks`!
 
 
-## useState - State Hook
+## react hooks
+[react hooks](https://reactjs.org/docs/hooks-reference.html)
+
+### useState - State Hook
 
 `const [state, setState] = useState(initialState);` - add some local state to function component.
 
@@ -36,7 +38,7 @@ setState(prevState => {
 ```
 
 
-## useEffect - Effect Hook
+### useEffect - Effect Hook
 
 ```jsx
 useEffect(function hookFunction() {
@@ -52,28 +54,18 @@ useEffect(function hookFunction() {
 * `comparisonArray` - array with current state/props for comparison with previous state/props (similar to `shouldComponentUpdate`).
 
 
-## useLayoutEffect
+### useLayoutEffect
 
 Идентичен useEffect, но этот хук запускается синхронно после всех изменений DOM. 
 Используйте его для чтения макета из DOM и синхронного повторного рендеринга.
 
 
-## useContext
+### useContext
 
 `const value = useContext(ContextObject);` - lets you subscribe to React context without introducing nesting.
 
 
-## useReducer
-
-`const [state, dispatch] = useReducer(reducer, initialState, init);` - lets you manage local state of complex components with a reducer.
-
-###### Params:
-* `reducer` - (state, action) => newState
-* `initialState` - any
-* `init` - (initialArg) => initialState
-
-
-## useCallback
+### useCallback
 
 ```jsx
 const memoizedCallback = useCallback(() => {}, comparisonArray); // Возвращает мемоизированный колбэк.
@@ -81,7 +73,7 @@ const memoizedCallback = useCallback(() => {}, comparisonArray); // Возвра
 вернёт мемоизированную версию колбэка, который изменяется только, если изменяются значения одной из зависимостей.
 
 
-## useMemo
+### useMemo
 
 ```jsx
 const memoizedValue  = useMemo(() => {}, comparisonArray); // Возвращает мемоизированное значение.
@@ -90,7 +82,7 @@ const memoizedValue  = useMemo(() => {}, comparisonArray); // Возвращае
 функция, переданная useMemo, запускается во время рендеринга.
 
 
-## useRef
+### useRef
 
 ```jsx
 const refContainer = useRef(initialValue);
@@ -99,7 +91,7 @@ return <input ref={refContainer} type="text" />
 возвращает изменяемый ref-объект, свойство .current которого инициализируется переданным аргументом (initialValue)
 
 
-## Custom Hooks
+### Custom Hooks
 
 ```jsx
 import React, { useState, useEffect } from 'react';
@@ -130,7 +122,21 @@ function Component2(props) {
 ```
 
 
-## useSelector()
+## redux hooks
+[react-redux hooks](https://react-redux.js.org/api/hooks)
+
+
+### useReducer
+
+`const [state, dispatch] = useReducer(reducer, initialState, init);` - lets you manage local state of complex components with a reducer.
+
+###### Params:
+* `reducer` - (state, action) => newState
+* `initialState` - any
+* `init` - (initialArg) => initialState
+
+
+### useSelector()
 ```tsx
 const result = useSelector(selector, equality)
 ```
@@ -153,16 +159,106 @@ const numCompletedTodos = useSelector(completedTodosSelector)
 ```
 
 
-## useDispatch()
+### useDispatch()
 Returns a reference to the dispatch function from the Redux store.
 ```jsx
 const dispatch = useDispatch()
 ```
 
 
-## useStore()
+### useStore()
 Returns a reference to the same Redux store that was passed in to the `<Provider>` component.
 ```jsx
 const store = useStore()
+```
+
+
+## router hooks (v6)
+[react-router hooks](https://reactrouter.com/docs/en/v6/api)
+
+### useOutletContext
+```jsx
+function Parent() {
+  const [count, setCount] = React.useState(0);
+  return <Outlet context={[count, setCount]} />;
+}
+function Child() {
+  const [count, setCount] = useOutletContext();
+  return <button onClick={() => setCount((c) => c + 1)}>{count}</button>;
+}
+```
+
+### useOutlet()
+Returns the element for the child route at this level of the route hierarchy.
+
+### useHref(string)
+Returns a URL that may be used to link to the given to location, even outside of React Router.
+
+### useLocation()
+Returns the current location object.
+```jsx
+let location = useLocation();
+```
+
+### useNavigationType()
+Returns the current type of navigation or how the user came to the current page (returns: "POP" | "PUSH" | "REPLACE")
+
+### useMatch(pattern: string)
+Returns match data about a route at the given path relative to the current location.
+Analog `matchPath`.
+
+### useNavigate()
+```jsx
+ let navigate = useNavigate();
+ navigate("../some-path", { replace: true });
+```
+
+### useParams
+Returns an object of key/value pairs of the dynamic params from the current URL that were matched by the `<Route path>`
+```jsx
+function App() {
+  return (
+    <Routes>
+      <Route path="/users/:userId" element={<ProfilePage />} />
+      // ...
+    </Routes>
+  );
+}
+function ProfilePage() {
+  let { userId } = useParams();
+  // ...
+}
+```
+
+### useRoutes
+The `useRoutes` hook is the functional equivalent of `<Routes>`, but it uses JavaScript objects instead of `<Route>` elements.
+
+```jsx
+function App() {
+  let element = useRoutes([
+    {
+      path: "/",
+      element: <Dashboard />,
+      children: [
+        { path: "messages", element: <DashboardMessages /> },
+        { path: "tasks", element: <DashboardTasks /> },
+      ],
+    },
+    { path: "team", element: <AboutPage /> },
+  ]);
+
+  return element;
+}
+```
+
+### useSearchParams
+
+Analog of `useState`, but for current url.
+The `setSearchParams` function works like `navigate()`, but only for the search portion of the URL.
+```jsx
+function App() {
+  let [searchParams, setSearchParams] = useSearchParams();
+  // ...
+}
 ```
 
