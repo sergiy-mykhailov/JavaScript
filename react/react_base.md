@@ -193,23 +193,6 @@ class App extends React.Component {
 ```
 
 
-## Controlled/uncontrolled components
-
-### Controlled
-В **управляемом компоненте**, данные формы обрабатываются React-компонентом.
-Состояние обычно содержится в `state` и обновляется только через вызов `setState()` (в `callback` элемента формы).
-```jsx
-<input type="text" value={this.state.value} onChange={(event) => this.setState({value: event.target.value})} />
-```
-
-### Uncontrolled
-**Неуправляемые компоненты** хранят данные формы прямо в DOM. Чтение значений из DOM происходит через `ref`.
-```jsx
-<input type="text" defaultValue="foo" ref={inputRef} />
-// Use `inputRef.current.value` to read the current value of <input>
-```
-
-
 ## Containers and components
 
 ### Container components

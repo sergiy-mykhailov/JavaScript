@@ -10,10 +10,10 @@
 * Use `eslint-plugin-react-hooks`!
 
 
-## react hooks
+## React hooks
 [react hooks](https://reactjs.org/docs/hooks-reference.html)
 
-### useState - State Hook
+### useState
 
 `const [state, setState] = useState(initialState);` - add some local state to function component.
 
@@ -38,7 +38,7 @@ setState(prevState => {
 ```
 
 
-### useEffect - Effect Hook
+### useEffect
 
 ```jsx
 useEffect(function hookFunction() {
@@ -122,7 +122,7 @@ function Component2(props) {
 ```
 
 
-## redux hooks
+## Redux hooks
 [react-redux hooks](https://react-redux.js.org/api/hooks)
 
 
@@ -173,7 +173,7 @@ const store = useStore()
 ```
 
 
-## router hooks (v6)
+## Router hooks (v6)
 [react-router hooks](https://reactrouter.com/docs/en/v6/api)
 
 ### useOutletContext
