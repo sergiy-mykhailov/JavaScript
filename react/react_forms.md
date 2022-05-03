@@ -156,11 +156,11 @@ const SignupForm = () => {
 };
 ```
 
-### Reset the form
+### Reset/Reinitialize the form
+#### Reset
 Add a reset button with `formik.handleReset` or `<button type="reset">`.
 
-### Reinitialize the form
-#### FormikProps:
+#### Reinitialize with FormikProps:
 - `enableReinitialize?: boolean` - Default is `false`. Control whether `Formik` should reset the form if `initialValues` changes (using deep equality)
 
 ### Form submission
@@ -298,9 +298,7 @@ const ContactForm = (props) => (
 
 ### Visited fields
 
-### Reset the form
-
-### Reinitialize the form
+### Reset/Reinitialize the form
 
 ### Form submission
 

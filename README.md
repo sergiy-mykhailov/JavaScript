@@ -17,6 +17,7 @@
 #### 2.3. [Hooks](react/react_hooks.md)
 #### 2.4. [Store](react/react_store.md)
 #### 2.5. [Routing](react/react_routing.md)
+#### 2.6. [Forms](react/react_forms.md)
 
 ### 3. Git
 #### 3.1. [Git - main commands](git/git_main.md)

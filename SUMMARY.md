@@ -26,6 +26,7 @@
     * [Hooks](react/react_hooks.md)
     * [Store](react/react_store.md)
     * [Routing](react/react_routing.md)
+    * [Forms](react/react_forms.md)
 * [Version control system (Git, Mercurial)](git/git.md)
     * [Main commands (git)](git/git_main.md)
     * [All commands (git)](git/git_all.md)
