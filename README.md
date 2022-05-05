@@ -18,6 +18,7 @@
 #### 2.4. [Store](react/react_store.md)
 #### 2.5. [Routing](react/react_routing.md)
 #### 2.6. [Forms](react/react_forms.md)
+#### 2.7. [Testing](react/react_testing.md)
 
 ### 3. Git
 #### 3.1. [Git - main commands](git/git_main.md)

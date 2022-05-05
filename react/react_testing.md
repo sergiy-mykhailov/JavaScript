@@ -165,3 +165,94 @@ it("should select null after timing out", () => {
 });
 ```
 
+
+## enzyme
+
+[docs](https://enzymejs.github.io/enzyme/)
+
+### Shallow Rendering
+Testing a component as a unit (without child components)
+
+```jsx
+describe('<MyComponent />', () => {
+  it('renders an `.icon-star`', () => {
+    const wrapper = shallow(<MyComponent />);
+    expect(wrapper.find('.icon-star')).to.have.lengthOf(1);
+  });
+  it('renders children when passed in', () => {
+    const wrapper = shallow((<MyComponent><div className="unique" /></MyComponent>));
+    expect(wrapper.contains(<div className="unique" />)).to.equal(true);
+  });
+  it('simulates click events', () => {
+    const onButtonClick = sinon.spy();
+    const wrapper = shallow(<Foo onButtonClick={onButtonClick} />);
+    wrapper.find('button').simulate('click');
+    expect(onButtonClick).to.have.property('callCount', 1);
+  });
+});
+```
+
+### Full DOM Rendering
+Testing components that may interact with DOM APIs or need to test components that are wrapped in higher order components.
+
+```jsx
+describe('<Foo />', () => {
+  it('allows us to set props', () => {
+    const wrapper = mount(<Foo bar="baz" />);
+    expect(wrapper.props().bar).to.equal('baz');
+    wrapper.setProps({ bar: 'foo' });
+    expect(wrapper.props().bar).to.equal('foo');
+  });
+  it('simulates click events', () => {
+    const onButtonClick = sinon.spy();
+    const wrapper = mount((<Foo onButtonClick={onButtonClick} />));
+    wrapper.find('button').simulate('click');
+    expect(onButtonClick).to.have.property('callCount', 1);
+  });
+  it('calls componentDidMount', () => {
+    sinon.spy(Foo.prototype, 'componentDidMount');
+    const wrapper = mount(<Foo />);
+    expect(Foo.prototype.componentDidMount).to.have.property('callCount', 1);
+    Foo.prototype.componentDidMount.restore();
+  });
+});
+```
+
+### Static Rendered Markup
+`render` function generates HTML from your React tree, and you can analyze the resulting HTML structure.
+
+```jsx
+describe('<Foo />', () => {
+  it('renders three `.foo-bar`s', () => {
+    const wrapper = render(<Foo />);
+    expect(wrapper.find('.foo-bar')).to.have.lengthOf(3);
+  });
+  it('renders the title', () => {
+    const wrapper = render(<Foo title="unique" />);
+    expect(wrapper.text()).to.contain('unique');
+  });
+});
+```
+
+
+## react-testing-library vs enzyme
+
+**Enzyme** allows you to access the internal workings of your components. 
+You can read and set the state, and you can mock children to make tests run faster.
+
+**react-testing-library** doesn't give you any access to the implementation details. 
+It renders the components and provides utility methods to interact with them. 
+The idea is that you should communicate with your application in the same way a user would. 
+So rather than set the state of a component you reproduce the actions a user would do to reach that state.
+
+
+## Storybook vs Styleguidist
+
+### Storybook
+**Storybook** is an open source tool for building UI components and pages in isolation.
+[docs](https://storybook.js.org/docs/react/get-started/introduction)
+
+### styleguidist
+**Styleguidist** uses to develop React components in isolation, document them and create a style guide to share documentation with your team.
+[docs](https://react-styleguidist.js.org/docs/getting-started)
+
