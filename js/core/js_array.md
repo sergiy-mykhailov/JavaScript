@@ -3,17 +3,17 @@
 
 [Arrays on MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
-# Properties
+## Properties
 * `Array.prototype.length` - Отражает количество элементов в массиве.
 
-# Methods
-## Методы класса
+## Methods
+### Методы класса
 * `Array.from()` - Создаёт новый экземпляр Array из массивоподобного или итерируемого объекта.
 * `Array.isArray()` - Возвращает true, если значение является массивом, иначе возвращает false.
 * `Array.observe()` - Асинхронно наблюдает за изменениями в массиве, подобно методу Object.observe() для объектов. Метод предоставляет поток изменений в порядке их возникновения.
 * `Array.of()` - Создаёт новый экземпляр Array с переменным количеством аргументов, независимо от числа или типа аргументов. 
 
-## Методы экземпляра объекта
+### Методы экземпляра объекта
 * `Array.prototype.copyWithin(target, start[, end = this.length])`
     Копирует последовательность элементов массива внутри массива.
 * `Array.prototype.fill(value[, start = 0[, end = this.length]])`
@@ -99,8 +99,8 @@
 [[1], [2], [3], [4]].reduce((acc, x) => acc.concat(x * 2), []); // [2, 4, 6, 8]
 ```
 
-# Sorting
-## `Array.prototype.sort([compareFunction])`
+## Sorting
+### `Array.prototype.sort([compareFunction])`
 Сортирует элементы массива на месте и возвращает отсортированный массив.
 ###### Параметры   
 * `compareFunction` - Указывает функцию, определяющую порядок сортировки. Если опущен, 

@@ -1,8 +1,8 @@
 # Function
 ***
 
-# Closures
-## Using Closures for Private Variables
+## Closures
+### Using Closures for Private Variables
 ```javascript
 function createAnimal(name, job) {
   // "Private" variables here:
@@ -22,23 +22,23 @@ function createAnimal(name, job) {
 
 ```
 
-# declaration
+## declaration
 
-# arguments array
+## arguments array
 
-# invocation
+## invocation
 
-# this
+## this
 `this` ссылается на контекст выполняемой функции.
 
-## Global контекст
+### Global контекст
 За пределами каких-либо функций `this` ссылается на глобальный объект вне зависимости от режима (строгий или нестрогий).
 ```javascript
 this === window;  // true: window - глобальный объект в браузере
 this === global;  // true: global - глобальный объект в Node
 ```
 
-## Function контекст
+### Function контекст
 по умолчанию будет использоваться объект global.
 ```javascript
 function f1(){ return this; }
@@ -73,7 +73,7 @@ whatsThisArrow.apply(obj); // 'Global'
 funcArrow(obj);            // 'Global'
 ```
 
-## Object контекст
+### Object контекст
 ```javascript
 const test = {
   prop: 42,
@@ -82,18 +82,18 @@ const test = {
 console.log(test.func()); // expected output: 42
 ```
 
-## Class контекст
+### Class контекст
 Когда функция используется как конструктор (с ключевым словом `new`), `this` связано с создаваемым новым объектом.
 
-# arrow functions
-## Can arrow function be a constructor?
+## arrow functions
+### Can arrow function be a constructor?
 ```
   constructor = () => {}
   ^^^^^^^^^^^
 SyntaxError: Classes may not have a field named 'constructor'
 ```
 
-# decorators
+## decorators
 ```javascript
 function decorator(func) {
   return function() {
@@ -106,7 +106,7 @@ const decoratedFunction = decorator(someFunction);
 decoratedFunction(1, 2) // 'hello decorator'
 ```
 
-# recursion
+## recursion
 The maximal recursion depth is limited by JavaScript engine.
 - 10 000 - ok (browser, node)
 - more then 10 000 - Uncaught InternalError: too much recursion (browser, node)

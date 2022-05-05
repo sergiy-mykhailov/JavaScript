@@ -66,7 +66,7 @@ emitter.on('error', (err) => {
 emitter.emit("error", new Error("Error occured while handling the request"));
 ```
 
-# try catch
+## try catch
 ```javascript
 try {
    // .. пробуем выполнить код ..

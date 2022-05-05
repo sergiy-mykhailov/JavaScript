@@ -3,12 +3,12 @@
 
 [Dates on MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
-# Properties
+## Properties
 * `Date.prototype` - прототип объекта Date.
 
-# Methods
+## Methods
 
-## Конструктор объекта Date:
+### Конструктор объекта Date:
 ```
 new Date();
 new Date(value);
@@ -16,7 +16,7 @@ new Date(dateString);
 new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
 ```
 
-## Методы класса Date
+### Методы класса Date
 * `Date.now()` - Возвращает числовое значение, соответствующее текущему времени — количество миллисекунд,
    прошедших с 1 января 1970 года 00:00:00 по UTC.
 * `Date.parse()` - Разбирает строковое представление даты и возвращает количество миллисекунд с 1 января 1970 года 00:00:00
@@ -24,7 +24,7 @@ new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
 * `Date.UTC()` - Принимает те же самые параметры, что и самый длиный вариант конструктора (то есть, от 2 до 7)
    и возвращает количество миллисекунд, прошедших с 1 января 1970 года 00:00:00 по UTC. 
 
-## Методы экземпляра объекта Date
+### Методы экземпляра объекта Date
 * `Date.prototype.getDate()`
    Возвращает день месяца (1-31) указанной даты по местному времени.
 * `Date.prototype.getDay()`
@@ -62,7 +62,7 @@ new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
    Устанавливает объект Date во время, представляемое количеством миллисекунд, 
    прошедших с 1 января 1970 года 00:00:00 по UTC (отрицательное значение устанавливает даты до этого момента).
 
-# Formats
+## Formats
 
 * `Date.prototype.toDateString()`
     Возвращает часть, содержащую только дату объекта Date в качестве человеко-читаемой строки.
@@ -90,7 +90,7 @@ new Date(year, month[, day[, hour[, minute[, second[, millisecond]]]]]);
 * `Date.prototype.valueOf()`
     Возвращает примитивное значение объекта Date.    
 
-# Timezones
+## Timezones
 
 * `Date.prototype.getTimezoneOffset()`
    Возвращает смещение часового пояса в минутах для текущей локали.

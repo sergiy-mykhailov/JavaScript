@@ -1,7 +1,7 @@
 # OOP
 ***
 
-# function as constructor
+## function as constructor
 ```javascript
 function User(name) {
   // this = {};     // (неявно)
@@ -11,12 +11,12 @@ function User(name) {
 const user = new User('Valera')
 ```
 
-# `prototype` vs `__proto__ `
+## `prototype` vs `__proto__ `
 `prototype` - свойство класса, указывает на родительский объект.
 
 `__proto__` - свойство класса/экземпляра, геттер/сеттер для `[[Prototype]]`
 
-# Chain of prototypes
+## Chain of prototypes
 ```javascript
 var a = { a: 1 };// a ---> Object.prototype ---> null
 var o = ["yo", "hello", "?"]; // o ---> Array.prototype ---> Object.prototype ---> null
@@ -39,7 +39,7 @@ var b = Object.create(a);   // b ---> a ---> Object.prototype ---> null
 var c = Object.create(b);   // c ---> b ---> a ---> Object.prototype ---> null
 ```
 
-# ООП в функциональном стиле
+## ООП в функциональном стиле
 ```javascript
 function ParentClass(param1, param2) {
   // локальные переменные и функции доступны только внутри
@@ -93,7 +93,7 @@ instanceClass.publicMethod();
 instanceClass.childPublicProperty = 'other value';
 ```
 
-# ООП в прототипном стиле
+## ООП в прототипном стиле
 ```javascript
 // 1. конструктор Parent
 function ParentClass(param1) {
@@ -126,7 +126,7 @@ ChildClass.prototype.publicMethod = function() {
 }
 ```
 
-# ООП в ES6
+## ООП в ES6
 ```javascript
 class ParentClass {
   // конструктор

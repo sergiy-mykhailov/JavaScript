@@ -5,7 +5,7 @@
 
 JavaScript это прототипно-ориентированный, мультипарадигменный язык, который поддерживает объектно-ориентированный, императивный и декларативный (функциональное программирование) стили программирования.
 
-## 1. JavaScript - core language
+## 1. [JavaScript - core language](js_core.md)
 ### 1.1 [Data types](core/js_data_types.md)
 ### 1.2 [Operators](core/js_operators.md)
 ### 1.3 [Number](core/js_number.md)

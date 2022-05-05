@@ -1,12 +1,15 @@
 # Data types
 ***
 
-## primitive types:
+## types
+
+### primitive types:
   undefined, boolean, number, string, bigint и symbol(ES6)
 
-## non-primitive types:
+### non-primitive types:
   null, object
 
+### Examples
 ```javascript
 typeof null           // object (ошибка в языке, сохраняется для совместимости, null – это отдельный тип данных)
 typeof Math           // object
@@ -22,9 +25,9 @@ typeof Symbol('Hi')   // symbol (New ES6)
 ```
 
 
-# 2. Type conversion
+## Type conversion
 
-## Численное преобразование
+### Численное преобразование
 ```javascript
 var a = +"123";         // 123
 var a = Number("123");  // 123
@@ -38,7 +41,7 @@ true / false | 1 / 0
 '25'         | 25
 'abc'        | NaN
 
-## Логическое преобразование
+### Логическое преобразование
 ```javascript
 alert( !!"0" ); // true
 alert( !!" " ); // любые непустые строки, даже из пробелов - true!
@@ -59,7 +62,7 @@ alert( undefined == 0 );  // false, т.к. это undefined (без преобр
 alert( undefined < 0 );   // false, т.к. undefined -> NaN
 ```
 
-## Type coercion
+### Type coercion
 ```javascript
 true + false             // 1 + 0 -> 1
 12 / "6"                 // 12 / 6 ->
