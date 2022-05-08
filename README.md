@@ -52,27 +52,36 @@
 #### 9.1 [Main commands](docker/commands.md)
 #### 9.2 [Dockerfile](docker/dockerfile.md)
 
-### 10. TypeScript
-#### 10.1. [Core language](ts/ts.md)
+### 10. [TypeScript](ts/ts.md)
+#### 10.1 [Usage](ts/core/ts_usage.md)
+#### 10.2 [Types](ts/core/ts_type.md)
+#### 10.3 [Class](ts/core/ts_class.md)
+#### 10.4 [Enum](ts/core/ts_enum.md)
+#### 10.5 [Interface](ts/core/ts_interface.md)
+#### 10.6 [Generics](ts/core/ts_generic.md)
+
+
+## Architecture
+### 1. [OOP](architecture/OOP.md)
+### 2. [Big-O](architecture/big_O.md)
+### 3. [Programming paradigm](architecture/programming_paradigm.md)
+### 4. Design Principles
+#### 4.1 [Coupling](architecture/principles/coupling.md)
+#### 4.2 [Cohesion](architecture/principles/cohesion.md)
+#### 4.3 [SOLID](architecture/principles/solid.md)
+#### 4.4 [KISS](architecture/principles/KISS.md)
+#### 4.5 [DRY](architecture/principles/DRY.md)
+#### 4.6 [YAGNI](architecture/principles/YAGNI.md)
+#### 4.7 [Inversion of Control](architecture/principles/IoC.md)
+#### 4.8 [Dependency Injection](architecture/principles/dependency_injection.md)
+#### 4.9 [Resource Acquisition Is Initialization](architecture/principles/RAII.md)
+### 5 [Functional programming](architecture/functional_programming.md)
+
+
+## Client-server
+### 1. [MVC](client-server/MVC.md)
+### 2. [REST](client-server/REST.md)
 
 ## Other
 
 ### 1. [Soft skills](other/soft_skills.md)
-
-### 2. [OOP](other/OOP.md)
-### 3. [Big-O](other/big_O.md)
-
-### 4. Design Principles
-#### 4.1 [Coupling](other/coupling.md)
-#### 4.2 [Cohesion](other/cohesion.md)
-#### 4.3 [SOLID](other/solid.md)
-#### 4.4 [KISS](other/KISS.md)
-#### 4.5 [DRY](other/DRY.md)
-#### 4.6 [YAGNI](other/YAGNI.md)
-#### 4.7 [Inversion of Control](other/IoC.md)
-#### 4.8 [Dependency Injection](other/dependency_injection.md)
-#### 4.9 [Resource Acquisition Is Initialization](other/RAII.md)
-### 5 [Functional programming](other/functional_programming.md)
-### 6 [Programming paradigm](other/programming_paradigm.md)
-### 7 [MVC](other/MVC.md)
-### 8 [REST](other/REST.md)

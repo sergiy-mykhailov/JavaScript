@@ -60,29 +60,35 @@
         * [Interface](ts/core/ts_interface.md)
         * [Enum](ts/core/ts_enum.md)
         * [Usage](ts/core/ts_usage.md)
+        * [Generics](ts/core/ts_generic.md)
     * Cheat sheet
         * [Types](ts/cheat_sheets/ts_types.png)
         * [Class](ts/cheat_sheets/ts_classes.png)
         * [Interface](ts/cheat_sheets/ts_interfaces.png)
         * [CFA](ts/cheat_sheets/ts_cfa.png)
 
+## Architecture
+
+* [OOP](architecture/OOP.md)
+* [Big-O](architecture/big_O.md)
+* Design Principles
+  * [Coupling](architecture/principles/coupling.md)
+  * [Cohesion](architecture/principles/cohesion.md)
+  * [SOLID](architecture/principles/solid.md)
+  * [KISS](architecture/principles/KISS.md)
+  * [DRY](architecture/principles/DRY.md)
+  * [YAGNI](architecture/principles/YAGNI.md)
+  * [Inversion of Control](architecture/principles/IoC.md)
+  * [Dependency Injection](architecture/principles/dependency_injection.md)
+  * [Resource Acquisition Is Initialization](architecture/principles/RAII.md)
+* [Functional programming](architecture/functional_programming.md)
+* [Programming paradigm](architecture/programming_paradigm.md)
+
+## Client-server
+
+* [MVC](client-server/MVC.md)
+* [REST](client-server/REST.md)
+
 ## Other
 
 * [Soft skills](other/soft_skills.md)
-* [OOP](other/OOP.md)
-* [Big-O](other/big_O.md)
-* Design Principles
-    * [Coupling](other/coupling.md)
-    * [Cohesion](other/cohesion.md)
-    * [SOLID](other/solid.md)
-    * [KISS](other/KISS.md)
-    * [DRY](other/DRY.md)
-    * [YAGNI](other/YAGNI.md)
-    * [Inversion of Control](other/IoC.md)
-    * [Dependency Injection](other/dependency_injection.md)
-    * [Resource Acquisition Is Initialization](other/RAII.md)
-* [Functional programming](other/functional_programming.md)
-* [Programming paradigm](other/programming_paradigm.md)
-
-* [MVC](other/MVC.md)
-* [REST](other/REST.md)

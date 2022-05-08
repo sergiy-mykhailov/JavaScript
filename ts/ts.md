@@ -8,6 +8,7 @@
 ### [Class](core/ts_class.md)
 ### [Enum](core/ts_enum.md)
 ### [Interface](core/ts_interface.md)
+### [Generics](core/ts_generic.md)
 
 ## Cheat Sheets
 ### [Types:](cheat_sheets/ts_types.png)
