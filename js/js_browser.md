@@ -1,10 +1,10 @@
 # **JavaScript - browser**
 
-## 1. DOM
+## DOM
 
-## 2. JS Forms, Forms API
+## JS Forms, Forms API
 
-## 3. Events
+## Events
 
 ##### Проверить, является ли событие отменяемым:
 ```javascript
@@ -27,14 +27,14 @@ event.stopPropagation();
 event.stopImmediatePropagation();
 ```
 
-## 4. BOM (window, screen, location, history, navigator, cookie)
-## 5. CSS Object Model
-## 6. Web Storages
-## 7. Regular expressions
-## 8. JSON
-## 9. AJAX
+## BOM (window, screen, location, history, navigator, cookie)
+## CSS Object Model
+## Web Storages
+## Regular expressions
+## JSON
+## AJAX
 
-## 10. Web Workers API
+## Web Workers API
 **Web Workers** makes it possible to run a script operation in a background thread separate 
 from the main execution thread of a web application.
 
@@ -55,7 +55,41 @@ from the main execution thread of a web application.
 - `WorkerNavigator` - Represents the identity and state of the user agent (the client)
 
 
+## Fetch API
 
+```javascript
+let response = await fetch(url, {
+  method: "GET", // POST, PUT, DELETE, etc.
+  headers: {
+    // значение этого заголовка обычно ставится автоматически,
+    // в зависимости от тела запроса
+    "Content-Type": "text/plain;charset=UTF-8"
+  },
+  body: undefined, // string, FormData, Blob, BufferSource или URLSearchParams
+  referrer: "about:client", // или "" для того, чтобы не послать заголовок Referer, или URL с текущего источника
+  referrerPolicy: "no-referrer-when-downgrade", // no-referrer, origin, same-origin...
+  mode: "cors", // same-origin, no-cors
+  credentials: "same-origin", // omit, include
+  cache: "default", // no-store, reload, no-cache, force-cache или only-if-cached
+  redirect: "follow", // manual, error
+  integrity: "", // контрольная сумма, например "sha256-abcdef1234567890"
+  keepalive: false, // true
+  signal: undefined, // AbortController, чтобы прервать запрос
+  window: window // null
+})
+```
+###### Params:
+- url – URL для отправки запроса.
+- options – дополнительные параметры
+- response
+  - response.status – HTTP-код ответа,
+  - response.ok – true, если статус ответа в диапазоне 200-299.
+  - response.headers – похожий на Map объект с HTTP-заголовками.
+  - response.text() – возвращает ответ как обычный текст,
+  - response.json() – преобразовывает ответ в JSON-объект,
+  - response.formData() – возвращает ответ как объект FormData (кодировка form/multipart),
+  - response.blob() – возвращает объект как Blob (бинарные данные с типом),
+  - response.arrayBuffer() – возвращает ответ как ArrayBuffer (низкоуровневые бинарные данные),
 
 
 
