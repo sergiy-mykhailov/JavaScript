@@ -53,3 +53,34 @@ REST может позволить расширить функционально
 - `PUT /articles/1` — для полной замены ресурса с идентификатором «1»
 - `DELETE /articles/1` — удаляет статью с идентификатором «1»
 
+## Идемпотентный метод
+
+Метод HTTP является идемпотентным, если повторный идентичный запрос, сделанный один или несколько раз подряд, 
+имеет один и тот же эффект, не изменяющий состояние сервера.
+
+### Tips
+- Корректно реализованные методы `GET`, `HEAD`, `PUT` и `DELETE` идемпотентны
+- возвращаемые запросами коды статуса могут отличаться
+- `DELETE` с функциональностью удалить последнюю запись - **НЕ идемпотентный**!
+
+## Richardson Maturity Model
+
+### Level 0: The Swamp of POX
+- single URI over HTTP
+- single HTTP method - usually `POST`, accepting all operations supported by the service.
+- there is no well defined resources, and messaging is done in ‘xml’, ‘json’ or other text formats.
+
+### Level 1: Resources
+- many URIs
+- single HTTP method (`POST`)
+- each URI identify one resource, so each resource can be addressed individually
+
+### Level 2: HTTP Verbs
+- many URIs
+- many HTTP methods (many HTTP status codes)
+
+### Level 3: Hypermedia Controls
+- many URIs
+- many HTTP methods (many HTTP status codes)
+- resource describes own capabilities (usually in the response)
+- resource describes own interactions (usually in the response)
