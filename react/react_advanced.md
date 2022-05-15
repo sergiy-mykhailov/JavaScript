@@ -289,3 +289,52 @@ class DataProvider extends React.Component {
 - **concurrent rendering** - it lets React prepare multiple versions of the UI at the same time. (React 18)
 
 
+## Server side rendering
+
+### renderToString()
+Рендерит React-элемент в исходный HTML и возвращает его в виде строки.
+```jsx
+ReactDOMServer.renderToString(element)
+```
+Доступен в окружении сервера и браузера.
+
+### renderToStaticMarkup()
+Похож на метод `renderToString`, но не создаёт дополнительных DOM-атрибутов, таких как `data-reactroot`, используемых внутри React. 
+```jsx
+ReactDOMServer.renderToStaticMarkup(element)
+```
+Доступен в окружении сервера и браузера.
+
+### renderToNodeStream()
+Рендерит React-элемент в исходный HTML. Возвращает поток для чтения, который выводит HTML-строку. 
+HTML из потока идентичен тому, что возвращает `ReactDOMServer.renderToString`.
+```jsx
+ReactDOMServer.renderToNodeStream(element)
+```
+Метод используется только на сервере.
+
+### renderToStaticNodeStream()()
+Похож на метод `renderToNodeStream`, но не создаёт дополнительных DOM-атрибутов, таких как `data-reactroot`, используемых внутри React.
+```jsx
+ReactDOMServer.renderToStaticNodeStream(element)
+```
+Метод используется только на сервере.
+
+### hydrate()
+То же, что и `render()`, но используется для гидратации контейнера, HTML-содержимое которого было отрендерено с помощью `ReactDOMServer`. 
+React попытается присоединить обработчики событий к уже существующей разметке.
+```
+ReactDOM.hydrate(element, container[, callback])
+```
+
+### Advantages
+- **Quick initial access**
+- **Great for SEO**: the search engines don’t need to run your JavaScript to read and index your content. CSR gets indexed as well, but not as fast as SSR.
+
+### Disadvantages
+- **Slower page transitions**: browsing from page to page is often much slower with SSR than on CSR. With SSR you’re basically rendering your app twice.
+- **Vulnerability**: SSR sites are harder to keep secure because they have a bigger surface to attack than CSR sites.
+- **Complex caching**: configuring your cache is usually more complex on SSR sites than CSR sites.
+- **Server cost**: SSR often needs a bigger and more powerful server to provide high-performance than CSR.
+- **Higher latency**: SSR sites tend to get a high latency if you get lots of traffic at the same time, which delays/slows down the browsing experience for everyone.
+- **More complicated to develop**
