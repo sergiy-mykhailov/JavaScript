@@ -88,6 +88,9 @@
 
 * [MVC](client-server/MVC.md)
 * [REST](client-server/REST.md)
+* [Network](client-server/network.md)
+* [Auth](client-server/auth.md)
+* [Security](client-server/security.md)
 
 ## Other
 
