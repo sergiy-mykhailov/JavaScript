@@ -190,3 +190,106 @@ Domain Name System - система доменных имён — компьют
 - **Запись PTR** (pointer) обратная DNS-запись или запись указателя связывает IP-адрес хоста с его каноническим именем.
 - **Запись SOA** (Start of Authority) или начальная запись зоны указывает, на каком сервере хранится эталонная информация о данном домене, содержит контактную информацию лица, ответственного за данную зону
 - **Запись SRV** (server selection) указывает на серверы для сервисов, используется, в частности, для Jabber и Active Directory.
+
+
+## CDN
+Content Delivery Network — географически распределённая сетевая инфраструктура, 
+позволяющая оптимизировать доставку и дистрибуцию содержимого конечным пользователям в сети Интернет.
+
+### Преимущества
+- Ускоренный доступ к содержимому, меньше задержки на «узких местах» интернета
+- При пропадании связности сети ресурс продолжает частично выполнять свою работу
+- Улучшенная статистика и контроль популярности ресурсов
+- Устойчивость к DDoS
+
+### Недостатки
+- Работает только со статическим содержимым
+- Задержки кэширования
+
+
+## Connection limits
+### Max connections per host
+- Firefox, Chrome, Safari, Opera, iOS, Android - 6
+- IE8 - 6, IE10 - 8, IE11 - 13
+
+### Max URL length
+* IE: 2,083 characters
+* Edge: 2,083 characters
+* Google Chrome: 32,779 characters
+* Mozilla Firefox: more than 64,000 characters
+* Apple Safari: more than 64,000 characters
+* Google Android: 8,192 characters
+
+Maximum URL length for web servers and CDNs may differ from browsers.
+
+### Max payload limit
+No limits, depends on servers.
+
+### Max response limit
+No limits, depends on servers.
+
+### Timeout limit
+Depends on browsers/servers.
+
+
+## Compression
+
+### Three levels of compression:
+#### File format compression
+Some file formats(jpeg, gif...) are compressed with specific optimized methods 
+
+#### End-to-end compression
+On the path between the server and the client the compression occurs in the server:
+- The browser sends an `Accept-Encoding` header with the algorithm it supports and its order of precedence.
+- The server picks one, uses it to compress the body of the response and uses the `Content-Encoding` header to tell the browser the algorithm it has chosen.
+
+#### Hop-by-hop compression
+Similar to end-to-end compression, but the compression occurs between any two nodes on the path between the client and the server:
+- The `node1` sends an `TE` header with the algorithm it supports.
+- The `node2` picks one, uses it to compress the body of the response and uses the `Transfer-Encoding` header to tell the `node1` the algorithm it has chosen.
+
+
+## Chunked transfer
+
+- Отсутствует заголовок `Content-Length`
+- Использование заголовка `Transfer-Encoding: chunked`
+- Для отделения записей размеров блоков (частей) от их содержания используется разделитель CRLF (как строка: `\r\n`; как байты в формате HEX: `0x0D`, `0x0A`).
+- Схематическое блока: `<длина блока в HEX><CRLF><содержание блока><CRLF>`
+- Схематическое последнего блока: `0<CRLF><CRLF>`
+
+
+## Cache
+
+### Cache types
+* Приватный (**private**) кеш браузера - Приватный кеш предназначен для отдельного пользователя.
+* Общий (**shared**) прокси-кеш - Кеш совместного использования, который сохраняет ответы, чтобы их потом могли использовать разные пользователи.
+
+### Примеры данных, которые могут кешироваться:
+* Успешно загруженные ресурсы: ответ `200 OK` на запрос методом `GET` HTML-документов, изображений или файлов.
+* Постоянные перенаправления: ответ `301 Moved Permanently` («перемещено навсегда»).
+* Сообщения об ошибках: ответ `404 Not Found` («не найдено»).
+* Неполные результаты: ответ `206 Partial Content` («частичное содержимое»).
+* Ответы на запросы отличные от `GET`, если есть что-либо, подходящее для использования в качестве ключа кеша.
+
+### Заголовки
+```
+Cache-Control: no-cache, no-store, must-revalidate  // Полное отсутствие кеширования
+Cache-Control: no-cache                             // Кешировать, но проверять актуальность
+Cache-Control: private                              // ответ предназначен отдельному пользователю и не должен храниться в кеше совместного использования
+Cache-Control: public                               // ответ можно сохранять в любом кеше
+Cache-Control: max-age=31536000                     // максимальное время(секунды), в течение которого ресурс считается "свежим"
+Cache-Control: must-revalidate                      // кеш обязан проверять статус ресурсов с истёкшим сроком действия
+```
+
+
+## Performance testing tools
+### PageSpeed
+**PageSpeed Insights API** (PSI) позволяет получать отчеты о скорости загрузки страниц на мобильных устройствах и компьютерах, 
+а также советы, как эту скорость увеличить.
+
+### Dynatrace
+Dynatrace APM – мониторинг приложений, полный end-to-end обзор производительности приложений или сайтов от пользователя до базы данных, 
+автоматизация инфраструктуры.
+
+### Lighthouse
+Lighthouse is an open-source, automated tool for improving the performance, quality, and correctness of your web apps. 
