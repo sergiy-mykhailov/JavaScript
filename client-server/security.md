@@ -52,12 +52,49 @@ CSRF (cross-site request forgery) — межсайтовая подделка з
 - с каждым действием ассоциируется уникальный одноразовый ключ
 
 
-## Same-origin policy
+## CORS
+
+**Cross-origin resource sharing** — технология современных браузеров, которая позволяет предоставить веб-страницам доступ к ресурсам другого домена.
+
+### Алгоритм:
+- Браузер добавляет заголовок `Origin: www.a.com` (домен сайта, с которого происходит запрос) и `Host: www.b.com` (домен, на который происходит запрос).
+- Сервер `www.b.com` разрешает получение данных и указывает список разрешенных доменов в заголовке `Access-Control-Allow-Origin: http://www.a.com`
+
+### Простые запросы
+Простые запросы не проходят проверку CORS если удовлетворяют следующим условиям:
+- Допустимые методы для запроса: `GET` ,`HEAD`, `POST` 
+- CORS-безопасные заголовки (кроме авто-генерируемых): `Accept`, `Accept-Language`, `Content-Language`, `Content-Type`
+- Допустимыми значениями заголовка `Content-Type`: `application/x-www-form-urlencoded`, `multipart/form-data`, `text/plain`
+- Не должны быть зарегистрированы обработчики событий на любой объект `XMLHttpRequestUpload` используемый в запросе (prop `XMLHttpRequest.upload`)
+- В запросе не должен использоваться объект типа `ReadableStream`
+
+### Предварительные запросы (preflight request)
+Отправляется HTTP-запрос методом `OPTIONS` к ресурсу на другом домене, если выполняется любое из следующих условий:
+- **Если** используется методы: `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`
+- **Или если**, запрос включает заголовки (кроме авто-генерируемых): `Accept`, `Accept-Language`, `Content-Language`, `Content-Type`, `Last-Event-ID`, `DPR`, `Save-Data`, `Viewport-Width`, `Width`
+- **Или если** `Content-Type` содержит значение, отличное от следующих: `application/x-www-form-urlencoded`, `multipart/form-data`, `text/plain`
+- **Или если** зарегистрированы обработчиков событий на объекте `XMLHttpRequestUpload`.
+- **Или если** объект `ReadableStream` используется в запросе.
+
+### Request headers
+- `Origin: <origin>` - indicates the origin of the cross-site access request or preflight request.
+- `Access-Control-Request-Method: <method>` - lets the server know what HTTP method will be used (preflight request)
+- `Access-Control-Request-Headers: <header>[, <header>]` -  lets the server know what HTTP headers will be used (preflight request)
+
+### Response headers
+- `Access-Control-Allow-Origin: <origin> | *` - указывает браузеру разрешить этому источнику доступ к ресурсу
+- `Access-Control-Expose-Headers: <header>[, <header>]` - lets a server whitelist headers that browsers are allowed to access.
+- `Access-Control-Max-Age: <delta-seconds>` -  indicates how long the results of a preflight request can be cached.
+- `Access-Control-Allow-Credentials: true` -  Indicates whether or not the response to the request can be exposed when the `credentials` flag is `true`.
+- `Access-Control-Allow-Methods: <method>[, <method>]*` - specifies the method or methods allowed when accessing the resource.
+- `Access-Control-Allow-Headers: <header>[, <header>]*` - indicates which HTTP headers can be used when making the actual request (preflight request).
+
+### Same-origin policy
 
 Определяет как документ или скрипт, загруженный из одного источника (origin), может взаимодействовать с ресурсом из другого источника.
-Две страницы имеют одинаковый origin если протокол , порт (если указан), и хост одинаковы для обоих страниц.
+Две страницы имеют одинаковый origin если протокол, порт (если указан), и хост одинаковы для обеих страниц.
 
-### Tips
+#### Tips
 * Свойства `window.location.*` нельзя читать, но можно менять.
 * Домены третьего уровня с общим наддоменом могут поменять `document.domain` на их общий домен второго уровня, и тогда они смогут взаимодействовать без ограничений.
 * IE не включает порт в понятие источника. Кроме того, он позволяет снять ограничения для конкретного сайта включением в доверенную зону.
@@ -65,7 +102,7 @@ CSRF (cross-site request forgery) — межсайтовая подделка з
 
 
 ## JSONP
-JSONP — это дополнение к базовому формату JSON. Он предоставляет способ запросить данные с сервера, 
+**JSONP** — это дополнение к базовому формату JSON. Он предоставляет способ запросить данные с сервера, 
 находящегося в другом домене — операцию, запрещённую в типичных веб-браузерах из-за политики ограничения домена.
 ```jsx
 // возвращает данные JSON, обёрнутые в вызов функции parseResponse()
