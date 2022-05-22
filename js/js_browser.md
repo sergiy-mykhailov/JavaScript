@@ -2,7 +2,38 @@
 
 ## DOM
 
-## JS Forms, Forms API
+
+## FormData API
+```html
+<form id="formElem">
+  <input type="text" name="firstName" value="John">
+  <input type="file" name="picture" accept="image/*">
+  <input type="submit">
+</form>
+<script>
+  formElem.onsubmit = async (e) => {
+    e.preventDefault();
+    let response = await fetch('/article/formdata/post/user-avatar', {
+      method: 'POST',
+      body: new FormData(formElem)
+    });
+    let result = await response.json();
+  };
+</script>
+```
+### Methods
+* `formData.append(name, value)` – добавляет к объекту поле с именем name и значением `value`,
+* `formData.append(name, blob, fileName)` – добавляет поле, как будто в форме имеется элемент `<input type="file">`, третий аргумент `fileName` устанавливает имя файла (не имя поля формы), как будто это имя из файловой системы пользователя,
+* `formData.delete(name)` – удаляет поле с заданным именем name,
+* `formData.get(name)` – получает значение поля с именем name,
+* `formData.getAll(name)` - Возвращает массив всех значений ассоциированных с переданным ключом `name`.
+* `formData.has(name)` – если существует поле с именем name, то возвращает `true`, иначе `false`
+* `formData.set(name, value)` - аналог `append()`, но удаляет все уже имеющиеся поля с именем `name` и только затем добавляет новое.
+* `formData.set(name, blob, fileName)`
+* `formData.keys()` - возвращает iterator со списком всех ключей объекта FormData
+* `formData.entries()` - возвращает iterator со списком пар `[key, value]` объекта FormData
+* `formData.values()` - возвращает iterator со списком всех значений объекта FormData
+
 
 ## Events
 
@@ -27,12 +58,14 @@ event.stopPropagation();
 event.stopImmediatePropagation();
 ```
 
+
 ## BOM (window, screen, location, history, navigator, cookie)
 ## CSS Object Model
 ## Web Storages
 ## Regular expressions
 ## JSON
 ## AJAX
+
 
 ## Web Workers API
 **Web Workers** makes it possible to run a script operation in a background thread separate 
