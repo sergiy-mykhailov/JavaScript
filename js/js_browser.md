@@ -125,6 +125,44 @@ let response = await fetch(url, {
   - response.arrayBuffer() – возвращает ответ как ArrayBuffer (низкоуровневые бинарные данные),
 
 
+## DOM loaded event
 
+### DOMContentLoaded
+Браузер полностью загрузил HTML, было построено DOM-дерево, но внешние ресурсы, такие как картинки и стили, могут быть ещё не загружены.
+```jsx
+document.addEventListener("DOMContentLoaded", function() {});
+```
+Tips:
+- Скрипты `<script>` загружаются до `DOMContentLoaded`
+- Скрипты с атрибутом `async`, не блокируют `DOMContentLoaded`.
+- Скрипты, сгенерированные динамически при помощи `document.createElement('script')` и затем добавленные на страницу, не блокируют `DOMContentLoaded`.
 
+### load
+Браузер загрузил HTML и внешние ресурсы (картинки, стили и т.д.).
+```jsx
+ window.onload = function() {}
+```
 
+### beforeunload
+Если посетитель собирается уйти со страницы или закрыть окно, обработчик beforeunload попросит дополнительное подтверждение.
+```jsx
+window.onbeforeunload = function() {
+  return "Есть несохранённые изменения. Всё равно уходим?";
+};
+```
+
+### unload
+Пользователь покидает страницу.
+```jsx
+window.addEventListener("unload", function() {
+  navigator.sendBeacon("/analytics", JSON.stringify(analyticsData)); // POST-запрос. Размер данных ограничен 64 Кб. 
+});
+```
+Tips:
+- `sendBeacon()` посылает данные в фоне. Переход к другой странице не задерживается: браузер покидает страницу, но всё равно выполняет sendBeacon.
+
+### readyState
+Показывает текущее состояние загрузки:
+* "loading" – документ загружается.
+* "interactive" – документ был полностью прочитан.
+* "complete" – документ был полностью прочитан и все ресурсы (такие как изображения) были тоже загружены.
