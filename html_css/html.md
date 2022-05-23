@@ -161,6 +161,12 @@ HTML (Hypertext Markup Language) - это код, который использ�
 * **pattern**: С помощью регулярного выражения, определяет шаблон, которому должны соответствовать вводимые данные.
 * Атрибут формы **novalidate**: Отменяет проверку для полей с типом `email` и `url`, а также для полей с атрибутом `pattern` или `required`.
 
+### Атрибут target
+- `_blank` - Загружает страницу в новую вкладку браузера.
+- `_self` - Загружает страницу в текущую вкладку.
+- `_parent` - Загружает страницу во фрейм-родитель; если фреймов нет, то это значение работает как _self.
+- `_top` - Отменяет все фреймы и загружает страницу в окне браузера; если фреймов нет, то это значение работает как _self.
+
 
 ## <iframe>
 ```html
@@ -191,6 +197,19 @@ HTML (Hypertext Markup Language) - это код, который использ�
   };
 </script>
 ```
+
+### Communication with popups:
+* From the opener window: `window.open` – opens a new window and returns a reference to it,
+* From the popup: `window.opener` – is a reference to the opener window from a popup.
+
+### Communication with iframes
+* `window.frames` – a collection of nested window objects,
+* `window.parent`, `window.top` are the references to parent and top windows,
+* `iframe.contentWindow` is the `window` inside an `<iframe>` tag.
+
+### Possible actions with different Origin:
+* Change the `location` of another window (write-only access).
+* Post a message to it. (`postMessage()`)
 
 
 ## Semantic Elements in HTML
