@@ -47,6 +47,7 @@
     * [Advanced Level](ext/extjs_advanced.md)
     * [Pro Level](ext/extjs_pro.md)
 * [HTML, CSS](html_css/html_css.md)
+    * [HTML](html_css/html.md)
     * [CSS](html_css/css.md)
 * [Sequelize](sequelize/sequelize.md)
     * [Project initialization](sequelize/sequelize_init.md)

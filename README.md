@@ -43,7 +43,8 @@
 #### 6.4. [Pro Level](ext/extjs_pro.md)
 
 ### 7. HTML, CSS
-#### 7.1. [CSS](html_css/css.md)
+#### 7.1. [HTML](html_css/html.md)
+#### 7.2. [CSS](html_css/css.md)
 
 ### 8. Sequelize
 #### 8.1 [Project initialization](sequelize/sequelize_init.md)
