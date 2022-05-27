@@ -67,6 +67,9 @@
         * [Class](ts/cheat_sheets/ts_classes.png)
         * [Interface](ts/cheat_sheets/ts_interfaces.png)
         * [CFA](ts/cheat_sheets/ts_cfa.png)
+* SQL
+    * [SQL architecture](sql/sql_architecture.md)
+    * [SQL queries](sql/sql_queries.md)
 
 ## Architecture
 

@@ -61,6 +61,9 @@
 #### 10.5 [Interface](ts/core/ts_interface.md)
 #### 10.6 [Generics](ts/core/ts_generic.md)
 
+### SQL
+#### [SQL architecture](sql/sql_architecture.md)
+#### [SQL queries](sql/sql_queries.md)
 
 ## Architecture
 ### 1. [OOP](architecture/OOP.md)
