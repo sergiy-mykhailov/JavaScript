@@ -25,36 +25,66 @@
     - `passive`: Boolean - обработчик никогда не вызовет `preventDefault()`.
 
 
-## FormData API
-```html
-<form id="formElem">
-  <input type="text" name="firstName" value="John">
-  <input type="file" name="picture" accept="image/*">
-  <input type="submit">
-</form>
-<script>
-  formElem.onsubmit = async (e) => {
-    e.preventDefault();
-    let response = await fetch('/article/formdata/post/user-avatar', {
-      method: 'POST',
-      body: new FormData(formElem)
-    });
-    let result = await response.json();
-  };
-</script>
+## BOM
+### window
+The Window interface represents a window containing a DOM document.
+- `window.navigator` - represents the state and the identity of the user agent (browser).
+  - `navigator.userAgent` - Returns the user agent string for the current browser.
+  - `navigator.cookieEnabled` - Returns false if setting a cookie will be ignored and true otherwise.
+- `window.console` - reference to the console object.
+- `window.crypto` - Returns the browser crypto object.
+- `window.document` - Returns a reference to the document that the window contains.
+- `window.history` - Returns a reference to the history object.
+- `window.location` - Gets/sets the location, or current URL, of the window object.
+- `window.localStorage` - Returns a reference to the local storage object.
+- `window.window` - Returns a reference to the current window.
+- `window.alert()` - Displays an alert dialog.
+- `window.postMessage()` - Provides a secure means for one window to send a string of data to another window, which need not be within the same domain as the first.
+- `window.scrollTo(x, y)` - Прокрутка документа до указанных координат.
+- `window.screen` - Returns a reference to the screen object (height, width and other screen info)
+
+
+## DOM loaded event
+
+### DOMContentLoaded
+Браузер полностью загрузил HTML, было построено DOM-дерево, но внешние ресурсы, такие как картинки и стили, могут быть ещё не загружены.
+```jsx
+document.addEventListener("DOMContentLoaded", function() {});
 ```
-### Methods
-* `formData.append(name, value)` – добавляет к объекту поле с именем name и значением `value`,
-* `formData.append(name, blob, fileName)` – добавляет поле, как будто в форме имеется элемент `<input type="file">`, третий аргумент `fileName` устанавливает имя файла (не имя поля формы), как будто это имя из файловой системы пользователя,
-* `formData.delete(name)` – удаляет поле с заданным именем name,
-* `formData.get(name)` – получает значение поля с именем name,
-* `formData.getAll(name)` - Возвращает массив всех значений ассоциированных с переданным ключом `name`.
-* `formData.has(name)` – если существует поле с именем name, то возвращает `true`, иначе `false`
-* `formData.set(name, value)` - аналог `append()`, но удаляет все уже имеющиеся поля с именем `name` и только затем добавляет новое.
-* `formData.set(name, blob, fileName)`
-* `formData.keys()` - возвращает iterator со списком всех ключей объекта FormData
-* `formData.entries()` - возвращает iterator со списком пар `[key, value]` объекта FormData
-* `formData.values()` - возвращает iterator со списком всех значений объекта FormData
+Tips:
+- Скрипты `<script>` загружаются до `DOMContentLoaded`
+- Скрипты с атрибутом `async`, не блокируют `DOMContentLoaded`.
+- Скрипты, сгенерированные динамически при помощи `document.createElement('script')` и затем добавленные на страницу, не блокируют `DOMContentLoaded`.
+
+### load
+Браузер загрузил HTML и внешние ресурсы (картинки, стили и т.д.).
+```jsx
+ window.onload = function() {}
+```
+
+### beforeunload
+Если посетитель собирается уйти со страницы или закрыть окно, обработчик beforeunload попросит дополнительное подтверждение.
+```jsx
+window.onbeforeunload = function() {
+  return "Есть несохранённые изменения. Всё равно уходим?";
+};
+```
+
+### unload
+Пользователь покидает страницу.
+```jsx
+window.addEventListener("unload", function() {
+  navigator.sendBeacon("/analytics", JSON.stringify(analyticsData)); // POST-запрос. Размер данных ограничен 64 Кб. 
+});
+```
+Tips:
+- `sendBeacon()` посылает данные в фоне. Переход к другой странице не задерживается: браузер покидает страницу, но всё равно выполняет sendBeacon.
+
+### readyState
+Показывает текущее состояние загрузки:
+* "loading" – документ загружается.
+* "interactive" – документ был полностью прочитан.
+* "complete" – документ был полностью прочитан и все ресурсы (такие как изображения) были тоже загружены.
 
 
 ## Events
@@ -109,37 +139,43 @@ event.preventDefault();
 ```javascript
 event.stopPropagation();
 ```
-#### stopImmediatePropagation() 
+#### stopImmediatePropagation()
 Остановка всплытия (останавливает обработку событий на текущем элементе):
 ```javascript
 event.stopImmediatePropagation();
 ```
 
 
-## BOM
-### window
-The Window interface represents a window containing a DOM document.
-- `window.navigator` - represents the state and the identity of the user agent (browser).
-  - `navigator.userAgent` - Returns the user agent string for the current browser.
-  - `navigator.cookieEnabled` - Returns false if setting a cookie will be ignored and true otherwise.
-- `window.console` - reference to the console object.
-- `window.crypto` - Returns the browser crypto object.
-- `window.document` - Returns a reference to the document that the window contains.
-- `window.history` - Returns a reference to the history object.
-- `window.location` - Gets/sets the location, or current URL, of the window object.
-- `window.localStorage` - Returns a reference to the local storage object.
-- `window.window` - Returns a reference to the current window.
-- `window.alert()` - Displays an alert dialog.
-- `window.postMessage()` - Provides a secure means for one window to send a string of data to another window, which need not be within the same domain as the first.
-- `window.scrollTo(x, y)` - Прокрутка документа до указанных координат.
-- `window.screen` - Returns a reference to the screen object (height, width and other screen info)
-
-
-## CSS Object Model
-## Web Storages
-## Regular expressions
-## JSON
-## AJAX
+## FormData API
+```html
+<form id="formElem">
+  <input type="text" name="firstName" value="John">
+  <input type="file" name="picture" accept="image/*">
+  <input type="submit">
+</form>
+<script>
+  formElem.onsubmit = async (e) => {
+    e.preventDefault();
+    let response = await fetch('/article/formdata/post/user-avatar', {
+      method: 'POST',
+      body: new FormData(formElem)
+    });
+    let result = await response.json();
+  };
+</script>
+```
+### Methods
+* `formData.append(name, value)` – добавляет к объекту поле с именем name и значением `value`,
+* `formData.append(name, blob, fileName)` – добавляет поле, как будто в форме имеется элемент `<input type="file">`, третий аргумент `fileName` устанавливает имя файла (не имя поля формы), как будто это имя из файловой системы пользователя,
+* `formData.delete(name)` – удаляет поле с заданным именем name,
+* `formData.get(name)` – получает значение поля с именем name,
+* `formData.getAll(name)` - Возвращает массив всех значений ассоциированных с переданным ключом `name`.
+* `formData.has(name)` – если существует поле с именем name, то возвращает `true`, иначе `false`
+* `formData.set(name, value)` - аналог `append()`, но удаляет все уже имеющиеся поля с именем `name` и только затем добавляет новое.
+* `formData.set(name, blob, fileName)`
+* `formData.keys()` - возвращает iterator со списком всех ключей объекта FormData
+* `formData.entries()` - возвращает iterator со списком пар `[key, value]` объекта FormData
+* `formData.values()` - возвращает iterator со списком всех значений объекта FormData
 
 
 ## Web Workers API
@@ -200,44 +236,110 @@ let response = await fetch(url, {
   - response.arrayBuffer() – возвращает ответ как ArrayBuffer (низкоуровневые бинарные данные),
 
 
-## DOM loaded event
+## Bundlers
 
-### DOMContentLoaded
-Браузер полностью загрузил HTML, было построено DOM-дерево, но внешние ресурсы, такие как картинки и стили, могут быть ещё не загружены.
-```jsx
-document.addEventListener("DOMContentLoaded", function() {});
+### Webpack
+
+#### Webpack config
+```js
+const path = require('path')
+
+module.exports = {
+  entry: './app/index.js',
+  module: {
+    rules: [
+      { test: /\.svg$/, use: 'svg-inline-loader' },
+      { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
+      { test: /\.ts$/, use: 'ts-loader' },
+      { test: /\.(js)$/, use: 'babel-loader' }
+    ]
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index_bundle.js'
+  },
+  plugins: [
+    new HtmlWebpackPlugin(),
+    new webpack.EnvironmentPlugin({ 'NODE_ENV': 'production' }),
+    new MiniCssExtractPlugin()
+  ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new HtmlMinimizerPlugin(),
+      new CssMinimizerPlugin(),
+      new UglifyJsPlugin(),
+      new TerserPlugin()
+    ],
+  },
+  mode: 'production' // аналог EnvironmentPlugin
+}
 ```
-Tips:
-- Скрипты `<script>` загружаются до `DOMContentLoaded`
-- Скрипты с атрибутом `async`, не блокируют `DOMContentLoaded`.
-- Скрипты, сгенерированные динамически при помощи `document.createElement('script')` и затем добавленные на страницу, не блокируют `DOMContentLoaded`.
 
-### load
-Браузер загрузил HTML и внешние ресурсы (картинки, стили и т.д.).
-```jsx
- window.onload = function() {}
+#### Algorithm
+1. Вебпак получает точку входа, находящуюся в `./app/index.js`
+2. Он анализирует операторы `import` / `require` и создает граф зависимостей
+3. Вебпак начинает собирать бандл, преобразовывая код с помощью соответствующих лоадеров
+4. Он собирает бандл и помещает его в `dist/index_bundle.js`
+
+#### Entry Points
+```
+entry: './path/to/my/entry/file.js',
+entry: ['./src/file_1.js', './src/file_2.js'],
+entry: {
+    app: './src/app.js',
+    adminApp: './src/adminApp.js',
+},
+entry: {
+  a2: 'dependingfile.js',
+  b2: {
+    dependOn: 'a2', // 'a2' must be loaded before current entry point is loaded.
+    import: './src/app.js',
+  },
+},
 ```
 
-### beforeunload
-Если посетитель собирается уйти со страницы или закрыть окно, обработчик beforeunload попросит дополнительное подтверждение.
-```jsx
-window.onbeforeunload = function() {
-  return "Есть несохранённые изменения. Всё равно уходим?";
+#### Output
+```js
+// single entry point:
+module.exports = {
+  output: {
+    filename: 'bundle.js',
+  },
+};
+// Multiple Entry Points:
+module.exports = {
+  entry: {
+    app: './src/app.js',
+    search: './src/search.js',
+  },
+  output: {
+    filename: '[name].js',   // writes to disk: ./dist/app.js, ./dist/search.js
+    path: __dirname + '/dist',
+  },
 };
 ```
 
-### unload
-Пользователь покидает страницу.
-```jsx
-window.addEventListener("unload", function() {
-  navigator.sendBeacon("/analytics", JSON.stringify(analyticsData)); // POST-запрос. Размер данных ограничен 64 Кб. 
-});
-```
-Tips:
-- `sendBeacon()` посылает данные в фоне. Переход к другой странице не задерживается: браузер покидает страницу, но всё равно выполняет sendBeacon.
+#### Plugins
+- HtmlWebpackPlugin - создает `index.html` в директории с бандлом и автоматически добавляет в него ссылку на бандл.
+- EnvironmentPlugin - устанавливает переменные окружения, например: `process.env.NODE_ENV`
+- HtmlMinimizerPlugin - optimizes and minifies HTML
+- CssMinimizerPlugin - optimizes and minifies CSS
+- UglifyjsWebpackPlugin - minifies JavaScript
+- TerserPlugin - minifies and minimize JavaScript.
 
-### readyState
-Показывает текущее состояние загрузки:
-* "loading" – документ загружается.
-* "interactive" – документ был полностью прочитан.
-* "complete" – документ был полностью прочитан и все ресурсы (такие как изображения) были тоже загружены.
+### Babel
+**Babel** is a toolchain that is mainly used to convert `ECMAScript 2015+` code 
+into a backwards compatible version of JavaScript in current and older browsers or environments. 
+
+#### Babel can do:
+* Transform syntax
+* Polyfill features that are missing in your target environment (through a third-party polyfill such as core-js)
+* Source code transformations (codemods)
+
+
+## CSS Object Model
+## Web Storages
+## Regular expressions
+## JSON
+## AJAX
