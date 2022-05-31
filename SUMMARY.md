@@ -71,30 +71,28 @@
     * [SQL architecture](sql/sql_architecture.md)
     * [SQL queries](sql/sql_queries.md)
 
-## Architecture
+* Architecture
+    * [OOP](architecture/OOP.md)
+    * [Big-O](architecture/big_O.md)
+    * Design Principles
+        * [Coupling](architecture/principles/coupling.md)
+        * [Cohesion](architecture/principles/cohesion.md)
+        * [SOLID](architecture/principles/solid.md)
+        * [KISS](architecture/principles/KISS.md)
+        * [DRY](architecture/principles/DRY.md)
+        * [YAGNI](architecture/principles/YAGNI.md)
+        * [Inversion of Control](architecture/principles/IoC.md)
+        * [Dependency Injection](architecture/principles/dependency_injection.md)
+        * [Resource Acquisition Is Initialization](architecture/principles/RAII.md)
+    * [Functional programming](architecture/functional_programming.md)
+    * [Programming paradigm](architecture/programming_paradigm.md)
 
-* [OOP](architecture/OOP.md)
-* [Big-O](architecture/big_O.md)
-* Design Principles
-  * [Coupling](architecture/principles/coupling.md)
-  * [Cohesion](architecture/principles/cohesion.md)
-  * [SOLID](architecture/principles/solid.md)
-  * [KISS](architecture/principles/KISS.md)
-  * [DRY](architecture/principles/DRY.md)
-  * [YAGNI](architecture/principles/YAGNI.md)
-  * [Inversion of Control](architecture/principles/IoC.md)
-  * [Dependency Injection](architecture/principles/dependency_injection.md)
-  * [Resource Acquisition Is Initialization](architecture/principles/RAII.md)
-* [Functional programming](architecture/functional_programming.md)
-* [Programming paradigm](architecture/programming_paradigm.md)
-
-## Client-server
-
-* [MVC](client-server/MVC.md)
-* [REST](client-server/REST.md)
-* [Network](client-server/network.md)
-* [Auth](client-server/auth.md)
-* [Security](client-server/security.md)
+* Client-server
+    * [MVC](client-server/MVC.md)
+    * [REST](client-server/REST.md)
+    * [Network](client-server/network.md)
+    * [Auth](client-server/auth.md)
+    * [Security](client-server/security.md)
 
 ## Other
 

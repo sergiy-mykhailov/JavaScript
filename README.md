@@ -65,29 +65,28 @@
 #### [SQL architecture](sql/sql_architecture.md)
 #### [SQL queries](sql/sql_queries.md)
 
-## Architecture
-### 1. [OOP](architecture/OOP.md)
-### 2. [Big-O](architecture/big_O.md)
-### 3. [Programming paradigm](architecture/programming_paradigm.md)
-### 4. Design Principles
-#### 4.1 [Coupling](architecture/principles/coupling.md)
-#### 4.2 [Cohesion](architecture/principles/cohesion.md)
-#### 4.3 [SOLID](architecture/principles/solid.md)
-#### 4.4 [KISS](architecture/principles/KISS.md)
-#### 4.5 [DRY](architecture/principles/DRY.md)
-#### 4.6 [YAGNI](architecture/principles/YAGNI.md)
-#### 4.7 [Inversion of Control](architecture/principles/IoC.md)
-#### 4.8 [Dependency Injection](architecture/principles/dependency_injection.md)
-#### 4.9 [Resource Acquisition Is Initialization](architecture/principles/RAII.md)
-### 5 [Functional programming](architecture/functional_programming.md)
+### Architecture
+#### 1. [OOP](architecture/OOP.md)
+#### 2. [Big-O](architecture/big_O.md)
+#### 3. [Programming paradigm](architecture/programming_paradigm.md)
+#### 4. Design Principles
+##### 4.1 [Coupling](architecture/principles/coupling.md)
+##### 4.2 [Cohesion](architecture/principles/cohesion.md)
+##### 4.3 [SOLID](architecture/principles/solid.md)
+##### 4.4 [KISS](architecture/principles/KISS.md)
+##### 4.5 [DRY](architecture/principles/DRY.md)
+##### 4.6 [YAGNI](architecture/principles/YAGNI.md)
+##### 4.7 [Inversion of Control](architecture/principles/IoC.md)
+##### 4.8 [Dependency Injection](architecture/principles/dependency_injection.md)
+##### 4.9 [Resource Acquisition Is Initialization](architecture/principles/RAII.md)
+#### 5 [Functional programming](architecture/functional_programming.md)
 
-
-## Client-server
-### 1. [MVC](client-server/MVC.md)
-### 2. [REST](client-server/REST.md)
-### 3. [Network](client-server/network.md)
-### 4. [Auth](client-server/auth.md)
-### 5. [Security](client-server/security.md)
+### Client-server
+#### 1. [MVC](client-server/MVC.md)
+#### 2. [REST](client-server/REST.md)
+#### 3. [Network](client-server/network.md)
+#### 4. [Auth](client-server/auth.md)
+#### 5. [Security](client-server/security.md)
 
 
 ## Other
