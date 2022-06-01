@@ -52,6 +52,22 @@ isNaN("blabla")   // true: "blabla" преобразованно в число.
 ```
 **P.S.** Более надёжный метод для проверки: `Number.isNaN()`
 
+### Number.isNaN()
+```javascript
+Number.isNaN(NaN);                    // true
+Number.isNaN(undefined);              // false
+Number.isNaN({});                     // false
+Number.isNaN(true);                   // false
+Number.isNaN(null);                   // false
+Number.isNaN(37);                     // false
+Number.isNaN("37.37");                // false
+Number.isNaN("");                     // false
+Number.isNaN("37,5");                 // false
+Number.isNaN(new Date());             // false
+Number.isNaN(new Date().toString());  // false
+Number.isNaN("blabla");               // false
+```
+
 ### isFinite(testValue)
 **isFinite()** определяет, является ли переданное значение конечным числом.
 * `testValue` - литерал или переменная.
