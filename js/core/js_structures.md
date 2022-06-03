@@ -66,26 +66,26 @@ mySet.has(5);    // false, 5 было удалено
 - WeakSet не итерируем, так как нет возможности получить список текущих хранимых в WeakSet объектов.
 
 ## Objects vs. Maps
-Map|Object
-:----|:----
-does not contain any keys by default|has a prototype, so it contains default keys that could collide with your own keys
-keys can be any value|keys must be either a `String` or a `Symbol`
-has original insertion order | -
-has `size` property - number of items | -
-iterable | not iterable
-optimized for add\remove key-value pairs | not optimized
-No serialization | `JSON.stringify()` and `JSON.parse()`
+| Map                                      | Object                                                                             |
+|:-----------------------------------------|:-----------------------------------------------------------------------------------|
+| does not contain any keys by default     | has a prototype, so it contains default keys that could collide with your own keys |
+| keys can be any value                    | keys must be either a `String` or a `Symbol`                                       |
+| has original insertion order             | -                                                                                  |
+| has `size` property - number of items    | -                                                                                  |
+| iterable                                 | not iterable                                                                       |
+| optimized for add\remove key-value pairs | not optimized                                                                      |
+| No serialization                         | `JSON.stringify()` and `JSON.parse()`                                              |
 
 ## Tree vs Graph
-Tree|Graph
-:----|:----
-can have a bidirectional path between two nodes | can have only one path between two nodes.
-no root node | The root is the topmost node in the tree data structure. It does not have any parent node.
-can have a loop structure | cannot have a loop structure
-more complex (loop structure) |	less complex
-BFS (Breadth-First Search) and DFS (Depth First Search) | pre-order, in-order, and post-order
-network-like model structure | hierarchical-like model structure.
-has many neighbors | has one parent, many children
+| Graph                                                   | Tree                                                                                       |
+|:--------------------------------------------------------|:-------------------------------------------------------------------------------------------|
+| can have a bidirectional path between two nodes         | can have only one path between two nodes.                                                  |
+| no root node                                            | The root is the topmost node in the tree data structure. It does not have any parent node. |
+| can have a loop structure                               | cannot have a loop structure                                                               |
+| more complex (loop structure)                           | 	less complex                                                                              |
+| BFS (Breadth-First Search) and DFS (Depth First Search) | pre-order, in-order, and post-order                                                        |
+| network-like model structure                            | hierarchical-like model structure.                                                         |
+| has many neighbors                                      | has one parent, many children                                                              |
 
 ### BFS (Breadth-First Search) Algorithm
 - Step 1: Define a Queue
