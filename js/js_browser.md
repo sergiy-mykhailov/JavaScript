@@ -4,9 +4,9 @@
 
 ### document
 - `document.activeElement` - Returns the Element that currently has focus.
-- `document.body` - Returns the <body> or <frameset> node of the current document.
-- `document.forms` - Returns an HTMLCollection of the <form> elements in the document.
-- `document.head` - Returns the <head> element of the current document.
+- `document.body` - Returns the `<body>` or `<frameset>` node of the current document.
+- `document.forms` - Returns an HTMLCollection of the `<form>` elements in the document.
+- `document.head` - Returns the `<head>` element of the current document.
 - `document.location` - Returns the URI of the current document.
 - `document.createElement(name)` - Creates a new element with the given tag name.
 - `document.getElementById(id)` - Returns an object reference to the identified element.
@@ -339,6 +339,60 @@ into a backwards compatible version of JavaScript in current and older browsers 
 
 
 ## CSS Object Model
+**CSS Object Model** представляет собой набор API-интерфейсов, позволяющих манипулировать CSS из JavaScript.
+Это очень похоже на DOM, но для CSS.
+
+### element.style
+element.style reads only inline styles
+```js
+document.body.style.background = 'lightblue'; // --> <body style="background-color: transparent">
+<body> // (color is set in the CSS) --> document.body.style.color --> ""
+```
+
+### Computed Styles
+- `window.getComputedStyle()` returns all styles even if not defined in the CSS
+- `document.body.style` - getter/setter but inline styles only
+- `window.getComputedStyle(document.body)` - the values are read-only
+
+```js
+window.getComputedStyle(elem).backgroundColor;
+window.getComputedStyle(elem)['background-color'];
+window.getComputedStyle(elem).getPropertyValue('background-color');
+// Getting computed styles of pseudo-elements:
+window.getComputedStyle(elem, '::before').width;
+```
+
+### Methods
+```js
+// setting
+elem.style.setProperty('color', 'orange');
+elem.style.setProperty('font-family', 'Georgia, serif', 'important');
+// getting:
+elem.style.getPropertyValue('color');     // orange
+elem.style.item(0)                        // color
+elem.style.item(1)                        // font-family
+// proprty priority:
+elem.style.getPropertyPriority('font-family'); // important
+// removing:
+elem.style.removeProperty('font-family');
+elem.style.item(1);                       // ""
+```
+
+### CSSStyleSheet
+CSSStyleSheet interface представляет одну CSS таблицу стилей.
+```js
+// adding a rule:
+document.styleSheets[0].cssRules.length  // 8
+document.styleSheets[0].insertRule('div { font-size: 1.5em; }', myStylesheet.cssRules.length);
+document.styleSheets[0].cssRules.length  // 9
+// removing a rule:
+document.styleSheets[0].deleteRule(3);
+document.styleSheets[0].cssRules.length  // 8
+// getting styles:
+document.styleSheets[0].cssRules[1].style // like inline styles
+```
+
+
 ## Web Storages
 ## Regular expressions
 ## JSON
