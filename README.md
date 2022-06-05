@@ -14,9 +14,9 @@
 ### 2. React.JS
 #### 2.1. [Base Level](react/react_base.md)
 #### 2.2. [Advanced Level](react/react_advanced.md)
-#### 2.3. [Hooks](react/react_hooks.md)
-#### 2.4. [Store](react/react_store.md)
-#### 2.5. [Routing](react/react_routing.md)
+#### 2.3. [Store](react/react_store.md)
+#### 2.4. [Routing](react/react_routing.md)
+#### 2.5. [Hooks](react/react_hooks.md)
 #### 2.6. [Forms](react/react_forms.md)
 #### 2.7. [Testing](react/react_testing.md)
 

@@ -69,7 +69,7 @@ The store's reducing function will be called with the current state and action o
 ```jsx
 store.dispatch({ type: 'SOME_TYPE', ...additionalData }) // type - required field!
 ```
-if you wrap `createStore` with `applyMiddlewarethe` middleware can provide support for dispatching async actions.
+if you wrap `createStore` with `applyMiddleware` the middleware can provide support for dispatching async actions.
 ```jsx
 function asyncAction(data) {
   return { type: 'ADD_TODO', data }
@@ -98,7 +98,7 @@ You might need this if your app implements code splitting (example, React.lazy),
 ```jsx
 replaceReducer(nextReducer)
 ```
-####### Params
+###### Params
 - **nextReducer** (Function) - The next reducer for the store to use.
 
 ### Example
@@ -392,11 +392,11 @@ function Component({ todoId }) {
 
 
 ## Redux-Thunk vs Redux-Saga
-Redux-Thunk | Redux-Saga
-:----------:|:----------:
-Less boilerplate code | More boilerplate code
-Easy to understand as compared to redux-saga | Difficult to understand as there are multiple concepts to learn like generator functions and redux-saga effects
-May be difficult to scale up | Easy to scale as compared to redux-thunk
-Action creators may hold too much async logic | Action creators stay pure
-May get difficult to test | Comparatively easy to test as all your async logic remains together
+|                  Redux-Thunk                  |                                                   Redux-Saga                                                    |
+|:---------------------------------------------:|:---------------------------------------------------------------------------------------------------------------:|
+|             Less boilerplate code             |                                              More boilerplate code                                              |
+| Easy to understand as compared to redux-saga  | Difficult to understand as there are multiple concepts to learn like generator functions and redux-saga effects |
+|         May be difficult to scale up          |                                    Easy to scale as compared to redux-thunk                                     |
+| Action creators may hold too much async logic |                                            Action creators stay pure                                            |
+|           May get difficult to test           |                       Comparatively easy to test as all your async logic remains together                       |
 

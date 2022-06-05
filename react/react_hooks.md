@@ -37,7 +37,6 @@ setState(prevState => {
 });
 ```
 
-
 ### useEffect
 
 ```jsx
@@ -53,17 +52,14 @@ useEffect(function hookFunction() {
 * `cleanupFunction` - cleanup function that runs after every re-render.
 * `comparisonArray` - array with current state/props for comparison with previous state/props (similar to `shouldComponentUpdate`).
 
-
 ### useLayoutEffect
 
 Идентичен useEffect, но этот хук запускается синхронно после всех изменений DOM. 
 Используйте его для чтения макета из DOM и синхронного повторного рендеринга.
 
-
 ### useContext
 
 `const value = useContext(ContextObject);` - lets you subscribe to React context without introducing nesting.
-
 
 ### useCallback
 
@@ -71,7 +67,6 @@ useEffect(function hookFunction() {
 const memoizedCallback = useCallback(() => {}, comparisonArray); // Возвращает мемоизированный колбэк.
 ```
 вернёт мемоизированную версию колбэка, который изменяется только, если изменяются значения одной из зависимостей.
-
 
 ### useMemo
 
@@ -81,7 +76,6 @@ const memoizedValue  = useMemo(() => {}, comparisonArray); // Возвращае
 будет повторно вычислять мемоизированное значение только тогда, когда значение какой-либо из зависимостей изменилось.
 функция, переданная useMemo, запускается во время рендеринга.
 
-
 ### useRef
 
 ```jsx
@@ -89,7 +83,6 @@ const refContainer = useRef(initialValue);
 return <input ref={refContainer} type="text" />
 ```
 возвращает изменяемый ref-объект, свойство .current которого инициализируется переданным аргументом (initialValue)
-
 
 ### Custom Hooks
 
@@ -125,7 +118,6 @@ function Component2(props) {
 ## Redux hooks
 [react-redux hooks](https://react-redux.js.org/api/hooks)
 
-
 ### useReducer
 
 `const [state, dispatch] = useReducer(reducer, initialState, init);` - lets you manage local state of complex components with a reducer.
@@ -135,15 +127,14 @@ function Component2(props) {
 * `initialState` - any
 * `init` - (initialArg) => initialState
 
-
 ### useSelector()
 ```tsx
 const result = useSelector(selector, equality)
 ```
 ###### Params:
-selector (Function) - `(state) => state.someData` (equivalent to the `mapStateToProps` argument to connect)
-equality (Function) - optional comparison function (can be `shallowEqual` from  react-redux, or `isEqual` from lodash or Immutable.js's comparison capabilities).
-result (any) - value from store
+- **selector** (Function) - `(state) => state.someData` (equivalent to the `mapStateToProps` argument to connect)
+- **equality** (Function) - optional comparison function (can be `shallowEqual` from  react-redux, or `isEqual` from lodash or Immutable.js's comparison capabilities).
+- **result** (any) - value from store
 
 ```jsx
 import { useSelector } from 'react-redux'
@@ -158,13 +149,14 @@ const completedTodosSelector = createSelector(
 const numCompletedTodos = useSelector(completedTodosSelector)
 ```
 
-
 ### useDispatch()
 Returns a reference to the dispatch function from the Redux store.
 ```jsx
-const dispatch = useDispatch()
+function SomeComponent() {
+  const dispatch = useDispatch()
+  return <button onClick={() => dispatch({ type: 'SOME_ACTION' })}>click me</button>
+}
 ```
-
 
 ### useStore()
 Returns a reference to the same Redux store that was passed in to the `<Provider>` component.

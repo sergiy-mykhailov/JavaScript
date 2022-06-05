@@ -165,7 +165,7 @@ const App = () => (
           <Route                              // route with dynamic imported component
             path="about"
             element={
-              <Suspense fallback={<>>Loading...</>}> // fallback - любой React-элемент
+              <Suspense fallback={<>Loading...</>}> // fallback - любой React-элемент
                 <About />                            // lazy-компонент должен рендериться внутри компонента Suspense
               </Suspense>
             }
@@ -173,7 +173,7 @@ const App = () => (
           <Route
             path="dashboard/*"
             element={
-              <Suspense fallback={<>>Loading...</>}>
+              <Suspense fallback={<>Loading...</>}>
                 <Dashboard />
               </Suspense>
             }
@@ -228,7 +228,7 @@ function Component(props) {
 ```jsx
 render(
   <App>
-    <Profiler id="Navigation" onRender={callback}>
+    <Profiler id="Navigation" onRender={onRenderCallback}>
       <Navigation {...props} />
     </Profiler>
     <Main {...props} />
@@ -313,7 +313,7 @@ ReactDOMServer.renderToNodeStream(element)
 ```
 Метод используется только на сервере.
 
-### renderToStaticNodeStream()()
+### renderToStaticNodeStream()
 Похож на метод `renderToNodeStream`, но не создаёт дополнительных DOM-атрибутов, таких как `data-reactroot`, используемых внутри React.
 ```jsx
 ReactDOMServer.renderToStaticNodeStream(element)
@@ -325,6 +325,68 @@ ReactDOMServer.renderToStaticNodeStream(element)
 React попытается присоединить обработчики событий к уже существующей разметке.
 ```
 ReactDOM.hydrate(element, container[, callback])
+```
+
+### Initial state
+#### The server side
+```jsx
+// some handler (example: Express)
+function someRenderHandler(req, res) {
+  // Compile an initial state
+  let initialState = { some: 'data' }
+
+  // Create a new Redux store instance
+  const store = createStore(someReducer, initialState)
+
+  // Render the component to a string
+  const html = renderToString(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  )
+
+  // Grab the initial state from our Redux store
+  const finalState = store.getState()
+
+  // Send the rendered page back to the client
+  res.send(renderFullPage(html, finalState))
+}
+// function renders full html page with state:
+function renderFullPage(html, preloadedState) {
+  return `
+    <!doctype html>
+    <html>
+      <head>
+        <title>Redux Universal Example</title>
+      </head>
+      <body>
+        <div id="root">${html}</div>
+        <script>
+          // WARNING: See the following for security issues around embedding JSON in HTML:
+          // https://redux.js.org/usage/server-rendering#security-considerations
+          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+        </script>
+        <script src="/static/bundle.js"></script>
+      </body>
+    </html>
+    `
+}
+```
+
+#### The client side
+```jsx
+// Create Redux store with state injected by the server
+const store = createStore(someReducer, window.__PRELOADED_STATE__)
+
+// Allow the passed state to be garbage-collected
+delete window.__PRELOADED_STATE__
+
+hydrate(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
 ```
 
 ### Advantages

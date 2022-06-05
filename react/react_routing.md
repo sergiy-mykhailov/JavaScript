@@ -156,7 +156,7 @@ params.toString();      // "campaign=instagram&popular=true",
 ```
 
 
-## <BrowserRouter>
+## `<BrowserRouter>`
 
 ### Tips
 - recommended for browsers
@@ -166,7 +166,7 @@ params.toString();      // "campaign=instagram&popular=true",
 - `window?: object` - `document.defaultView` (returns the `window` object)
 
 
-## <HashRouter>
+## `<HashRouter>`
 
 ### Tips
 - recommended for browsers
@@ -177,7 +177,7 @@ params.toString();      // "campaign=instagram&popular=true",
 - `window?: object` - `document.defaultView` (returns the `window` object)
 
 
-## <NativeRouter>
+## `<NativeRouter>`
 
 ### Tips
 - recommended for React Native app
@@ -187,7 +187,7 @@ params.toString();      // "campaign=instagram&popular=true",
 - `initialIndex?: number;` - defaults to the last index of `initialEntries`
 
 
-## <MemoryRouter>
+## `<MemoryRouter>`
 
 ### Tips
 - recommended for testing
@@ -199,13 +199,13 @@ params.toString();      // "campaign=instagram&popular=true",
 - `initialIndex?: number;` - defaults to the last index of `initialEntries`
 
 
-## <Router>
+## `<Router>`
 
 ### Tips
 - You don't need `<Router>` instead, you should use one of the higher-level routers (`<BrowserRouter>`, `<HashRouter>`, `<StaticRouter>`, `<NativeRouter>`, and `<MemoryRouter>`).
 
 
-## <StaticRouter>
+## `<StaticRouter>`
 
 `<StaticRouter>` is used to render a React Router web app in node (Server side rendering)
 
@@ -213,7 +213,7 @@ params.toString();      // "campaign=instagram&popular=true",
 - `location?: string` - defaults to `"/"`
 
 
-## <Link>
+## `<Link>`
 
 ### Props
 ```tsx
@@ -243,9 +243,9 @@ location.state;
 ```
 
 
-## <NavLink>
+## `<NavLink>`
 
-A <NavLink> is a special kind of <Link> that knows whether or not it is "active"
+A `<NavLink>` is a special kind of `<Link>` that knows whether or not it is "active"
 
 ### Props
 ```tsx
@@ -272,7 +272,7 @@ type NavLinkProps = {
 ```
 
 
-## <Navigate>
+## `<Navigate>`
 
 A `<Navigate>` element changes the current location when it is rendered.
 
@@ -284,7 +284,7 @@ function Component(props) {
 ```
 
 
-## <Outlet>
+## `<Outlet>`
 
 An `<Outlet>` should be used in parent route elements to render their child route elements
 
@@ -312,7 +312,7 @@ function ParentRouteComponent() {
 ```
 
 
-## <Routes>
+## `<Routes>`
 
 ### Props
 ```tsx
@@ -323,7 +323,7 @@ interface RoutesProps {
 ```
 
 
-## <Route>
+## `<Route>`
 
 `<Route>` like an `if` statement, if its `path` matches the current URL, it renders its `element`.
 
