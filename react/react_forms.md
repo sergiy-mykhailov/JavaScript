@@ -180,13 +180,13 @@ Add a reset button with `formik.handleReset` or `<button type="reset">`.
   - Proceed with running your submission handler (i.e.`onSubmit` or `handleSubmit`)
   - you call `setSubmitting(false)` in your handler to finish the cycle
 
-### <Formik>
+### `<Formik>`
 #### Formik render methods
 - `<Formik component>` - `component: ReactNode`
 - `<Formik children>` - `children?: ReactNode | (props: FormikProps) => ReactNode`
 - `<Formik render>` Deprecated in 2.x - `children: (props: FormikProps) => ReactNode`
 
-#### <Formik component>
+#### `<Formik component>`
 ```jsx
 <Formik component={ContactForm} />
 const ContactForm = (props) => (
@@ -198,13 +198,13 @@ const ContactForm = (props) => (
 );
 ```
 
-#### <Formik children>
+#### `<Formik children>`
 ```jsx
 <Formik>{(props) => <ContactForm {...props} />}</Formik>
 <Formik children={ContactForm} />
 ```
 
-#### <Formik render>
+#### `<Formik render>`
 ```jsx
 <Formik render={
   (props) => (
@@ -217,14 +217,14 @@ const ContactForm = (props) => (
 } />
 ```
 
-### <Form>
+### `<Form>`
 ```jsx
  <Form />
  // is identical to this...
  <form onReset={formikProps.handleReset} onSubmit={formikProps.handleSubmit} {...props} />
 ```
 
-### <Field>
+### `<Field>`
 #### Field render methods
 - `<Field as>`
 - `<Field children>`
@@ -251,7 +251,7 @@ const ContactForm = (props) => (
 </Form>
 ```
 
-### <FieldArray>
+### `<FieldArray>`
 #### FieldArray Helpers
 - `push: (obj: any) => void`: Add a value to the end of an array
 - `swap: (indexA: number, indexB: number) => void`: Swap two values in an array
