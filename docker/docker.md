@@ -1,4 +1,5 @@
 # Docker
 
-## 1. Docker - [Main commands](commands.md)
-## 2. Dockerfile - [Dockerfile reference](dockerfile.md)
+## 1. [Main commands](commands.md)
+## 2. [Dockerfile](dockerfile.md)
+## 2. [docker-compose](docker-compose.md)

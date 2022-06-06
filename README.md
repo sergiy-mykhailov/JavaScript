@@ -52,6 +52,7 @@
 ### 9. Docker
 #### 9.1 [Main commands](docker/commands.md)
 #### 9.2 [Dockerfile](docker/dockerfile.md)
+#### 9.3 [docker-compose](docker/docker-compose.md)
 
 ### 10. [TypeScript](ts/ts.md)
 #### 10.1 [Usage](ts/core/ts_usage.md)

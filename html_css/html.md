@@ -76,8 +76,8 @@ HTML (Hypertext Markup Language) - это код, который использ�
 ```
 ```html
 <table>
-    <caption>table title</caption>
-    <thead>
+  <caption>table title</caption>
+  <thead>
     <tr>
      <td> ... </td>
      <td> ... </td> 
@@ -168,7 +168,7 @@ HTML (Hypertext Markup Language) - это код, который использ�
 - `_top` - Отменяет все фреймы и загружает страницу в окне браузера; если фреймов нет, то это значение работает как _self.
 
 
-## <iframe>
+## `<iframe>`
 ```html
 <iframe src="https://www.google.com/" height="500px" width="500px"></iframe>
 <script> // Родительский документ

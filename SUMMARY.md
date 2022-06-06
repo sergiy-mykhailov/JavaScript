@@ -54,6 +54,7 @@
 * [Docker](docker/docker.md)
     * [Main commands](docker/commands.md)
     * [Dockerfile](docker/dockerfile.md)
+    * [docker-compose](docker/docker-compose.md)
 * [TypeScript](ts/ts.md)
     * Core language
         * [Types](ts/core/ts_type.md)
