@@ -1,13 +1,13 @@
 # Node.JS - ExpressJS & MongoDB
 
 ## 1. Installation and Configuration of a Express JS Project
-```js
+```javascript
 const app = express();
 
 // CORS
 app.use(cors);
 
-// redirect to https
+// middlewares
 app.use(redirectMiddleware);
 
 if (config.env.nodeEnv !== 'test') {
@@ -52,7 +52,7 @@ module.exports = app;
 ```
 
 ## 2. Routing
-```js
+```javascript
 // router.js file:
 module.exports = (passport) => {
   const router = Router();
@@ -74,7 +74,7 @@ module.exports = () => {
 ```
 
 ## 3. Middleware
-```js
+```javascript
 module.exports = (req, res, next) => {
   // some logic...
   next();
