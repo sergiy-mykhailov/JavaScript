@@ -1,4 +1,4 @@
-# Основные команды Mercurial
+# Instructions (Основные команды Mercurial)
 
 
 ## 0. Создание / клонирование / добавление репозитория
@@ -36,7 +36,7 @@ hg pull -B master
 hg update
 ```
 
-## 3.Информация по меткам
+## 3. Информация по меткам
 Список всех меток:
 ```
 hg bookmarks
@@ -84,10 +84,8 @@ hg add
 ```
 hg commit -m "first commit"
 ```
-## 7. Проверить работоспособность
 
-
-## 8. Получить изменения из удаленного репозитория (метка master):
+## 7. Получить изменения из удаленного репозитория (метка master):
 Перейти в основную метку "master"
 ```
 hg update master
@@ -97,7 +95,7 @@ hg update master
 hg pull -B master
 ```
 
-## 9. Слияние полученных изменений в свою метку (master -> bookmarkName)
+## 8. Слияние полученных изменений в свою метку (master -> bookmarkName)
 Перейти на ту метку, в которую вы хотите слить свои изменения
 ```
 hg update bookmarkName
@@ -111,9 +109,9 @@ hg merge master
 hg commit -m "merge master into bookmarkName"
 ```
 
-## 10. Проверить работоспособность (после слияния с меткой master)
+## 9. Проверить работоспособность (после слияния с меткой master)
 
-## 11. Слияние своей метки в основную (bookmarkName -> master)
+## 10. Слияние своей метки в основную (bookmarkName -> master)
 Перейти на ту метку, в которую вы хотите слить свои изменения
 ```
 hg update master
@@ -127,7 +125,7 @@ hg merge bookmarkName
 hg commit -m "merge bookmarkName into master"
 ```
 
-## 12. Если изменений небыло, нужно переместить метку master
+## 11. Если изменений не было, нужно переместить метку master
 Перейти в свою метку "bookmarkName"
 ```
 hg update bookmarkName

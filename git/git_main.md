@@ -1,4 +1,4 @@
-# Основные команды git
+# Инструкция (Основные команды git)
 
 
 ## 0. Создание / клонирование / добавление репозитория
@@ -73,15 +73,14 @@ git add --all
 ```
 git commit -m "first commit"
 ```
-## 6. Проверить работоспособность
 
-## 7. Выгрузить ветку "branchName" в удаленный репозиторий
+## 6. Выгрузить ветку "branchName" в удаленный репозиторий
 (Выгрузка с тегами: --tags - все теги; --follow-tags - только Annotated)
 ```
 git push origin branchName
 ```
 
-## 8. Получить изменения из удаленного репозитория (ветка dev):
+## 7. Получить изменения из удаленного репозитория (ветка dev):
 Перейти в основную ветку "dev"
 ```
 git checkout dev
@@ -91,7 +90,7 @@ git checkout dev
 git pull origin dev
 ```
 
-## 9. Слияние полученных изменений в свою ветку (dev -> branchName)
+## 8. Слияние полученных изменений в свою ветку (dev -> branchName)
 Перейти на ту ветку, в которую вы хотите слить свои изменения
 ```
 git checkout branchName
@@ -101,14 +100,14 @@ git checkout branchName
 git merge dev -m "Merge dev into branchName"
 ```
 
-## 10. Проверить работоспособность (после слияния с веткой dev)
+## 9. Проверить работоспособность (после слияния с веткой dev)
 
-## 11. Pull-request
+## 10. Pull-request
 ```
 
 ```
 
-## 12. Слияние Pull-request в основную ветку, используя squash
+## 11. Слияние Pull-request в основную ветку, используя squash
 Перейти в основную ветку "dev":
 ```
 git checkout dev
@@ -119,7 +118,7 @@ git merge branchName --squash
 git commit -m "Merge branchName into dev"
 ```
 
-## 13. Удаление ветки "branchName":
+## 12. Удаление ветки "branchName":
 ```
 git branch -d branchName
 ```
