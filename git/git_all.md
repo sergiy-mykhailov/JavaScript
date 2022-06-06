@@ -246,17 +246,17 @@ ssh-keygen -t rsa -C "user.name@mail.domain"
 ```
 
 ## 16. Как отменить текущие проиндексированные изменения, что произойдет?(reset)
-Сброс HEAD к <commit>. Индекс и рабочая директирия не изменяются:
+Сброс HEAD к `<commit>`. Индекс и рабочая директория не изменяются:
 ```git
 git reset --soft [<commit>]
 git reset --soft HEAD~
 ```
-Сброс HEAD и индекса. Рабочая директирия не изменяются:
+Сброс HEAD и индекса. Рабочая директория не изменяются:
 ```git
 git reset --mixed [<commit>]
 git reset --mixed HEAD~
 ```
-Сброс HEAD, индекса и рабочей директирии:
+Сброс HEAD, индекса и рабочей директории:
 ```git
 git reset --hard [<commit>]
 git reset --hard HEAD~
@@ -281,11 +281,12 @@ git add forgotten_file
 git commit --amend
 ```
 ## 19. Что такое rebase, зачем он нужен, приведи пример использования
-Командой **rebase** можно взять все изменения, которые попали в коммиты на одной из веток, и повторить их на другой:
+
 ```git
 git checkout brancheName
 git rebase master
 ```
+
 ## 20. Как откатить последние 6 коммитов?
 ```git
 git reset --hard HEAD~6
