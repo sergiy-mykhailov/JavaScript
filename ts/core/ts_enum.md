@@ -40,6 +40,14 @@ enum LogLevel {
 type LogLevelStrings = keyof typeof LogLevel;
 // equivalent to:
 // type LogLevelStrings = 'ERROR' | 'WARN' | 'INFO' | 'DEBUG';
+
+enum EntityStatuses {
+  ACTIVE = 'active',
+  DRAFT = 'draft',
+  PENDING = 'pending',
+}
+type StatusesKeys = keyof typeof EntityStatuses;                   // "ACTIVE" | "DRAFT" | "PENDING"
+type StatusesValues = EntityStatuses[keyof typeof EntityStatuses]; // "active" | "draft" | "pending"
 ```
 
 ## const enums

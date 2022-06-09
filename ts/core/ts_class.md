@@ -24,6 +24,8 @@ class Child extends Parent implements Child, OtherChild {
   subclassedMethod(arg1: Type): ReturnType {
     super.subclassedMethod(arg1);
   }
+
+  protected protectedProperty: Type; // accessible only internally within the class or any class that extends it but not externally
 }
 ```
 

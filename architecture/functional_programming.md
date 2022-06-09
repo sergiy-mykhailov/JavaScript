@@ -127,6 +127,27 @@ function sum(a, b) {
 let curriedSum = curry(sum);
 alert( curriedSum(1)(2) ); // 3
 ```
+Универсальная функция каррирования:
+```javascript
+function curry(func) {
+  return function curried(...args) {
+    if (args.length >= func.length) {
+      return func.apply(this, args);
+    } else {
+      return function(...args2) {
+        return curried.apply(this, args.concat(args2));
+      }
+    }
+  };
+}
+function sum(a, b, c) {
+  return a + b + c;
+}
+let curriedSum = curry(sum);
+console.log( curriedSum(1, 2, 3) ); // 6
+console.log( curriedSum(1)(2,3) );  // 6
+console.log( curriedSum(1)(2)(3) ); // 6
+```
 
 ### Partial application
 Частичное применение - это применение к функции некоторых аргументов и возврат новой функции, 
