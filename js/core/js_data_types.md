@@ -65,7 +65,7 @@ alert( undefined < 0 );   // false, т.к. undefined -> NaN
 ### Type coercion
 ```javascript
 true + false             // 1 + 0 -> 1
-12 / "6"                 // 12 / 6 ->
+12 / "6"                 // 12 / 6 -> 2
 "number" + 15 + 3        // "number15" + 3 -> 'number153'
 15 + 3 + "number"        // 18 + "number" -> '18number'
 [1] > null               // '1' > 0  ->  1 > 0  ->  true
