@@ -219,12 +219,12 @@ Semantic HTML refers to syntax that makes the HTML more comprehensible by better
 <header></header>
 <nav></nav>
 <section>
-	<article>
-		<figure>
-			<img>
-			<figcaption></figcaption>
-		</figure>
-	</article>
+  <article>
+    <figure>
+      <img>
+      <figcaption></figcaption>
+    </figure>
+  </article>
 </section>
 <aside></aside>
 <footer></footer>

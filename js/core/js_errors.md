@@ -1,7 +1,7 @@
 # Errors
 ***
 
-##`new Error([message[, fileName[, lineNumber]]])`
+## `new Error([message[, fileName[, lineNumber]]])`
 ```javascript
 try {
   throw new Error('hello error', 'someFile.js', 10);
