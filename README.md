@@ -82,12 +82,15 @@
 ##### 4.9 [Resource Acquisition Is Initialization](architecture/principles/RAII.md)
 #### 5 [Functional programming](architecture/functional_programming.md)
 
-### Client-server
-#### 1. [MVC](client-server/MVC.md)
-#### 2. [REST](client-server/REST.md)
-#### 3. [Network](client-server/network.md)
-#### 4. [Auth](client-server/auth.md)
-#### 5. [Security](client-server/security.md)
+### WEB technologies
+#### 1. [MVC](web/MVC.md)
+#### 2. [REST](web/REST.md)
+#### 3. [Network](web/network.md)
+#### 4. [Auth](web/auth.md)
+#### 5. [Security](web/security.md)
+
+### Test tasks
+#### 1. [JavaScript](test_tasks/js_test_tasks.md)
 
 
 ## Other

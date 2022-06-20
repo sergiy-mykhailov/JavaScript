@@ -88,12 +88,15 @@
     * [Functional programming](architecture/functional_programming.md)
     * [Programming paradigm](architecture/programming_paradigm.md)
 
-* Client-server
-    * [MVC](client-server/MVC.md)
-    * [REST](client-server/REST.md)
-    * [Network](client-server/network.md)
-    * [Auth](client-server/auth.md)
-    * [Security](client-server/security.md)
+* WEB technologies
+    * [MVC](web/MVC.md)
+    * [REST](web/REST.md)
+    * [Network](web/network.md)
+    * [Auth](web/auth.md)
+    * [Security](web/security.md)
+
+* [Test tasks](test_tasks/test_tasks.md)
+    * [JavaScript](test_tasks/js_test_tasks.md)
 
 ## Other
 
