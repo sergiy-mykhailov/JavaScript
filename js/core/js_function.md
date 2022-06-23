@@ -88,9 +88,21 @@ console.log(test.func()); // expected output: 42
 ## arrow functions
 ### Can arrow function be a constructor?
 ```
+class ClassA {
+  constructor() {}
+}
+const a = new ClassA()                 // ok
+
+class ClassB {
   constructor = () => {}
-  ^^^^^^^^^^^
-SyntaxError: Classes may not have a field named 'constructor'
+}
+const b = new ClassB()                 // SyntaxError: Classes may not have a field named 'constructor'
+
+function FunctionConstructorC() {}
+const c = new FunctionConstructorC()   // ok
+
+const FunctionConstructorD = () => {}
+const d = new FunctionConstructorD()   // TypeError: FunctionConstructorD is not a constructor
 ```
 
 ## decorators
