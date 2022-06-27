@@ -80,7 +80,7 @@ window.addEventListener("unload", function() {
 Tips:
 - `sendBeacon()` посылает данные в фоне. Переход к другой странице не задерживается: браузер покидает страницу, но всё равно выполняет sendBeacon.
 
-### readyState
+### document.readyState
 Показывает текущее состояние загрузки:
 * "loading" – документ загружается.
 * "interactive" – документ был полностью прочитан.
