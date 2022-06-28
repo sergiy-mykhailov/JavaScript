@@ -90,6 +90,9 @@
 @media <тип носителя> {
   <стилевые правила>
 }
+// examples:
+@media (max-width: 12450px) { ... } //  ширина viewport меньше или равна 12450px
+@media screen and (min-width: 1000px) and (orientation: landscape) { ...  }
 ```
 **Типы носителей:**
 * `all` -	Все типы. Это значение используется по умолчанию.

@@ -346,6 +346,6 @@ git push origin --follow-tags
 
 ## 24. Apply the changes introduced by some existing commits
 ```git
-git cherry-pick <branche>
+git cherry-pick <branch>
 ```
 [git-cherry-pick](https://git-scm.com/docs/git-cherry-pick)
