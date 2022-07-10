@@ -31,7 +31,7 @@ const c = { c: 3 }
 function Dog(){ this.b = 2 }
 Dog.prototype = c       // b ---> c ---> Object.prototype ---> null
 const dog = new Dog()
-b     // { b: 2 }
+dog   // { b: 2 }
 dog.c // 3
 
 var a = { a: 1 };           // a ---> Object.prototype ---> null

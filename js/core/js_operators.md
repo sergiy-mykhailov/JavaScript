@@ -68,7 +68,7 @@ alert( c ); // 0
 Значения разных типов приводятся к числу при сравнении, за исключением строгого равенства === (!==).
 
 ### Операторы сравнения
-> `<` `==` `!=`  `>=` `<=` `===` `!==` `>==` `<==` `!`
+> `<` `==` `!=`  `>=` `<=` `===` `!==` `!`
 
 ### Сравнение разных типов
 ```javascript
@@ -209,6 +209,12 @@ var trees = ["redwood", "bay", "cedar", "oak", "maple"];
 
 var mycar = { make: "Honda", model: "Accord", year: 1998 };
 "make" in mycar  // true
+
+const aa = { a: 'a' }
+const bb = { b: 'b' }
+bb.__proto__ = aa
+console.log('b' in bb) // true
+console.log('a' in bb) // true (checks also in prototypes)
 ```
 
 

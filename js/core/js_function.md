@@ -1,5 +1,5 @@
 # Function
-***
+
 
 ## Closures
 ### Using Closures for Private Variables
