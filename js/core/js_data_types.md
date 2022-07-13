@@ -1,5 +1,4 @@
 # Data types
-***
 
 ## types
 
@@ -25,6 +24,20 @@ typeof Symbol('Hi')   // symbol (New ES6)
 ```
 
 
+## Immutable / mutable
+In JavaScript, only objects and arrays are mutable, not primitive values.
+```jsx
+var immutableString = "Hello";
+immutableString = immutableString + "World";
+```
+### flow:
+* Existing value of `immutableString` is retrieved
+* "World" is appended to the existing value of `immutableString`
+* The resultant value is then allocated to a new block of memory
+* `immutableString` object now points to the newly created memory space
+* Previously created memory space is now available for garbage collection.
+
+
 ## Type conversion
 
 ### Численное преобразование
@@ -32,26 +45,26 @@ typeof Symbol('Hi')   // symbol (New ES6)
 var a = +"123";         // 123
 var a = Number("123");  // 123
 ```
-Значение     | Преобразуется в...
--------------|-------------------
-undefined	   | NaN
-null         | 0
-true / false | 1 / 0
-''           | 0
-'25'         | 25
-'abc'        | NaN
+| Значение     | Преобразуется в... |
+|--------------|--------------------|
+| undefined	   | NaN                |
+| null         | 0                  |
+| true / false | 1 / 0              |
+| ''           | 0                  |
+| '25'         | 25                 |
+| 'abc'        | NaN                |
 
 ### Логическое преобразование
 ```javascript
 alert( !!"0" ); // true
 alert( !!" " ); // любые непустые строки, даже из пробелов - true!
 ```
-Значение        | Преобразуется в...
-----------------|-------------------
-undefined, null	| false
-Числа	          | Все true, кроме 0, NaN -- false.
-Строки	        | Все true, кроме пустой строки "" -- false
-Объекты	        | Всегда true
+| Значение         | Преобразуется в...                        |
+|------------------|-------------------------------------------|
+| undefined, null	 | false                                     |
+| Числа	           | Все true, кроме 0, NaN -- false.          |
+| Строки	          | Все true, кроме пустой строки "" -- false |
+| Объекты	         | Всегда true                               |
 
 ```javascript
 alert( null >= 0 );       // true, т.к. null преобразуется к 0

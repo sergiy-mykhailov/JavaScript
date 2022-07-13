@@ -1,5 +1,21 @@
 # Scopes
-***
+
+
+## Scope types
+```javascript
+// Global Scope:
+let globalScopeVariable = 'Global Scope';
+
+// Local Scope or Function Scope:
+function greet() {
+  let functionalScopeVariable = 'Local Scope or Function Scope'
+}
+
+// Block Scope:
+if (globalScopeVariable) {
+  let blockScopeVariable = 'Block Scope'
+}
+```
 
 ## Global object
 `Window` - for browser
@@ -55,7 +71,7 @@ var display = function (){
 
 ## Event loop
 
-**Event loop:**
+### Event loop:
 - Heap
 - Stack
 - Queue

@@ -121,4 +121,7 @@ decoratedFunction(1, 2) // 'hello decorator'
 ## recursion
 The maximal recursion depth is limited by JavaScript engine.
 - 10 000 - ok (browser, node)
-- more then 10 000 - Uncaught InternalError: too much recursion (browser, node)
+- more than 10 000  - Uncaught InternalError: too much recursion (browser, node):
+  -  node: ~11 000
+  -  chrome: ~11 000
+  -  firefox: ~19 000
