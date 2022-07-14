@@ -55,12 +55,13 @@
 #### 9.3 [docker-compose](docker/docker-compose.md)
 
 ### 10. [TypeScript](ts/ts.md)
-#### 10.1 [Usage](ts/core/ts_usage.md)
-#### 10.2 [Types](ts/core/ts_type.md)
-#### 10.3 [Class](ts/core/ts_class.md)
-#### 10.4 [Enum](ts/core/ts_enum.md)
-#### 10.5 [Interface](ts/core/ts_interface.md)
-#### 10.6 [Generics](ts/core/ts_generic.md)
+#### 10.1 [Base](ts/core/ts_base.md)
+#### 10.2 [Usage](ts/core/ts_usage.md)
+#### 10.3 [Types](ts/core/ts_type.md)
+#### 10.4 [Class](ts/core/ts_class.md)
+#### 10.5 [Enum](ts/core/ts_enum.md)
+#### 10.6 [Interface](ts/core/ts_interface.md)
+#### 10.7 [Generics](ts/core/ts_generic.md)
 
 ### SQL
 #### [SQL architecture](sql/sql_architecture.md)

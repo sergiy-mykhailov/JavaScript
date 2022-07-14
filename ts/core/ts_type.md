@@ -3,19 +3,18 @@
 
 ## Primitive types
 
-Description                  | Type
-:----------------------------|:----
-Any type (explicitly untyped)|`any`
-void type (undefined or null, use for function returns only)|`void`
-Undefined type|`undefined`
-Null type|`null`
-never type|`never`
-unknown type |`unknown`
-String (including ES6 multi-line string templates)|`string`
-Number|`number`
-Boolean|`boolean`
-object (may be an Object or non-primitive)|`object`
-
+| Description                                                  | Type        |
+|:-------------------------------------------------------------|:------------|
+| Any type (explicitly untyped)                                | `any`       |
+| void type (undefined or null, use for function returns only) | `void`      |
+| Undefined type                                               | `undefined` |
+| Null type                                                    | `null`      |
+| never type                                                   | `never`     |
+| unknown type                                                 | `unknown`   |
+| String (including ES6 multi-line string templates)           | `string`    |
+| Number                                                       | `number`    |
+| Boolean                                                      | `boolean`   |
+| object (may be an Object or non-primitive)                   | `object`    |
 
 ## Object type literals
 
@@ -149,6 +148,23 @@ type SomeType = Record<'x' | 'y' | 'z', number>
 type SomeType = { x: number; y: number; z: number; }
 ```
 
+### Mapped type
+```typescript
+type OptionsFlags<Type> = {
+  [Property in keyof Type]: boolean;
+};
+type FeatureFlags = {
+  darkMode: () => void;
+  newUserProfile: () => void;
+};
+
+type FeatureOptions = OptionsFlags<FeatureFlags>;
+// eual to:
+// type FeatureOptions = {
+//   darkMode: boolean;
+//   newUserProfile: boolean;
+// }
+```
 
 ## Conditional types
 ### Conditional types

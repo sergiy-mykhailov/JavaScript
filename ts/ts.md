@@ -1,7 +1,5 @@
 # TypeScript
 
-**TypeScript** - однопоточный, компилируемый (в JavaScript), асинхронный язык со статической типизацией.
-
 ## 1. TypeScript core
 ### [Usage](core/ts_usage.md)
 ### [Types](core/ts_type.md)

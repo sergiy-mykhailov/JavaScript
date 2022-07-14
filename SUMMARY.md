@@ -57,6 +57,7 @@
     * [docker-compose](docker/docker-compose.md)
 * [TypeScript](ts/ts.md)
     * Core language
+        * [Base](ts/core/ts_base.md)
         * [Types](ts/core/ts_type.md)
         * [Class](ts/core/ts_class.md)
         * [Interface](ts/core/ts_interface.md)
