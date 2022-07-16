@@ -82,7 +82,31 @@ const memoizedValue  = useMemo(() => {}, comparisonArray); // Возвращае
 const refContainer = useRef(initialValue);
 return <input ref={refContainer} type="text" />
 ```
-возвращает изменяемый ref-объект, свойство .current которого инициализируется переданным аргументом (initialValue)
+Возвращает изменяемый ref-объект, свойство `.current` которого инициализируется переданным аргументом `initialValue`
+
+### useImperativeHandle
+```jsx
+function FancyInput(props, ref) {
+  const inputRef = useRef();
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      focus: () => {
+        inputRef.current.focus();
+      }
+    }),
+    comparisonArray,
+  );
+
+  return <input ref={inputRef} />;
+}
+
+const WrappedFancyInput = React.forwardRef(FancyInput);
+
+const inputRef = useRef();
+<WrappedFancyInput ref={inputRef} />
+```
 
 ### Custom Hooks
 

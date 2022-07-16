@@ -7,3 +7,4 @@
 ## [Routing](./react_routing.md)
 ## [Forms](./react_forms.md)
 ## [Testing](./react_testing.md)
+## [Next.js](./react_next_js.md)

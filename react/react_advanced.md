@@ -121,6 +121,7 @@ class NavigationBar extends React.Component {
 
 ## Ref
 
+### React.createRef
 ```jsx
 class MyComponent extends React.Component {
   constructor(props) {
@@ -138,6 +139,40 @@ class MyComponent extends React.Component {
 - Когда атрибут ref используется с классовым компонентом, свойство current объекта-рефа получает экземпляр смонтированного компонента.
 - Нельзя использовать ref атрибут с функциональными компонентами, потому что для них не создаётся экземпляров.
 
+### React.forwardRef
+```jsx
+const FancyButton = React.forwardRef((props, ref) => (
+  <button ref={ref} className="FancyButton">
+    {props.children}
+  </button>
+));
+
+// Теперь реф будет указывать непосредственно на DOM-узел button:
+const ref = React.createRef();
+<FancyButton ref={ref}>Click me!</FancyButton>;
+```
+
+### React.forwardRef and HOC
+```jsx
+function logProps(Component) {
+  class LogProps extends React.Component {
+    render() {
+      const {forwardedRef, ...rest} = this.props;
+      return <Component ref={forwardedRef} {...rest} />;
+    }
+  }
+
+  return React.forwardRef((props, ref) => {
+    return <LogProps {...props} forwardedRef={ref} />;
+  });
+}
+
+class FancyButton extends React.Component { /* ... */ }
+const WrappedFancyButton = logProps(FancyButton);
+
+const ref = React.createRef();
+<WrappedFancyButton ref={ref}>Click me!</WrappedFancyButton>;
+```
 
 ## React.lazy
 
@@ -284,9 +319,46 @@ class DataProvider extends React.Component {
 ```
 
 
-## concurrent mode - **experimental!**
+## React and D3
 
-- **concurrent rendering** - it lets React prepare multiple versions of the UI at the same time. (React 18)
+[react-d3-library docs](https://react-d3-library.github.io/)
+
+```jsx
+import rd3 from 'react-d3-library';
+import node from 'd3file';
+const RD3Component = rd3.Component;
+
+class My_First_React_D3_Library_Component extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {d3: ''}
+  }
+
+  componentDidMount() {
+    this.setState({d3: node});
+  }
+
+  render() {
+    return (
+      <div>
+        <RD3Component data={this.state.d3} />
+      </div>
+    )
+  }
+};
+```
+
+
+## concurrent mode
+React 18 only
+
+### React.Suspense
+```jsx
+<React.Suspense fallback={<Spinner />}> // fallback - loading indicator
+    <OtherComponent />
+</React.Suspense>
+```
 
 
 ## Server side rendering
@@ -327,7 +399,7 @@ React попытается присоединить обработчики со�
 ReactDOM.hydrate(element, container[, callback])
 ```
 
-### Initial state
+### Example
 #### The server side
 ```jsx
 // some handler (example: Express)
@@ -340,9 +412,11 @@ function someRenderHandler(req, res) {
 
   // Render the component to a string
   const html = renderToString(
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <StaticRouter location={req.url}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </StaticRouter>
   )
 
   // Grab the initial state from our Redux store
@@ -382,9 +456,11 @@ const store = createStore(someReducer, window.__PRELOADED_STATE__)
 delete window.__PRELOADED_STATE__
 
 hydrate(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root')
 )
 ```

@@ -28,6 +28,7 @@
     * [Hooks](react/react_hooks.md)
     * [Forms](react/react_forms.md)
     * [Testing](react/react_testing.md)
+    * [Next.js](react/react_next_js.md)
 * [Version control system (Git, Mercurial)](git/git.md)
     * [Main commands (git)](git/git_main.md)
     * [All commands (git)](git/git_all.md)

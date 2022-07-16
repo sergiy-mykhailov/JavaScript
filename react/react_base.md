@@ -135,6 +135,19 @@ class Welcome extends React.Component {
 <Welcome />
 ```
 
+### Static type checking (pros and cons)
+#### pros
+* More errors detected earlier in development.
+* Fewer errors at runtime and in shipped code.
+* Allows for compiler optimisation which yields faster code.
+* No need to write entirely mechanical tests for type correctness.
+* You get documentation (typedoc)
+#### cons
+* Can lead to verbose type declarations.
+* Can lead to complex error messages.
+* Can lead to boilerplate.
+* Difficulty in expressing dynamic construct: self describing types etc.
+
 
 ## Life Cycle
 
