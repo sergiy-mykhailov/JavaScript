@@ -13,11 +13,13 @@
 
 ## WebSockets
 
-WebSocket – двунаправленный протокол для обмена данными между браузером и сервером через постоянное соединение.
+### Info
+**WebSocket** – двунаправленный протокол для обмена данными между браузером и сервером через постоянное соединение.
 * Нет ограничений, связанных с кросс-доменными запросами.
 * Имеют хорошую поддержку браузерами.
 * Могут отправлять/получать как строки, так и бинарные данные.
 
+### Example
 ```javascript
 let socket = new WebSocket("wss://some-websocket-service");
 
@@ -53,6 +55,22 @@ socket.send(data); // string, Blob, ArrayBuffer
 socket.close([code], [reason]); // code: number, reason: string
 ```
 [Коды закрытия](https://datatracker.ietf.org/doc/html/rfc6455#section-7.4.1)
+
+### Pros of WebSocket
+* It allows for two-way communication.
+* Websockets allow you to send and receive data much faster than HTTP. They're also faster than AJAX.
+* Communication between origins (however, this poses security risks).
+* Compatibility between platforms (web, desktop, mobile)
+* HTTP has a 2000-byte overhead, but WebSocket only has a 2-byte cost.
+* Long polling is replaced.
+* AJAX calls can only send string data types because WebSockets are data typed.
+
+### Cons of Websocket
+* A fully HTML5-compliant web browser is required.
+* AJAX-like success mechanisms are not available in Websockets.
+* Websockets, unlike HTTP, do not provide intermediary/edge caching.
+* It is impossible to employ friendly HTTP statuses, bodies, and other elements to create even a simple protocol of your own.
+* HTTP is significantly easier to develop if your application doesn’t take a lot of dynamic interaction.
 
 
 ## Long polling
