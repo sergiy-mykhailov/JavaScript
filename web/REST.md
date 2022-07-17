@@ -34,6 +34,7 @@ REST представляет собой согласованный набор �
 ### 6. Код по требованию (необязательное ограничение)
 REST может позволить расширить функциональность клиента за счёт загрузки кода с сервера в виде апплетов или сценариев.
 
+
 ## Преимущества
 - Надёжность (за счёт отсутствия необходимости сохранять информацию о состоянии клиента, которая может быть утеряна);
 - Производительность (за счёт использования кэша);
@@ -44,6 +45,7 @@ REST может позволить расширить функционально
 - Лёгкость внесения изменений;
 - Способность эволюционировать, приспосабливаясь к новым требованиям
 
+
 ## Пример ресурсного роутинга:
 
 - `GET /articles/` — возвращает все статьи
@@ -52,6 +54,7 @@ REST может позволить расширить функционально
 - `PATCH /articles/1` — для частичного изменения ресурса с идентификатором «1»
 - `PUT /articles/1` — для полной замены ресурса с идентификатором «1»
 - `DELETE /articles/1` — удаляет статью с идентификатором «1»
+
 
 ## Идемпотентный метод
 
@@ -62,6 +65,40 @@ REST может позволить расширить функционально
 - Корректно реализованные методы `GET`, `HEAD`, `PUT` и `DELETE` идемпотентны
 - возвращаемые запросами коды статуса могут отличаться
 - `DELETE` с функциональностью удалить последнюю запись - **НЕ идемпотентный**!
+
+
+## REST API Versioning Strategies
+
+### Path params
+```
+http://www.example.com/api/1/products
+```
+* **Pros**: Clients can cache resources easily
+* **Cons**: This solution has a pretty big footprint in the code base as introducing breaking changes implies branching the entire API
+
+### Query params
+```
+http://www.example.com/api/products?version=1
+```
+* **Pros**: It’s a straightforward way to version an API, and it’s easy to default to the latest version
+* **Cons**: Query parameters are more difficult to use for routing requests to the proper API version
+
+### Custom headers
+```
+curl -H “Accepts-version: 1.0”
+http://www.example.com/api/products
+```
+* **Pros**: It doesn’t clutter the URI with versioning information
+* **Cons**: It requires custom headers
+
+### Content negotiation
+```
+curl -H “Accept: application/vnd.xm.device+json; version=1”
+http://www.example.com/api/products
+```
+* **Pros**: Allows us to version a single resource representation instead of versioning the entire API, which gives us a more granular control over versioning. Creates a smaller footprint. Doesn’t require implementing URI routing rules.
+* **Cons**: Requiring HTTP headers with media types makes it more difficult to test and explore the API using a browser
+
 
 ## Richardson Maturity Model
 

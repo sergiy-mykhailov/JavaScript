@@ -88,6 +88,33 @@ HTTP/1.0 200 OK
   * Мультиплексирования множества запросов в одном соединении TCP
 * HTTP/3 — сентябрь 2019 года. На основе UDP вместо TCP в качестве транспортного протокола.
 
+### Cancel http-request
+```jsx
+const controller = new AbortController();
+const signal = controller.signal;
+
+await fetch('https://some-url', { signal });
+
+setTimeout(() => {
+  controller.abort();
+}, 4000);
+```
+
+### Monitoring progress of a http-request
+```jsx
+let xhr = new XMLHttpRequest();
+xhr.open("GET", url);
+//...
+xhr.addEventListener("progress", (event) => {
+  if (event.lengthComputable) {
+    const percentComplete = event.loaded / event.total * 100;
+    // ...
+  } else {
+    // Unable to compute progress information since the total size is unknown
+  }
+});
+```
+
 
 ## HTTPS
 **HyperText Transfer Protocol Secure** — расширение протокола HTTP для поддержки шифрования в целях повышения безопасности. 
@@ -138,6 +165,24 @@ Cookie: <cookie-name1>=<cookie-value1>; <cookie-name2>=<cookie-value2>
   - `samesite=none` - нет ограничений.
   - `samesite=lax` - разрешает передачу cookie только безопасными HTTP-методами (GET, HEAD, OPTIONS и TRACE).
   - `samesite=strict` или просто `samesite` является самым строгим вариантом безопасности и блокирует отправку cookie с любыми запросами от других ресурсов. Cookie будут передаваться только в пределах того домена, с которого они и были установлены.
+
+### Cookie-based Authentication
+#### Cookie authentication flow
+- The client sends a login request to the server.
+- On the successful login, the server response includes the `Set-Cookie` header that contains the cookie name, value, expiry time and some other info.
+- The client needs to send this cookie in the `Cookie` header in all subsequent requests to the server.
+- On the logout operation, the server sends back the `Set-Cookie` header that causes the cookie to expire.
+
+#### Benefits of Cookie-based Authentication
+* **Availability**: cookies can be made available for an extended period, maintaining a session for a long time.
+* **Easy Configuration**: cookies can expire when the users close the browser tab, cookies can be valid specified length of time
+* **User-friendly**: Users can choose what to do with cookie files that have kept user credentials, can clear the cookies, can delete manually.
+
+#### Challenges of Cookie-based Authentication
+* **Vulnerable to CSRF**
+* **Less Mobile-friendly**: does not work well with all native applications.
+* **Limitations**: size limit (4KB per cookie), browser limitations on cookies, user privacy, etc.
+* **Less Scalable**: less scalable, and the overhead rises when the user count increases on a particular site.
 
 ### __Secure- и __Host-    
 * Cookie с префиксом `__Secure-` должны устанавливаться
@@ -280,6 +325,31 @@ Cache-Control: public                               // ответ можно с�
 Cache-Control: max-age=31536000                     // максимальное время(секунды), в течение которого ресурс считается "свежим"
 Cache-Control: must-revalidate                      // кеш обязан проверять статус ресурсов с истёкшим сроком действия
 ```
+
+### ETag
+**ETag** является идентификатором специфической версии ресурса.
+Если ресурс по заданному URL изменился, будет сгенерированно новое значение Etag.
+
+#### If-Match
+При отправке данных, `POST` запрос будет содержать заголовок `If-Match`, значение которого эквивалентно значению `ETag` - данные актуальны.
+Если заголовки не совпадают, это означает что данные уже были изменены между запросами (in-between) и будет возвращена ошибка 412 Precondition Failed.
+
+#### If-None-Match
+`GET` запрос, клиент отправляет значение `ETag` внутри заголовка `If-None-Match`.
+Сервер сравнит клиентский `ETag` (отправленный с помощью `If-None-Match`) с `ETag` для текущей версии ресурса и,
+если их значения совпадают (т.е. ресурсы не были изменены), сервер вернёт статус `304 Not Modified`, без тела ответа.
+
+### Cache busting
+#### Example
+* Let's say that you have a CSS file (e.g. `style.css`) and you set the **expires value** for that file type to **1 year**. This means that once cached locally on the user's browser, **the browser won't check the origin server again for 1 whole year** to see if any updates have been made to the file.
+* Three months down the road you decide to make a change to the `style.css` file. Therefore if you make the change, and reupload it to the server under the same name, the browser won't know the difference and **will keep delivering the original** `style.css` file.
+* On the other hand, if you implement cache busting, you would rename the updated file to something like `style.v2.css`. Therefore once you have updated the page's HTML to reflect this change, the browser will know that there is a new file that should be retrieved and it will start using it right away.
+
+#### Ways of changing the names of files
+- subdirectory for every version, `v1/index.js` `v2/index.css`
+- version in queries in the URLs, `index.js?v1` , `index.css?v2`
+- version in the name of the file, `index.v1.js` , `index.v2.css`
+- the hash inside the filename `index.[someHashHere].js`
 
 
 ## Performance testing tools

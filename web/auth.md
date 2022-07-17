@@ -46,22 +46,62 @@ Authorization: Bearer <credentials>
 
 ## OAuth
 
+### Info
 **OAuth** — открытый протокол авторизации, обеспечивающий предоставление третьей стороне ограниченный доступ 
 к защищённым ресурсам пользователя без передачи ей (третьей стороне) логина и пароля
+
+### Authorization Flow
+* The user clicks Login within the regular web application.
+* Auth0's SDK redirects the user to the Auth0 Authorization Server (`/authorize` endpoint).
+* Your Auth0 Authorization Server redirects the user to the login and authorization prompt.
+* The user authenticates using one of the configured login options and may see a consent page listing the permissions Auth0 will give to the regular web application.
+* Your Auth0 Authorization Server redirects the user back to the application with an authorization `code`, which is good for one use.
+* Auth0's SDK sends this `code` to the Auth0 Authorization Server (`/oauth/token` endpoint) along with the application's Client ID and Client Secret.
+* Your Auth0 Authorization Server verifies the `code`, Client ID, and Client Secret.
+* Your Auth0 Authorization Server responds with an ID Token and Access Token (and optionally, a Refresh Token).
+* Your application can use the Access Token to call an API to access information about the user.
+* The API responds with requested data.
+
+
+## SSO
+
+### Info
+**Single Sign-On** (SSO) is a protocol used to authenticate and authorize users to multiple applications while using a single set of credentials.
+
+### SSO flow:
+* The user requests a resource from their desired application or website.
+* The application or website redirects the user to the Identity Provider for authentication, using SAML, OpenID Connect, etc.
+* The IdP authenticates the user and passes a token to the SSO server.
+* The SSO server delivers the token to the application.
+* The application grants access to the user.
 
 
 ## OpenID
 
+### Info
 **OpenID** — открытый стандарт децентрализованной системы аутентификации, 
 предоставляющей пользователю возможность создать единую учётную запись
 для аутентификации на множестве не связанных друг с другом интернет-ресурсов, используя услуги третьих лиц.
 
+### Connection Flow
+* A user requests access to an application.
+* The application redirects the request to the identity provider.
+* The IdP authenticates the user. If successful, the IdP displays a prompt asking the user to grant access to the required application.
+* The IdP generates an ID Token with identity information that the app can use.
+* The IdP redirects the user back to the application, and the user can access it without providing credentials again.
+
 
 ## SAML
 
+### Info
 **SAML** (security assertion markup language) — is an open standard for exchanging authentication 
 and authorization data between parties, in particular, between an identity provider and a service provider.
 An important use case that SAML addresses is web-browser single sign-on (SSO)
+
+### Connection Flow
+* The user requests to access a resource in an application (service provider) that participates in the SSO flow.
+* The application checks with the IdP to see if the user is permitted to access the required resource.
+* The IdP authenticates the user, and if the user has access, returns an assertion that the user should be able to access the resource.
 
 
 ## OAuth vs OpenID

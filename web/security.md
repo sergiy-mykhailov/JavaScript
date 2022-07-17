@@ -21,6 +21,7 @@
 
 ## XSS
 
+### Info
 **XSS** (Cross-Site Scripting) — тип атаки на веб-системы, 
 заключающийся во внедрении в веб-страницу вредоносного кода (который будет выполнен на компьютере пользователя при открытии им этой страницы) 
 и взаимодействии этого кода с веб-сервером злоумышленника.
@@ -41,15 +42,58 @@
 * Регулярное обновление браузера до новой версии
 * Установка расширений для браузера, которые будут проверять поля форм, URL, JavaScript и POST-запросы, и, если встречаются скрипты, применять XSS-фильтры для предотвращения их запуска. 
 
+### Content-Security-Policy
+```
+Content-Security-Policy: default-src 'self'; img-src *; media-src media1.com media2.com; script-src 'self' userscripts.example.com; frame-ancestors 'self';
+```
+
 
 ## CSRF (XSRF)
 CSRF (cross-site request forgery) — межсайтовая подделка запроса, вид атак на посетителей веб-сайтов, использующий недостатки протокола HTTP.
-
 
 ### Защита
 - веб-сайты должны требовать подтверждения большинства действий пользователя и проверять поле HTTP_REFERER, если оно указано в запросе
 - с каждой сессией пользователя ассоциируется дополнительный секретный уникальный ключ, предназначенный для выполнения запросов
 - с каждым действием ассоциируется уникальный одноразовый ключ
+
+
+## Clickjacking
+
+### Example
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>A malicious website</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <button>Just a button</button>
+        <iframe id="banking-site-iframe" src="https://your-bank.com"></iframe>
+    </body>
+</html>
+```
+```css
+/* style.css */
+#banking-site-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0%;
+}
+```
+The above CSS positions the iframe on top of the button. When the users click on the button, they click on the iframe instead.
+
+### Защита
+- Use header `X-Frame-Options`
+  - `X-Frame-Options: sameorigin` - the same origin
+  - `X-Frame-Options: deny` - disable embedding our page
+- Use header `Content-Security-Policy`
+  - `Content-Security-Policy: frame-ancestors 'self' https://secure-website.com` - the same origin or `secure-website.com`
+  - `Content-Security-Policy: frame-ancestors 'none'` - disable embedding our page
+- Use `helmet` - library that sets various (secure related) HTTP headers
 
 
 ## CORS
@@ -89,7 +133,10 @@ CSRF (cross-site request forgery) — межсайтовая подделка з
 - `Access-Control-Allow-Methods: <method>[, <method>]*` - specifies the method or methods allowed when accessing the resource.
 - `Access-Control-Allow-Headers: <header>[, <header>]*` - indicates which HTTP headers can be used when making the actual request (preflight request).
 
-### Same-origin policy
+### Same origin policy
+**Правило ограничения домена** (Принцип одинакового источника) — это концепция безопасности.
+Политика разрешает сценариям, находящимся на страницах одного сайта, доступ к методам и свойствам друг друга без ограничений, 
+но предотвращает доступ к большинству методов и свойств для страниц на разных сайтах.
 
 Определяет как документ или скрипт, загруженный из одного источника (origin), может взаимодействовать с ресурсом из другого источника.
 Две страницы имеют одинаковый origin если протокол, порт (если указан), и хост одинаковы для обеих страниц.
@@ -105,9 +152,16 @@ CSRF (cross-site request forgery) — межсайтовая подделка з
 **JSONP** — это дополнение к базовому формату JSON. Он предоставляет способ запросить данные с сервера, 
 находящегося в другом домене — операцию, запрещённую в типичных веб-браузерах из-за политики ограничения домена.
 ```jsx
-// возвращает данные JSON, обёрнутые в вызов функции parseResponse()
-<script type="text/javascript" src="http://server2.example.com/Users/1234?jsonp=parseResponse">
-</script>
+// функция для візова с JSON:
+function parseResponse(response) {
+  console.log('response:', response)
+}
+// добваление script в DOM:
+var elem = document.createElement("script");
+elem.src = "http://other.server.com/Users/1234?jsonp=parseResponse";
+document.head.appendChild(elem);
+// ответ сервера - данные JSON, обёрнутые в вызов функции parseResponse():
+parseResponse({ name: "Jack", id: 1234 });
 ```
 
 
