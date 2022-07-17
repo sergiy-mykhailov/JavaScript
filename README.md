@@ -20,6 +20,7 @@
 #### 2.6. [Forms](react/react_forms.md)
 #### 2.7. [Testing](react/react_testing.md)
 #### 2.8. [Next.js](react/react_next_js.md)
+#### 2.9. [GraphQL](react/react_graph_ql.md)
 
 ### 3. Git
 #### 3.1. [Git - main commands](git/git_main.md)
