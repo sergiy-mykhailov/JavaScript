@@ -2,22 +2,28 @@
 
 ## Database normalization
 ### 1NF - First Normal Form
-* Rows are not ordered
-* Columns are not ordered
-* There is duplicated data
-* Row-and-column intersections always have a unique value
-* All columns are “regular” with no hidden values
+* Each record needs to be unique (no duplicated rows or columns)
+* Each table cell should contain a single value (no arrays or lists)
+* Values stored in a column should be of the same domain
+* All the columns in a table should have unique names.
+* And the order in which data is stored, does not matter.
 
 ### 2NF - Second Normal Form
-* The table must be already in 1 NF and all non-key columns of the tables must depend on the PRIMARY KEY
+* The table must be already in 1 NF
+* There must be a primary key for identification
+* All non-key columns of the tables must depend on the PRIMARY KEY
 * The partial dependencies are removed and placed in a separate table
 
 ### 3NF - Third Normal Form
 * A Table is already in 2 NF
-* Non-Primary key columns shouldn’t depend on the other non-Primary key columns
 * There is no transitive functional dependency
+* Non-Primary key columns shouldn’t depend on the other non-Primary key columns
 
-### 4NF - Boyce Codd Normal Form or Fourth Normal Form
+### BCNF - Boyce Codd Normal Form
+* A Table is already in 3 NF
+* For any dependency A → B, A cannot be a non-prime attribute, if B is a prime attribute
+
+### 4NF - Fourth Normal Form
 
 ### 5NF - Fifth Normal Form
 
