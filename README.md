@@ -84,6 +84,7 @@
 ##### 4.8 [Dependency Injection](architecture/principles/dependency_injection.md)
 ##### 4.9 [Resource Acquisition Is Initialization](architecture/principles/RAII.md)
 #### 5 [Functional programming](architecture/functional_programming.md)
+#### 6 [Patterns (devIQ)](https://deviq.com/)
 
 ### WEB technologies
 #### 1. [MVC](web/MVC.md)

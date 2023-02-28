@@ -76,6 +76,7 @@
     * [SQL queries](sql/sql_queries.md)
 
 * Architecture
+    * [Patterns (devIQ)](https://deviq.com/) 
     * [OOP](architecture/OOP.md)
     * [Big-O](architecture/big_O.md)
     * Design Principles
