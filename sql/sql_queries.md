@@ -132,3 +132,96 @@ WITH RECURSIVE hierarchical_tree AS (
 )
 select * from hierarchical_tree;
 ```
+
+## Select all nested columns from jsonb (array)
+```postgresql
+WITH columns_in_jsonb AS (
+    SELECT
+        '[
+          {"id": 1, "role": "COLUMN", "title": "Level 1 - title 1"},
+          {"id": 2, "role": "COLUMN", "title": "Level 1 - title 2"},
+          {
+            "id": 3,
+            "role": "GROUP",
+            "title": "Level 1 - group 1",
+            "columns": [
+              {"id": 4, "role": "COLUMN", "title": "Level 2 - title 1"},
+              {"id": 5, "role": "COLUMN", "title": "Level 2 - title 2"},
+              {
+                "id": 6,
+                "role": "GROUP",
+                "title": "Level 2 - group 1",
+                "columns": [
+                  {"id": 7, "role": "COLUMN", "title": "Level 3 - title 1"},
+                  {"id": 8, "role": "COLUMN", "title": "Level 3 - title 2"}
+                ]
+              }
+            ]
+          },
+          {"id": 9, "role": "SPACER"}
+        ]'::JSONB AS columns
+), first_level_column_objects AS (
+    SELECT DISTINCT
+        jsonb_path_query(columns_in_jsonb.columns, '$[*] ? (@.role == "COLUMN")') as column_object
+    FROM columns_in_jsonb
+), second_and_other_level_column_objects AS (
+    SELECT DISTINCT
+        jsonb_path_query(columns_in_jsonb.columns,'$.**.columns[*] ? (@.role == "COLUMN")') as column_object
+    FROM columns_in_jsonb
+), all_column_objects AS (
+    SELECT * FROM first_level_column_objects
+    UNION ALL
+    SELECT * FROM second_and_other_level_column_objects
+)
+SELECT
+    column_record.*
+FROM all_column_objects
+CROSS JOIN jsonb_to_record(all_column_objects.column_object)
+    AS column_record(id int, role varchar(255), title varchar(255))
+;
+```
+
+## Select all nested columns from jsonb (object)
+```postgresql
+WITH columns_in_jsonb AS (
+    SELECT
+        '{
+          "id": 0,
+          "title": "root group",
+          "role": "GROUP",
+          "columns": [
+            {"id": 1, "role": "COLUMN", "title": "Level 1 - title 1"},
+            {"id": 2, "role": "COLUMN", "title": "Level 1 - title 2"},
+            {
+              "id": 3,
+              "role": "GROUP",
+              "title": "Level 1 - group 1",
+              "columns": [
+                {"id": 4, "role": "COLUMN", "title": "Level 2 - title 1"},
+                {"id": 5, "role": "COLUMN", "title": "Level 2 - title 2"},
+                {
+                  "id": 6,
+                  "role": "GROUP",
+                  "title": "Level 2 - group 1",
+                  "columns": [
+                    {"id": 7, "role": "COLUMN", "title": "Level 3 - title 1"},
+                    {"id": 8, "role": "COLUMN", "title": "Level 3 - title 2"}
+                  ]
+                }
+              ]
+            },
+            {"id": 9, "role": "SPACER"}
+          ]
+        }'::JSONB AS columns
+), all_column_objects AS (
+    SELECT DISTINCT
+        jsonb_path_query(columns_in_jsonb.columns,'$.**.columns[*] ? (@.role == "COLUMN")') as column_object
+    FROM columns_in_jsonb
+)
+SELECT
+    column_record.*
+FROM all_column_objects
+CROSS JOIN jsonb_to_record(all_column_objects.column_object)
+    AS column_record(id int, role varchar(255), title varchar(255))
+;
+```
