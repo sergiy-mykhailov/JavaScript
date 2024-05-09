@@ -312,13 +312,13 @@ DROP TABLE IF EXISTS temp_table_with_tree;
 ## Export/import table to/from CSV
 ```postgresql
 -- export table to csv:
-COPY [Table Name] TO '[File Name]' DELIMITER ',' CSV HEADER;
+COPY table_name TO 'file_name.csv' DELIMITER ',' CSV HEADER;
 
 -- export query result to csv:
-COPY ([Query]) TO '[File Name]' DELIMITER ',' CSV HEADER;
+COPY (SELECT column1, column2 from table_name) TO 'file_name.csv' DELIMITER ',' CSV HEADER;
 
 -- import csv to table:
-COPY [Table Name](Optional Columns)
-    FROM '[Absolute Path to File]'
-    DELIMITER '[Delimiter Character]' CSV [HEADER];
+COPY table_name(column1, column2)
+    FROM 'absolute/path/to/file'
+    DELIMITER ',' CSV HEADER; -- HEADER <- first row with table headers
 ```
