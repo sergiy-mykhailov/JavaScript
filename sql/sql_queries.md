@@ -112,6 +112,30 @@ VALUES
 SELECT setval('user_role_id_seq', coalesce(max(id), 0) + 1, false) FROM user_role;
 ```
 
+## Change id column from SERIAL to BIGSERIAL
+```
+-- 1. Remove the existing default sequence
+ALTER TABLE orders ALTER COLUMN id DROP DEFAULT;
+
+-- 2. Change the data type to BIGINT
+ALTER TABLE orders ALTER COLUMN id TYPE BIGINT;
+
+-- 3. Remove existing sequence
+DROP SEQUENCE orders_id_seq;
+
+-- 4. Create a new BIGSERIAL sequence
+CREATE SEQUENCE orders_id_seq OWNED BY orders.id;
+
+-- 5. Set the default value to use the new sequence
+ALTER TABLE orders ALTER COLUMN id SET DEFAULT nextval('orders_id_seq');
+
+-- 6. Ensure the column is NOT NULL (likely already true for a primary key)
+ALTER TABLE orders ALTER COLUMN id SET NOT NULL;
+
+-- 7. Set the sequence to the maximum current value
+SELECT setval('orders_id_seq', (SELECT MAX(id) FROM orders));
+```
+
 ## Select recursive (with depth and hierarchical path)
 ```postgresql
 WITH RECURSIVE hierarchical_tree AS (
