@@ -44,25 +44,6 @@ Authorization: Bearer <credentials>
 - `credentials` - string of hexadecimal characters (often JWT)
 
 
-## OAuth
-
-### Info
-**OAuth** — открытый протокол авторизации, обеспечивающий предоставление третьей стороне ограниченный доступ 
-к защищённым ресурсам пользователя без передачи ей (третьей стороне) логина и пароля
-
-### Authorization Flow
-* The user clicks Login within the regular web application.
-* Auth0's SDK redirects the user to the Auth0 Authorization Server (`/authorize` endpoint).
-* Your Auth0 Authorization Server redirects the user to the login and authorization prompt.
-* The user authenticates using one of the configured login options and may see a consent page listing the permissions Auth0 will give to the regular web application.
-* Your Auth0 Authorization Server redirects the user back to the application with an authorization `code`, which is good for one use.
-* Auth0's SDK sends this `code` to the Auth0 Authorization Server (`/oauth/token` endpoint) along with the application's Client ID and Client Secret.
-* Your Auth0 Authorization Server verifies the `code`, Client ID, and Client Secret.
-* Your Auth0 Authorization Server responds with an ID Token and Access Token (and optionally, a Refresh Token).
-* Your application can use the Access Token to call an API to access information about the user.
-* The API responds with requested data.
-
-
 ## SSO
 
 ### Info
